@@ -2,10 +2,10 @@ import numpy as np
 import cv2
 import json
 
-def points_to_grid(points_2d, resolution=0.01):
+def points_to_grid(points_2d, resolution=0.02):
     """
-    Converts 2D points to a binary occupancy grid at 1cm resolution.
-    Higher resolution = thinner, more accurate walls.
+    Converts 2D points to a binary occupancy grid at a specified resolution.
+    Using 2cm resolution for a good balance of detail and noise suppression.
     """
     if len(points_2d) == 0:
         return np.zeros((10, 10), dtype=np.uint8), (0, 0), resolution
@@ -13,8 +13,7 @@ def points_to_grid(points_2d, resolution=0.01):
     min_xy = np.min(points_2d, axis=0)
     max_xy = np.max(points_2d, axis=0)
     
-    # Add padding
-    pad = 0.2  # 20cm padding
+    pad = 0.5
     min_xy -= pad
     max_xy += pad
     
@@ -25,63 +24,63 @@ def points_to_grid(points_2d, resolution=0.01):
     
     px = ((points_2d[:, 0] - min_xy[0]) / resolution).astype(int)
     py = ((points_2d[:, 1] - min_xy[1]) / resolution).astype(int)
-    
-    # Clip to bounds
     px = np.clip(px, 0, width - 1)
     py = np.clip(py, 0, height - 1)
     
     grid[py, px] = 255
-    
     return grid, min_xy, resolution
 
 
 def detect_walls_skeleton(grid, offset, resolution):
     """
-    Uses morphological skeletonization + Hough lines to find wall centerlines.
-    
-    Algorithm:
-    1. Close gaps in the wall points (morphological closing)
-    2. Skeletonize to reduce thick blobs to 1-pixel-wide lines
-    3. Run Hough Transform on the skeleton for clean line segments
-    4. Merge collinear, nearby segments into unified walls
+    V5 Pipeline: STRICT Axis-aligned wall extraction.
+    Throws away all diagonal noise and only keeps true walls.
     """
-    # Step 1: Morphological closing to connect nearby wall points
-    k_close = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-    closed = cv2.morphologyEx(grid, cv2.MORPH_CLOSE, k_close, iterations=3)
+    # 1. Close gaps (10cm kernel)
+    kernel_size = int(0.10 / resolution)
+    if kernel_size % 2 == 0: kernel_size += 1
+    k = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_size, kernel_size))
+    closed = cv2.morphologyEx(grid, cv2.MORPH_CLOSE, k, iterations=3)
     
-    # Step 2: Skeletonize using Zhang-Suen thinning
-    skeleton = cv2.ximgproc.thinning(closed) if hasattr(cv2, 'ximgproc') else _fallback_skeleton(closed)
+    # 2. Skeletonize
+    skeleton = _skeleton(closed)
     
-    # Step 3: Hough Transform on the thin skeleton
+    # 3. Hough lines
     lines = cv2.HoughLinesP(
         skeleton,
         rho=1,
         theta=np.pi / 180,
         threshold=15,
-        minLineLength=int(0.3 / resolution),  # min 30cm wall
-        maxLineGap=int(0.15 / resolution)       # bridge 15cm gaps
+        minLineLength=int(0.3 / resolution), # min 30cm wall
+        maxLineGap=int(0.5 / resolution)     # bridge 50cm gaps
     )
     
     if lines is None:
         return []
     
-    # Extract raw segments
-    raw_segments = []
+    raw = []
     for line in lines:
         pts = line[0] if line.ndim == 2 else line
-        x1, y1, x2, y2 = pts
-        raw_segments.append((x1, y1, x2, y2))
+        raw.append(tuple(int(v) for v in pts))
     
-    # Step 4: Snap to dominant orientations (0° and 90°)
-    # Most rooms have axis-aligned walls
-    snapped = _snap_to_axes(raw_segments, angle_tolerance=15)
+    # 4. Filter and snap STRICTLY to axes (15 degree tolerance)
+    # This THROWS AWAY all diagonal lines (noise, artifacts, furniture edges)
+    snapped = _strict_snap_to_axes(raw, angle_tolerance=15)
     
-    # Step 5: Merge collinear, overlapping segments
-    merged = _merge_collinear(snapped, resolution)
+    # 5. Merge collinear/parallel segments
+    merged = _aggressive_merge(snapped, resolution)
     
-    # Convert pixels back to meters
-    walls = []
+    # 6. Final filter for length (> 50cm) to remove tiny leftover stubs
+    min_len_px = 0.5 / resolution
+    filtered = []
     for (x1, y1, x2, y2) in merged:
+        length = np.sqrt((x2-x1)**2 + (y2-y1)**2)
+        if length >= min_len_px:
+            filtered.append((x1, y1, x2, y2))
+    
+    # Convert to meters
+    walls = []
+    for (x1, y1, x2, y2) in filtered:
         mx1 = x1 * resolution + offset[0]
         my1 = y1 * resolution + offset[1]
         mx2 = x2 * resolution + offset[0]
@@ -91,8 +90,12 @@ def detect_walls_skeleton(grid, offset, resolution):
     return walls
 
 
-def _fallback_skeleton(binary_img):
-    """Fallback skeletonization if cv2.ximgproc is not available."""
+def _skeleton(binary_img):
+    try:
+        return cv2.ximgproc.thinning(binary_img)
+    except AttributeError:
+        pass
+    
     skeleton = np.zeros_like(binary_img)
     element = cv2.getStructuringElement(cv2.MORPH_CROSS, (3, 3))
     img = binary_img.copy()
@@ -107,118 +110,123 @@ def _fallback_skeleton(binary_img):
     return skeleton
 
 
-def _snap_to_axes(segments, angle_tolerance=15):
+def _strict_snap_to_axes(segments, angle_tolerance=15):
     """
-    Snaps near-horizontal and near-vertical lines to exact 0° or 90°.
-    Lines that are diagonal (>tolerance from any axis) are kept as-is.
+    STRICTLY snaps to 0 or 90 degrees.
+    If a line is diagonal (outside tolerance), it is DISCARDED entirely.
     """
     snapped = []
-    tol_rad = np.radians(angle_tolerance)
+    tol = np.radians(angle_tolerance)
     
     for (x1, y1, x2, y2) in segments:
         angle = np.arctan2(y2 - y1, x2 - x1)
         
-        # Near horizontal (0° or 180°)
-        if abs(angle) < tol_rad or abs(abs(angle) - np.pi) < tol_rad:
-            mid_y = (y1 + y2) / 2
-            snapped.append((x1, int(mid_y), x2, int(mid_y)))
-        # Near vertical (90° or -90°)
-        elif abs(abs(angle) - np.pi/2) < tol_rad:
-            mid_x = (x1 + x2) / 2
-            snapped.append((int(mid_x), y1, int(mid_x), y2))
-        else:
-            snapped.append((x1, y1, x2, y2))
+        # Near horizontal
+        if abs(angle) < tol or abs(abs(angle) - np.pi) < tol:
+            mid_y = int(round((y1 + y2) / 2))
+            snapped.append((min(x1, x2), mid_y, max(x1, x2), mid_y))
+        # Near vertical
+        elif abs(abs(angle) - np.pi/2) < tol:
+            mid_x = int(round((x1 + x2) / 2))
+            snapped.append((mid_x, min(y1, y2), mid_x, max(y1, y2)))
+        # Else: Discard diagonals!
     
     return snapped
 
 
-def _merge_collinear(segments, resolution, dist_threshold=0.1):
-    """
-    Merges segments that are collinear and close together into single longer walls.
-    """
-    if not segments:
-        return segments
-    
-    threshold_px = dist_threshold / resolution
-    
-    # Separate horizontal, vertical, and diagonal
-    horiz, vert, diag = [], [], []
+def _aggressive_merge(segments, resolution):
+    horiz, vert = [], []
     for seg in segments:
         x1, y1, x2, y2 = seg
         if y1 == y2:
-            horiz.append(seg)
+            horiz.append((min(x1, x2), y1, max(x1, x2), y2))
         elif x1 == x2:
-            vert.append(seg)
-        else:
-            diag.append(seg)
+            vert.append((x1, min(y1, y2), x2, max(y1, y2)))
     
+    # 20cm parallel tolerance, 1.0m gap tolerance
+    parallel_tol = int(0.20 / resolution)  
+    gap_tol = int(1.0 / resolution)        
+    
+    for _ in range(5): 
+        horiz = _merge_parallel_h(horiz, parallel_tol, gap_tol)
+        vert = _merge_parallel_v(vert, parallel_tol, gap_tol)
+    
+    return horiz + vert
+
+
+def _merge_parallel_h(segments, parallel_tol, gap_tol):
+    if len(segments) <= 1:
+        return segments
+    
+    segments.sort(key=lambda s: (s[1], s[0]))
     merged = []
+    used = [False] * len(segments)
     
-    # Merge horizontal segments at similar Y
-    horiz.sort(key=lambda s: (s[1], min(s[0], s[2])))
-    horiz_merged = _merge_1d(horiz, axis='h', threshold=threshold_px)
-    merged.extend(horiz_merged)
+    for i in range(len(segments)):
+        if used[i]:
+            continue
+        
+        x1, y1, x2, y2 = segments[i]
+        
+        for j in range(i + 1, len(segments)):
+            if used[j]:
+                continue
+            
+            jx1, jy1, jx2, jy2 = segments[j]
+            
+            if abs(jy1 - y1) <= parallel_tol:
+                # Check overlap or close gap
+                if jx1 <= x2 + gap_tol and jx2 >= x1 - gap_tol:
+                    x1 = min(x1, jx1)
+                    x2 = max(x2, jx2)
+                    y1 = int(round((y1 + jy1) / 2))
+                    y2 = y1
+                    used[j] = True
+        
+        merged.append((x1, y1, x2, y2))
     
-    # Merge vertical segments at similar X
-    vert.sort(key=lambda s: (s[0], min(s[1], s[3])))
-    vert_merged = _merge_1d(vert, axis='v', threshold=threshold_px)
-    merged.extend(vert_merged)
-    
-    merged.extend(diag)
     return merged
 
 
-def _merge_1d(segments, axis, threshold):
-    """Merges collinear segments along one axis."""
-    if not segments:
-        return []
+def _merge_parallel_v(segments, parallel_tol, gap_tol):
+    if len(segments) <= 1:
+        return segments
     
+    segments.sort(key=lambda s: (s[0], s[1]))
     merged = []
-    current = list(segments[0])
+    used = [False] * len(segments)
     
-    for seg in segments[1:]:
-        x1, y1, x2, y2 = seg
-        cx1, cy1, cx2, cy2 = current
+    for i in range(len(segments)):
+        if used[i]:
+            continue
         
-        if axis == 'h':
-            # Same row?
-            if abs(y1 - cy1) <= threshold:
-                # Overlapping or close on X?
-                cmin, cmax = min(cx1, cx2), max(cx1, cx2)
-                smin, smax = min(x1, x2), max(x1, x2)
-                if smin <= cmax + threshold:
-                    # Extend
-                    current = [min(cmin, smin), cy1, max(cmax, smax), cy1]
-                    continue
-        else:  # vertical
-            if abs(x1 - cx1) <= threshold:
-                cmin, cmax = min(cy1, cy2), max(cy1, cy2)
-                smin, smax = min(y1, y2), max(y1, y2)
-                if smin <= cmax + threshold:
-                    current = [cx1, min(cmin, smin), cx1, max(cmax, smax)]
-                    continue
+        x1, y1, x2, y2 = segments[i]
         
-        merged.append(tuple(current))
-        current = list(seg)
+        for j in range(i + 1, len(segments)):
+            if used[j]:
+                continue
+            
+            jx1, jy1, jx2, jy2 = segments[j]
+            
+            if abs(jx1 - x1) <= parallel_tol:
+                if jy1 <= y2 + gap_tol and jy2 >= y1 - gap_tol:
+                    y1 = min(y1, jy1)
+                    y2 = max(y2, jy2)
+                    x1 = int(round((x1 + jx1) / 2))
+                    x2 = x1
+                    used[j] = True
+        
+        merged.append((x1, y1, x2, y2))
     
-    merged.append(tuple(current))
     return merged
 
 
-def calculate_dimensions(global_points, up_axis=1):
-    """Calculates ceiling height using robust percentile estimation."""
-    y = global_points[:, up_axis]
-    floor = np.percentile(y, 2)
-    ceiling = np.percentile(y, 98)
-    return float(ceiling - floor)
-
-
-def generate_json_output(walls, ceiling_height, output_file="output.json"):
-    """Formats the detected walls and dimensions into JSON."""
+def generate_json_output(walls, ceiling_height, height_confidence="", output_file="output.json"):
     payload = {
-        "room_name": "Scanned Room",
+        "room_name": "Scanned Space",
         "dimensions": {
             "ceiling_height_meters": round(ceiling_height, 3),
+            "height_confidence": height_confidence,
             "total_walls_detected": len(walls)
         },
         "walls": []
