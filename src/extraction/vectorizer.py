@@ -3,10 +3,6 @@ import cv2
 import json
 
 def points_to_grid(points_2d, resolution=0.02):
-    """
-    Converts 2D points to a binary occupancy grid at a specified resolution.
-    Using 2cm resolution for a good balance of detail and noise suppression.
-    """
     if len(points_2d) == 0:
         return np.zeros((10, 10), dtype=np.uint8), (0, 0), resolution
         
@@ -33,10 +29,10 @@ def points_to_grid(points_2d, resolution=0.02):
 
 def detect_walls_skeleton(grid, offset, resolution):
     """
-    V5 Pipeline: STRICT Axis-aligned wall extraction.
-    Throws away all diagonal noise and only keeps true walls.
+    V6 Pipeline: DYNAMIC Axis-aligned wall extraction.
+    Finds the dominant orientation of the room, and snaps walls relative to that angle.
     """
-    # 1. Close gaps (10cm kernel)
+    # 1. Close gaps
     kernel_size = int(0.10 / resolution)
     if kernel_size % 2 == 0: kernel_size += 1
     k = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_size, kernel_size))
@@ -51,8 +47,8 @@ def detect_walls_skeleton(grid, offset, resolution):
         rho=1,
         theta=np.pi / 180,
         threshold=15,
-        minLineLength=int(0.3 / resolution), # min 30cm wall
-        maxLineGap=int(0.5 / resolution)     # bridge 50cm gaps
+        minLineLength=int(0.3 / resolution),
+        maxLineGap=int(0.5 / resolution)
     )
     
     if lines is None:
@@ -63,14 +59,34 @@ def detect_walls_skeleton(grid, offset, resolution):
         pts = line[0] if line.ndim == 2 else line
         raw.append(tuple(int(v) for v in pts))
     
-    # 4. Filter and snap STRICTLY to axes (15 degree tolerance)
-    # This THROWS AWAY all diagonal lines (noise, artifacts, furniture edges)
-    snapped = _strict_snap_to_axes(raw, angle_tolerance=15)
+    # 4. Find Dominant Angle
+    # We wrap angles to [0, 90) because walls are typically orthogonal
+    angles = []
+    weights = []
+    for (x1, y1, x2, y2) in raw:
+        angle_deg = np.degrees(np.arctan2(y2 - y1, x2 - x1))
+        # Wrap to [0, 90)
+        angle_90 = angle_deg % 90
+        length = np.sqrt((x2-x1)**2 + (y2-y1)**2)
+        angles.append(angle_90)
+        weights.append(length)
+        
+    if not angles:
+        dominant_angle = 0.0
+    else:
+        # Use a weighted histogram to find the peak angle
+        hist, bin_edges = np.histogram(angles, bins=90, range=(0, 90), weights=weights)
+        dominant_angle = bin_edges[np.argmax(hist)]
     
-    # 5. Merge collinear/parallel segments
-    merged = _aggressive_merge(snapped, resolution)
+    print(f"  Dominant Room Angle: {dominant_angle:.1f}°")
     
-    # 6. Final filter for length (> 50cm) to remove tiny leftover stubs
+    # 5. Filter and snap relative to dominant angle
+    snapped = _dynamic_snap_to_axes(raw, dominant_angle, angle_tolerance=15)
+    
+    # 6. Merge collinear/parallel segments (we rotate them to 0/90, merge, then rotate back)
+    merged = _aggressive_merge_dynamic(snapped, dominant_angle, resolution)
+    
+    # 7. Final filter for length (> 50cm)
     min_len_px = 0.5 / resolution
     filtered = []
     for (x1, y1, x2, y2) in merged:
@@ -110,48 +126,94 @@ def _skeleton(binary_img):
     return skeleton
 
 
-def _strict_snap_to_axes(segments, angle_tolerance=15):
+def _dynamic_snap_to_axes(segments, dominant_angle_deg, angle_tolerance=15):
     """
-    STRICTLY snaps to 0 or 90 degrees.
-    If a line is diagonal (outside tolerance), it is DISCARDED entirely.
+    Snaps lines to either dominant_angle or dominant_angle + 90.
+    Discard lines that don't fit.
     """
     snapped = []
-    tol = np.radians(angle_tolerance)
+    tol = angle_tolerance
     
     for (x1, y1, x2, y2) in segments:
-        angle = np.arctan2(y2 - y1, x2 - x1)
+        angle_deg = np.degrees(np.arctan2(y2 - y1, x2 - x1))
         
-        # Near horizontal
-        if abs(angle) < tol or abs(abs(angle) - np.pi) < tol:
-            mid_y = int(round((y1 + y2) / 2))
-            snapped.append((min(x1, x2), mid_y, max(x1, x2), mid_y))
-        # Near vertical
-        elif abs(abs(angle) - np.pi/2) < tol:
-            mid_x = int(round((x1 + x2) / 2))
-            snapped.append((mid_x, min(y1, y2), mid_x, max(y1, y2)))
-        # Else: Discard diagonals!
-    
+        # Calculate angular distance to dominant angle (modulo 180)
+        diff1 = (angle_deg - dominant_angle_deg) % 180
+        if diff1 > 90: diff1 = 180 - diff1
+            
+        # Calculate angular distance to orthogonal angle
+        diff2 = (angle_deg - (dominant_angle_deg + 90)) % 180
+        if diff2 > 90: diff2 = 180 - diff2
+            
+        mid_x = (x1 + x2) / 2
+        mid_y = (y1 + y2) / 2
+        length = np.sqrt((x2-x1)**2 + (y2-y1)**2)
+        
+        if diff1 <= tol:
+            # Snap to dominant angle
+            rad = np.radians(dominant_angle_deg)
+            dx = length/2 * np.cos(rad)
+            dy = length/2 * np.sin(rad)
+            snapped.append((int(mid_x - dx), int(mid_y - dy), int(mid_x + dx), int(mid_y + dy)))
+            
+        elif diff2 <= tol:
+            # Snap to orthogonal angle
+            rad = np.radians(dominant_angle_deg + 90)
+            dx = length/2 * np.cos(rad)
+            dy = length/2 * np.sin(rad)
+            snapped.append((int(mid_x - dx), int(mid_y - dy), int(mid_x + dx), int(mid_y + dy)))
+            
     return snapped
 
 
-def _aggressive_merge(segments, resolution):
-    horiz, vert = [], []
-    for seg in segments:
-        x1, y1, x2, y2 = seg
-        if y1 == y2:
-            horiz.append((min(x1, x2), y1, max(x1, x2), y2))
-        elif x1 == x2:
-            vert.append((x1, min(y1, y2), x2, max(y1, y2)))
+def _rotate_points(segments, angle_deg, cx=0, cy=0):
+    rad = np.radians(angle_deg)
+    cos_a, sin_a = np.cos(rad), np.sin(rad)
     
-    # 20cm parallel tolerance, 1.0m gap tolerance
-    parallel_tol = int(0.20 / resolution)  
-    gap_tol = int(1.0 / resolution)        
+    rotated = []
+    for (x1, y1, x2, y2) in segments:
+        nx1 = cos_a * (x1 - cx) - sin_a * (y1 - cy) + cx
+        ny1 = sin_a * (x1 - cx) + cos_a * (y1 - cy) + cy
+        nx2 = cos_a * (x2 - cx) - sin_a * (y2 - cy) + cx
+        ny2 = sin_a * (x2 - cx) + cos_a * (y2 - cy) + cy
+        rotated.append((nx1, ny1, nx2, ny2))
+    return rotated
+
+def _aggressive_merge_dynamic(segments, dominant_angle, resolution):
+    """
+    To reuse the H/V merging logic, we rotate all segments by -dominant_angle,
+    do the axis-aligned merge, and then rotate back!
+    """
+    if not segments: return []
+    
+    # 1. Rotate to 0/90
+    rot_segs = _rotate_points(segments, -dominant_angle)
+    
+    horiz, vert = [], []
+    for seg in rot_segs:
+        x1, y1, x2, y2 = seg
+        # Decide if horizontal or vertical based on width/height
+        if abs(x2 - x1) > abs(y2 - y1):
+            y_avg = (y1 + y2) / 2
+            horiz.append((min(x1, x2), y_avg, max(x1, x2), y_avg))
+        else:
+            x_avg = (x1 + x2) / 2
+            vert.append((x_avg, min(y1, y2), x_avg, max(y1, y2)))
+            
+    parallel_tol = 0.20 / resolution  
+    gap_tol = 1.0 / resolution        
     
     for _ in range(5): 
         horiz = _merge_parallel_h(horiz, parallel_tol, gap_tol)
         vert = _merge_parallel_v(vert, parallel_tol, gap_tol)
+        
+    merged_rot = horiz + vert
     
-    return horiz + vert
+    # 2. Rotate back
+    final_merged = _rotate_points(merged_rot, dominant_angle)
+    
+    # Convert floats back to ints
+    return [(int(x1), int(y1), int(x2), int(y2)) for (x1, y1, x2, y2) in final_merged]
 
 
 def _merge_parallel_h(segments, parallel_tol, gap_tol):
@@ -165,26 +227,21 @@ def _merge_parallel_h(segments, parallel_tol, gap_tol):
     for i in range(len(segments)):
         if used[i]:
             continue
-        
         x1, y1, x2, y2 = segments[i]
         
         for j in range(i + 1, len(segments)):
             if used[j]:
                 continue
-            
             jx1, jy1, jx2, jy2 = segments[j]
             
             if abs(jy1 - y1) <= parallel_tol:
-                # Check overlap or close gap
                 if jx1 <= x2 + gap_tol and jx2 >= x1 - gap_tol:
                     x1 = min(x1, jx1)
                     x2 = max(x2, jx2)
-                    y1 = int(round((y1 + jy1) / 2))
+                    y1 = (y1 + jy1) / 2
                     y2 = y1
                     used[j] = True
-        
         merged.append((x1, y1, x2, y2))
-    
     return merged
 
 
@@ -199,25 +256,21 @@ def _merge_parallel_v(segments, parallel_tol, gap_tol):
     for i in range(len(segments)):
         if used[i]:
             continue
-        
         x1, y1, x2, y2 = segments[i]
         
         for j in range(i + 1, len(segments)):
             if used[j]:
                 continue
-            
             jx1, jy1, jx2, jy2 = segments[j]
             
             if abs(jx1 - x1) <= parallel_tol:
                 if jy1 <= y2 + gap_tol and jy2 >= y1 - gap_tol:
                     y1 = min(y1, jy1)
                     y2 = max(y2, jy2)
-                    x1 = int(round((x1 + jx1) / 2))
+                    x1 = (x1 + jx1) / 2
                     x2 = x1
                     used[j] = True
-        
         merged.append((x1, y1, x2, y2))
-    
     return merged
 
 
