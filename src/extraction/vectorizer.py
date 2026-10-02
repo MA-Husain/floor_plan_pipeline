@@ -36,8 +36,8 @@ def detect_walls_skeleton(grid, offset, resolution):
     Handles SLAM drift by fusing walls, and guarantees perfect corners.
     """
     # 1. HUGE morphological closing to fuse drift/double walls
-    # A 30cm kernel will bridge the gaps between ghosted walls.
-    kernel_size = int(0.30 / resolution) 
+    # A 50cm kernel will bridge the gaps between ghosted walls and furniture.
+    kernel_size = int(0.50 / resolution) 
     if kernel_size % 2 == 0: kernel_size += 1
     
     # We use a CIRCLE to expand equally in all directions
@@ -51,15 +51,15 @@ def detect_walls_skeleton(grid, offset, resolution):
     # 2. Find Contours
     # RETR_EXTERNAL gets the outer boundary (good for outer walls)
     # RETR_LIST gets all boundaries (outer + inner holes)
-    contours, _ = cv2.findContours(fused, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(fused, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     raw_segments = []
     
     for contour in contours:
         # 3. Polygon Approximation (Douglas-Peucker)
         # Epsilon dictates how strictly the polygon fits the contour.
-        # 25cm epsilon smooths out small bumps and enforces straight lines.
-        epsilon = (0.25 / resolution) 
+        # 40cm epsilon aggressively smooths bumps and enforces straight lines.
+        epsilon = (0.40 / resolution) 
         approx = cv2.approxPolyDP(contour, epsilon, True)
         
         # Squeeze to shape (N, 2)
@@ -82,17 +82,24 @@ def detect_walls_skeleton(grid, offset, resolution):
     # Snap segments to 90-degree increments
     snapped = _dynamic_snap_to_axes(raw_segments, dominant_angle, angle_tolerance=20)
     
-    # 5. Filter out tiny artifacts (< 40cm)
-    min_len_px = 0.4 / resolution
+    # 5. Filter out tiny artifacts (< 60cm = likely not real walls)
+    min_len_px = 0.6 / resolution
     filtered = []
     for (x1, y1, x2, y2) in snapped:
         length = np.sqrt((x2-x1)**2 + (y2-y1)**2)
         if length >= min_len_px:
             filtered.append((x1, y1, x2, y2))
+    
+    # 6. Merge nearby parallel walls (fuse double-walls from drift)
+    merged = _merge_parallel_walls(filtered, resolution, 
+                                    max_perp_dist=0.30/resolution,  # 30cm
+                                    max_gap=0.8/resolution)          # 80cm gap
+    
+    print(f"  After merge: {len(merged)} walls (from {len(filtered)} pre-merge)")
             
     # Convert back to meters
     walls = []
-    for (x1, y1, x2, y2) in filtered:
+    for (x1, y1, x2, y2) in merged:
         mx1 = x1 * resolution + offset[0]
         my1 = y1 * resolution + offset[1]
         mx2 = x2 * resolution + offset[0]
@@ -100,6 +107,98 @@ def detect_walls_skeleton(grid, offset, resolution):
         walls.append({'start': [float(mx1), float(my1)], 'end': [float(mx2), float(my2)]})
     
     return walls
+
+
+def _merge_parallel_walls(segments, resolution, max_perp_dist=15, max_gap=30):
+    """
+    Merge nearby parallel wall segments.
+    Two walls are merged if they are:
+    1. Nearly parallel (within 5 degrees)
+    2. Close perpendicularly (within max_perp_dist pixels)
+    3. Overlapping or close along their main axis (within max_gap pixels)
+    """
+    if len(segments) <= 1:
+        return segments
+    
+    used = [False] * len(segments)
+    merged = []
+    
+    for i in range(len(segments)):
+        if used[i]:
+            continue
+        
+        x1, y1, x2, y2 = segments[i]
+        angle_i = np.arctan2(y2-y1, x2-x1)
+        
+        # Collect all segments parallel and close to this one
+        group = [(x1, y1, x2, y2)]
+        used[i] = True
+        
+        for j in range(i+1, len(segments)):
+            if used[j]:
+                continue
+            
+            jx1, jy1, jx2, jy2 = segments[j]
+            angle_j = np.arctan2(jy2-jy1, jx2-jx1)
+            
+            # Check if parallel (within 10 degrees)
+            angle_diff = abs(angle_i - angle_j)
+            angle_diff = min(angle_diff, np.pi - angle_diff)
+            if angle_diff > np.radians(10):
+                continue
+            
+            # Check perpendicular distance
+            # Project midpoint of j onto the line through i
+            mid_j = np.array([(jx1+jx2)/2, (jy1+jy2)/2])
+            p1 = np.array([x1, y1])
+            direction = np.array([x2-x1, y2-y1])
+            dir_len = np.linalg.norm(direction)
+            if dir_len < 1e-6:
+                continue
+            direction = direction / dir_len
+            normal = np.array([-direction[1], direction[0]])
+            
+            perp_dist = abs(np.dot(mid_j - p1, normal))
+            
+            if perp_dist <= max_perp_dist:
+                group.append(segments[j])
+                used[j] = True
+        
+        # Merge the group: find the bounding extent along the main axis
+        if len(group) == 1:
+            merged.append(group[0])
+        else:
+            # Project all endpoints onto the main axis
+            all_pts = []
+            for (gx1, gy1, gx2, gy2) in group:
+                all_pts.extend([(gx1, gy1), (gx2, gy2)])
+            
+            # Use first segment's direction
+            direction = np.array([x2-x1, y2-y1])
+            dir_len = np.linalg.norm(direction)
+            if dir_len < 1e-6:
+                merged.append(group[0])
+                continue
+            direction = direction / dir_len
+            
+            # Project all points onto the axis
+            projections = [np.dot(np.array(p) - np.array([x1, y1]), direction) for p in all_pts]
+            
+            # Average perpendicular position
+            normal = np.array([-direction[1], direction[0]])
+            perp_positions = [np.dot(np.array(p) - np.array([x1, y1]), normal) for p in all_pts]
+            avg_perp = np.mean(perp_positions)
+            
+            # Build the merged segment
+            min_proj = min(projections)
+            max_proj = max(projections)
+            
+            start = np.array([x1, y1]) + min_proj * direction + avg_perp * normal
+            end = np.array([x1, y1]) + max_proj * direction + avg_perp * normal
+            
+            merged.append((int(start[0]), int(start[1]), int(end[0]), int(end[1])))
+    
+    return merged
 
 def _find_dominant_angle(segments):
     angles = []
