@@ -93,7 +93,7 @@ overlap frames.
 |---|---|---|---|
 | c00a170fe1 | 1.02x (p10-p90 0.87-1.11) | scale 5.7 % short, 55 cm median path error | overall 7.88 x 5.82 m vs **7.99 x 6.02 m** (-1.4 %, -3.3 %); Room 4.42 x 1.83 vs 4.45 x 1.87 m; bathroom merged into a neighbour |
 | c7d28f72c6 | pending | pending | pending |
-| home video (iPhone 17) | - | - | Room2 vs tape: pending |
+| home video (iPhone 17, fast walk: whole 3-bed flat in 165 s) | - | - | Room2 6.05 x 4.84 m vs tape 3.71 x 3.05 m: **+60 %, outside the CI** - a capture far faster than the protocol (8 s per turn) breaks the pose windows; the plan does not flag it (known failure: no capture-quality check) |
 
 Failure modes: pose noise (10-50 cm) blurs interior walls, so small rooms merge and the footprint
 overfills; fast pans (the home video: 165 s for a whole 3-bed flat) break windows.
@@ -151,9 +151,15 @@ the home flat, all on an iPhone 17 (non-Pro): **magicplan** (Sensopia, free tier
 `data/rooms_data/Room1-Room2.pdf`) vs **our video and photo tiers** (`data/rooms_data/room1|room2`) vs a
 tape measure (`benchmark/gt/home.json`; Room1 length ~132 in is from memory, +-5 cm).
 
-| Room | Dimension | Tape (m) | magicplan (m) | magicplan error | Ours (m) | Our error |
-|---|---|---|---|---|---|---|
-| Room1 | length | 3.35 | 3.29 | -1.9 % | pending | |
-| Room1 | width | 3.43 | 2.90 | -15.4 % | pending | |
-| Room2 | length | 3.71 | 3.96 | +6.8 % | pending | |
-| Room2 | width | 3.05 | 3.05 | +0.1 % | pending | |
+Dimensions are compared longer-to-longer and shorter-to-shorter (axis naming differs between tools).
+
+| Room | Dimension | Tape (m) | magicplan (m) | magicplan error | Ours, photo tier (m) | Our error | Better |
+|---|---|---|---|---|---|---|---|
+| Room1 | longer | 3.43 | 3.29 | -4.1 % | 3.75 +- 0.89 | +9.4 % | magicplan |
+| Room1 | shorter | 3.35 | 2.90 | -13.5 % | 3.34 +- 0.89 | **-0.4 %** | **ours** |
+| Room2 | longer | 3.71 | 3.96 | +6.8 % | 4.07 +- 0.98 | +9.8 % | magicplan |
+| Room2 | shorter | 3.05 | 3.05 | +0.1 % | 2.97 +- 0.98 | -2.6 % | magicplan |
+
+Ours beat or tied on **1 of 4** shared dimensions (gate: 70 %) - **fail**. Both photo-tier rooms were
+stitched through a doorway photo (link residual 2.7 cm). magicplan uses ARKit tracking live on the phone;
+our photo tier has 9 stills per room and no poses. Video-tier rows: see below if the runs completed.

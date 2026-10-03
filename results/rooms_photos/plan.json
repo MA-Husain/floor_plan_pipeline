@@ -1,0 +1,309 @@
+{
+ "schema": "brynx.plan/1.0",
+ "tier": "photo",
+ "capture": "",
+ "error_model": {
+  "face_sys": 0.03,
+  "drift_per_m": 0.015,
+  "scale_rel": 0.12
+ },
+ "frame": {
+  "yaw_rad": 0.14033055305480957,
+  "units": "m",
+  "axes": "u,v horizontal (reference room frame); h up from floor"
+ },
+ "global_ceiling": null,
+ "rooms": [
+  {
+   "id": "R1",
+   "polygon": [
+    [
+     -4.6479,
+     -2.939
+    ],
+    [
+     -4.6479,
+     0.4036
+    ],
+    [
+     -0.8949,
+     0.4036
+    ],
+    [
+     -0.8949,
+     -3.2508
+    ],
+    [
+     -1.1671,
+     -3.2508
+    ],
+    [
+     -1.1671,
+     -2.939
+    ]
+   ],
+   "area_m2": {
+    "value": 12.63,
+    "ci95": 4.282
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.753,
+     "ci95_m": 0.8935,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.753,
+     "ci95_m": 0.8935,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.3426,
+     "ci95_m": 0.7967,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 3.6544,
+     "ci95_m": 0.8822,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": -4.647917100679421,
+     "std": 0.010389440547450909,
+     "n": 865,
+     "measured": true,
+     "length": 3.3426154805937607,
+     "mid": -1.2677021234950812
+    },
+    {
+     "horizontal": true,
+     "coord": 0.403605616801799,
+     "std": 0.009649639684231224,
+     "n": 4891,
+     "measured": true,
+     "length": 3.7530427961038,
+     "mid": -2.7713957026275207
+    },
+    {
+     "horizontal": false,
+     "coord": -0.8948743045756208,
+     "std": 0.009228829889592727,
+     "n": 5000,
+     "measured": true,
+     "length": 3.6543559013468285,
+     "mid": -1.423572333871615
+    },
+    {
+     "horizontal": true,
+     "coord": -3.2507502845450293,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 0.27219446186102536,
+     "mid": -1.0309715355061335
+    },
+    {
+     "horizontal": false,
+     "coord": -1.1670687664366461,
+     "std": 0.006243379016358213,
+     "n": 1811,
+     "measured": true,
+     "length": 0.31174042075306785,
+     "mid": -3.094880074168495
+    },
+    {
+     "horizontal": true,
+     "coord": -2.9390098637919615,
+     "std": 0.010902239049618095,
+     "n": 4556,
+     "measured": true,
+     "length": 3.4808483342427747,
+     "mid": -2.9074929335580335
+    }
+   ],
+   "features": {
+    "area": 12.629832965654668,
+    "inscribed_width": 3.359999895095825,
+    "long": 3.7530427961038,
+    "short": 3.6543559013468285,
+    "elongation": 1.0270052773788672,
+    "floor_seen": 0.2857991681521093,
+    "walked": 0.07170778997404384,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 12702
+   },
+   "type": "Bedroom",
+   "type_reason": "Bedroom 4.0",
+   "fixtures": {
+    "bed": 1,
+    "office chair": 1,
+    "wardrobe": 1
+   },
+   "name": "Room1",
+   "folder_label": "Room1",
+   "position_known": true,
+   "snap_rotation_deg": 0.0
+  },
+  {
+   "id": "R2",
+   "polygon": [
+    [
+     1.4994,
+     -2.2595
+    ],
+    [
+     -2.2393,
+     -3.8581
+    ],
+    [
+     -3.4084,
+     -1.1238
+    ],
+    [
+     0.3302,
+     0.4748
+    ]
+   ],
+   "area_m2": {
+    "value": 12.092,
+    "ci95": 4.098
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 4.0661,
+     "ci95_m": 0.9782,
+     "bounded_by_measured_walls": false
+    },
+    "extent_u": {
+     "value_m": 4.0661,
+     "ci95_m": 0.9782,
+     "bounded_by_measured_walls": false
+    },
+    "length_v": {
+     "value_m": 2.9738,
+     "ci95_m": 0.7098,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 2.9738,
+     "ci95_m": 0.7098,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": -2.9526309209597716,
+     "std": 0.011421626287652694,
+     "n": 3734,
+     "measured": true,
+     "length": 4.066127493570805,
+     "mid": -1.2745163728760525
+    },
+    {
+     "horizontal": false,
+     "coord": -3.307580119661455,
+     "std": 0.010837742233331588,
+     "n": 2804,
+     "measured": true,
+     "length": 2.973782668994629,
+     "mid": -1.4657395864624572
+    },
+    {
+     "horizontal": true,
+     "coord": 0.02115174803485752,
+     "std": 0.0069946994201984134,
+     "n": 1241,
+     "measured": true,
+     "length": 4.066127493570805,
+     "mid": -1.2745163728760525
+    },
+    {
+     "horizontal": false,
+     "coord": 0.7585473739093502,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 2.973782668994629,
+     "mid": -1.4657395864624572
+    }
+   ],
+   "features": {
+    "area": 12.09177947030343,
+    "inscribed_width": 3.0,
+    "long": 4.066127493570805,
+    "short": 2.973782668994629,
+    "elongation": 1.3673250355398279,
+    "floor_seen": 0.3300376493697823,
+    "walked": 0.08967097724668521,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 5772
+   },
+   "type": "Bedroom",
+   "type_reason": "Bedroom 5.0",
+   "fixtures": {
+    "bed": 1,
+    "wardrobe": 2,
+    "office chair": 1
+   },
+   "name": "Room2",
+   "folder_label": "Room2",
+   "position_known": true,
+   "snap_rotation_deg": 11.58
+  }
+ ],
+ "openings": [],
+ "adjacency": [
+  [
+   "R1",
+   "R2"
+  ]
+ ],
+ "footprint_m2": 19.428,
+ "stitch": {
+  "links": [
+   {
+    "from": "Room2",
+    "to": "Room1",
+    "photo": 15,
+    "inliers": 26,
+    "residual_m": 0.0273,
+    "scale_disagreement": 0.9761,
+    "score": 20.4277
+   }
+  ],
+  "unplaced": [],
+  "overlaps": [
+   {
+    "rooms": [
+     "Room1",
+     "Room2"
+    ],
+    "area_m2": 5.29
+   }
+  ],
+  "note": "rooms are joined only through doorway photos that see the next room"
+ },
+ "wall_faces": [],
+ "objects": [],
+ "drift": {
+  "mode": "n/a (photos: no trajectory)"
+ },
+ "debug": {},
+ "damage": {
+  "inspected": {
+   "cells_classified": 113,
+   "tile_m": 0.4
+  },
+  "regions": []
+ },
+ "concealed_damage_flags": [],
+ "scope": []
+}
