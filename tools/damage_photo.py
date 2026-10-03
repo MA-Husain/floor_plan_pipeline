@@ -16,7 +16,7 @@ COLORS = {'crack': (0, 0, 230), 'water_stain': (0, 140, 255), 'mould': (40, 160,
           'spalling': (200, 120, 0)}
 
 
-def analyse(img, clf, scales=(1 / 4, 1 / 6)):
+def analyse(img, clf, scales=(1 / 4, 1 / 6, 1 / 10)):
     H, W = img.shape[:2]
     rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     tiles, boxes = [], []
@@ -71,8 +71,12 @@ def draw(img, res):
 if __name__ == '__main__':
     img = cv2.imread(sys.argv[1])
     if img is None:
-        from PIL import Image
-        img = cv2.cvtColor(np.array(Image.open(sys.argv[1]).convert('RGB')), cv2.COLOR_RGB2BGR)
+        from PIL import Image, ImageOps
+        try:
+            import pillow_heif; pillow_heif.register_heif_opener()      # iPhone HEIC
+        except ImportError:
+            pass
+        img = cv2.cvtColor(np.array(ImageOps.exif_transpose(Image.open(sys.argv[1])).convert('RGB')), cv2.COLOR_RGB2BGR)
     clf = DefectClassifier()
     res = analyse(img, clf)
     over, hit = draw(img, res)

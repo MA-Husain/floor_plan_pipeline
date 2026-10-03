@@ -1,0 +1,90 @@
+{
+ "capture": "c00a170fe1",
+ "intrinsics_given": false,
+ "keyframes": 172,
+ "trajectory_scale_lidar_over_rgb": 0.9461,
+ "scale_error_pct": 5.7,
+ "trajectory_residual_m": 0.546,
+ "depth_ratio_rgb_over_lidar": {
+  "median": 1.0183,
+  "p10": 0.8673,
+  "p90": 1.1086
+ },
+ "chunk_alignment": {
+  "windows": [
+   {
+    "window": 1,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.0094
+   },
+   {
+    "window": 2,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.2213
+   },
+   {
+    "window": 3,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.1206
+   },
+   {
+    "window": 4,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.2601
+   },
+   {
+    "window": 5,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.2687
+   },
+   {
+    "window": 6,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.0351
+   },
+   {
+    "window": 7,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.1282
+   },
+   {
+    "window": 8,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.0602
+   },
+   {
+    "window": 9,
+    "shared": 8,
+    "new": 16,
+    "scale": 1.0,
+    "residual_m": 0.2913
+   },
+   {
+    "window": 10,
+    "shared": 8,
+    "new": 4,
+    "scale": 1.0,
+    "residual_m": 0.0286
+   }
+  ],
+  "sfm_scale": null,
+  "keyframes": 172,
+  "registered": 172
+ }
+}

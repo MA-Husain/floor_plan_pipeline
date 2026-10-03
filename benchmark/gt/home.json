@@ -4,11 +4,58 @@
  "rooms": {
   "Room2": {
    "ceiling_height_m": 2.7178,
-   "lengths_m": [3.7084, 3.048],
+   "lengths_m": [
+    3.7084,
+    3.048
+   ],
    "raw": "107 in (height) x 146 in x 120 in",
    "photo_folder": "Room2",
-   "video_seconds": [59, 75]
+   "video_seconds": [
+    59,
+    75
+   ]
+  },
+  "Room1": {
+   "ceiling_height_m": 2.7178,
+   "lengths_m": [
+    4.0132,
+    3.429
+   ],
+   "raw": "107 in (height) x 158 in x 135 in",
+   "photo_folder": "Room1"
   }
  },
- "damage": {"Room3": "damp / peeling patch near the floor (video ~122 s, photos IMG_9122-9128)"}
+ "damage": {
+  "Room3": "damp / peeling patch near the floor (video ~122 s, photos IMG_9122-9128)"
+ },
+ "magicplan_iphone17": {
+  "app": "magicplan (non-LiDAR AR mode), iPhone 17",
+  "export": "data/rooms_data/Room1-Room2.pdf",
+  "Room1": {
+   "lengths_m": [
+    3.29,
+    2.9
+   ],
+   "doors_m": [
+    0.88,
+    0.73
+   ],
+   "windows_m": [
+    1.68,
+    0.69
+   ]
+  },
+  "Room2": {
+   "lengths_m": [
+    3.96,
+    3.05
+   ],
+   "doors_m": [
+    0.83
+   ],
+   "windows_m": [
+    2.09
+   ]
+  }
+ }
 }

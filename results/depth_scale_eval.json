@@ -1,0 +1,35 @@
+{
+ "moge2_freeFOV": {
+  "median_ratio": 0.92,
+  "p16": 0.832,
+  "p84": 1.017,
+  "per_capture": {
+   "c00a170fe1": 0.887,
+   "c7d28f72c6": 0.923,
+   "1a8384c3f6": 0.941
+  },
+  "frames": 40
+ },
+ "moge2_trueFOV": {
+  "median_ratio": 0.955,
+  "p16": 0.875,
+  "p84": 1.01,
+  "per_capture": {
+   "c00a170fe1": 0.956,
+   "c7d28f72c6": 0.947,
+   "1a8384c3f6": 0.955
+  },
+  "frames": 40
+ },
+ "da3_metric_trueF": {
+  "median_ratio": 0.929,
+  "p16": 0.869,
+  "p84": 0.992,
+  "per_capture": {
+   "c00a170fe1": 0.907,
+   "c7d28f72c6": 0.927,
+   "1a8384c3f6": 0.94
+  },
+  "frames": 40
+ }
+}

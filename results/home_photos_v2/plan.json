@@ -1,0 +1,671 @@
+{
+ "schema": "brynx.plan/1.0",
+ "tier": "photo",
+ "capture": "",
+ "error_model": {
+  "face_sys": 0.03,
+  "drift_per_m": 0.015,
+  "scale_rel": 0.12
+ },
+ "frame": {
+  "yaw_rad": 0.42962896823883057,
+  "units": "m",
+  "axes": "u,v horizontal (reference room frame); h up from floor"
+ },
+ "global_ceiling": {
+  "value_m": 2.0908,
+  "support": 1
+ },
+ "rooms": [
+  {
+   "id": "R1",
+   "polygon": [
+    [
+     8.5211,
+     1.5879
+    ],
+    [
+     8.0277,
+     0.0
+    ],
+    [
+     5.6122,
+     0.7505
+    ],
+    [
+     6.1056,
+     2.3385
+    ]
+   ],
+   "area_m2": {
+    "value": 4.206,
+    "ci95": 1.498
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 1.6629,
+     "ci95_m": 0.4282,
+     "bounded_by_measured_walls": false
+    },
+    "extent_u": {
+     "value_m": 1.6629,
+     "ci95_m": 0.4282,
+     "bounded_by_measured_walls": false
+    },
+    "length_v": {
+     "value_m": 2.5294,
+     "ci95_m": 0.6225,
+     "bounded_by_measured_walls": false
+    },
+    "extent_v": {
+     "value_m": 2.5294,
+     "ci95_m": 0.6225,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": -26.00515145323491,
+     "std": 0.009197933560319475,
+     "n": 1537,
+     "measured": true,
+     "length": 1.6628579862242887,
+     "mid": 13.584009073369922
+    },
+    {
+     "horizontal": false,
+     "coord": 12.752580080257777,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 2.5293757288150225,
+     "mid": -24.740463588827396
+    },
+    {
+     "horizontal": true,
+     "coord": -23.475775724419886,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 1.6628579862242887,
+     "mid": 13.584009073369922
+    },
+    {
+     "horizontal": false,
+     "coord": 14.415438066482066,
+     "std": 0.010468971974653752,
+     "n": 2254,
+     "measured": true,
+     "length": 2.5293757288150225,
+     "mid": -24.740463588827396
+    }
+   ],
+   "features": {
+    "area": 4.205992630821941,
+    "inscribed_width": 1.71999990940094,
+    "long": 2.5293757288150225,
+    "short": 1.6628579862242905,
+    "elongation": 1.5211014709429636,
+    "floor_seen": 0.15463529411764707,
+    "walked": 0.09948235294117647,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 144
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {},
+   "name": "Bathroom1",
+   "folder_label": "Bathroom1",
+   "position_known": false,
+   "snap_rotation_deg": 36.37
+  },
+  {
+   "id": "R2",
+   "polygon": [
+    [
+     12.9218,
+     0.6425
+    ],
+    [
+     11.875,
+     0.0
+    ],
+    [
+     9.5211,
+     3.8352
+    ],
+    [
+     10.5679,
+     4.4778
+    ]
+   ],
+   "area_m2": {
+    "value": 5.528,
+    "ci95": 1.91
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 1.2284,
+     "ci95_m": 0.3028,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 1.2284,
+     "ci95_m": 0.3028,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 4.5,
+     "ci95_m": 1.0894,
+     "bounded_by_measured_walls": false
+    },
+    "extent_v": {
+     "value_m": 4.5,
+     "ci95_m": 1.0894,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": -40.05962149516478,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 1.228355269548377,
+     "mid": 1.5744635356317005
+    },
+    {
+     "horizontal": false,
+     "coord": 0.9602859008575119,
+     "std": 0.007706374782381459,
+     "n": 1066,
+     "measured": true,
+     "length": 4.499999999999993,
+     "mid": -37.80962149516478
+    },
+    {
+     "horizontal": true,
+     "coord": -35.559621495164784,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 1.228355269548377,
+     "mid": 1.5744635356317005
+    },
+    {
+     "horizontal": false,
+     "coord": 2.188641170405889,
+     "std": 0.007443778550306927,
+     "n": 2215,
+     "measured": true,
+     "length": 4.499999999999993,
+     "mid": -37.80962149516478
+    }
+   ],
+   "features": {
+    "area": 5.527598712967688,
+    "inscribed_width": 1.2400000095367432,
+    "long": 4.499999999999993,
+    "short": 1.228355269548377,
+    "elongation": 3.66343525489534,
+    "floor_seen": 0.3241718501374222,
+    "walked": 0.11058874584116882,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 2424
+   },
+   "type": "Bathroom",
+   "type_reason": "Bathroom 7.0",
+   "fixtures": {
+    "toilet": 2,
+    "sink": 1
+   },
+   "name": "Bathroom2",
+   "folder_label": "Bathroom2",
+   "position_known": false,
+   "snap_rotation_deg": -29.23
+  },
+  {
+   "id": "R3",
+   "polygon": [
+    [
+     1.898,
+     0.318
+    ],
+    [
+     -0.343,
+     0.318
+    ],
+    [
+     -0.343,
+     0.4068
+    ],
+    [
+     -0.4162,
+     0.4068
+    ],
+    [
+     -0.4162,
+     3.5168
+    ],
+    [
+     4.1122,
+     3.5168
+    ],
+    [
+     4.1122,
+     0.4068
+    ],
+    [
+     1.898,
+     0.4068
+    ]
+   ],
+   "area_m2": {
+    "value": 14.282,
+    "ci95": 4.809
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 4.5285,
+     "ci95_m": 1.0766,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 4.5285,
+     "ci95_m": 1.0766,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.11,
+     "ci95_m": 0.7418,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 3.1988,
+     "ci95_m": 0.7628,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 0.31798328481892446,
+     "std": 0.009965229078920775,
+     "n": 1350,
+     "measured": true,
+     "length": 2.241021391785925,
+     "mid": 0.7774783631418936
+    },
+    {
+     "horizontal": false,
+     "coord": -0.3430323327510688,
+     "std": 0.010648002594707289,
+     "n": 2329,
+     "measured": true,
+     "length": 0.08881588738133522,
+     "mid": 0.36239122850959204
+    },
+    {
+     "horizontal": true,
+     "coord": 0.4067991722002597,
+     "std": 0.011456216526349166,
+     "n": 1116,
+     "measured": true,
+     "length": 0.07320073545038541,
+     "mid": -0.3796327004762615
+    },
+    {
+     "horizontal": false,
+     "coord": -0.4162330682014542,
+     "std": 0.009155937847703457,
+     "n": 3567,
+     "measured": true,
+     "length": 3.109952290984408,
+     "mid": 1.9617753176924637
+    },
+    {
+     "horizontal": true,
+     "coord": 3.5167514631846677,
+     "std": 0.011611297411874888,
+     "n": 1507,
+     "measured": true,
+     "length": 4.528477284030623,
+     "mid": 1.848005573813857
+    },
+    {
+     "horizontal": false,
+     "coord": 4.112244215829168,
+     "std": 0.01134790280061663,
+     "n": 1386,
+     "measured": true,
+     "length": 3.109952290984408,
+     "mid": 1.9617753176924637
+    },
+    {
+     "horizontal": true,
+     "coord": 0.4067991722002597,
+     "std": 0.011456216526349166,
+     "n": 1116,
+     "measured": true,
+     "length": 2.2142551567943123,
+     "mid": 3.005116637432012
+    },
+    {
+     "horizontal": false,
+     "coord": 1.897989059034856,
+     "std": 0.006534625562602559,
+     "n": 1805,
+     "measured": true,
+     "length": 0.08881588738133522,
+     "mid": 0.36239122850959204
+    }
+   ],
+   "features": {
+    "area": 14.282386607693907,
+    "inscribed_width": 3.240000009536743,
+    "long": 4.528477284030623,
+    "short": 3.1987681783657433,
+    "elongation": 1.4156941145838928,
+    "floor_seen": 0.2319300375193114,
+    "walked": 0.06943831383800486,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 0
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {
+    "sink": 1,
+    "dining table": 1
+   },
+   "name": "Hall2",
+   "folder_label": "Hall2",
+   "position_known": true,
+   "snap_rotation_deg": 0.0
+  },
+  {
+   "id": "R4",
+   "polygon": [
+    [
+     18.4653,
+     1.0053
+    ],
+    [
+     15.4488,
+     0.0
+    ],
+    [
+     13.9218,
+     4.5821
+    ],
+    [
+     16.9383,
+     5.5873
+    ]
+   ],
+   "area_m2": {
+    "value": 15.357,
+    "ci95": 5.191
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.1796,
+     "ci95_m": 0.7582,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.1796,
+     "ci95_m": 0.7582,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 4.8298,
+     "ci95_m": 1.157,
+     "bounded_by_measured_walls": false
+    },
+    "extent_v": {
+     "value_m": 4.8298,
+     "ci95_m": 1.157,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": -39.570567458092185,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 3.1796011957578614,
+     "mid": 54.76886801475338
+    },
+    {
+     "horizontal": false,
+     "coord": 53.17906741687445,
+     "std": 0.0101137575904747,
+     "n": 4122,
+     "measured": true,
+     "length": 4.829778974916358,
+     "mid": -37.155677970634
+    },
+    {
+     "horizontal": true,
+     "coord": -34.74078848317583,
+     "std": 0.01055967301456563,
+     "n": 3363,
+     "measured": true,
+     "length": 3.1796011957578614,
+     "mid": 54.76886801475338
+    },
+    {
+     "horizontal": false,
+     "coord": 56.358668612632314,
+     "std": 0.00943879453170486,
+     "n": 3898,
+     "measured": true,
+     "length": 4.829778974916358,
+     "mid": -37.155677970634
+    }
+   ],
+   "features": {
+    "area": 15.35677100389023,
+    "inscribed_width": 3.1999998092651367,
+    "long": 4.829778974916358,
+    "short": 3.1796011957578614,
+    "elongation": 1.5189889163962198,
+    "floor_seen": 0.25676652892561985,
+    "walked": 0.04628099173553719,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 2200
+   },
+   "type": "Bedroom",
+   "type_reason": "Bedroom 6.0",
+   "fixtures": {
+    "bed": 2,
+    "desk": 1
+   },
+   "name": "Room2",
+   "folder_label": "Room2",
+   "position_known": false,
+   "snap_rotation_deg": 9.22
+  },
+  {
+   "id": "R5",
+   "polygon": [
+    [
+     -3.6122,
+     0.2917
+    ],
+    [
+     -0.3695,
+     0.6981
+    ],
+    [
+     0.0752,
+     -2.8495
+    ],
+    [
+     -3.1676,
+     -3.2559
+    ]
+   ],
+   "area_m2": {
+    "value": 11.684,
+    "ci95": 3.966
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.268,
+     "ci95_m": 0.7791,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.268,
+     "ci95_m": 0.7791,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.5753,
+     "ci95_m": 0.8638,
+     "bounded_by_measured_walls": false
+    },
+    "extent_v": {
+     "value_m": 3.5753,
+     "ci95_m": 0.8638,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": {
+    "value_m": 2.0908,
+    "ci95_m": 0.4953,
+    "n_points": 6386,
+    "coverage": 0.535
+   },
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 0.6213966909454949,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 3.2680319362296997,
+     "mid": -1.8447426778452831
+    },
+    {
+     "horizontal": false,
+     "coord": -0.21072670973043306,
+     "std": 0.009271485866584571,
+     "n": 1196,
+     "measured": true,
+     "length": 3.575304844372607,
+     "mid": -1.1662557312408086
+    },
+    {
+     "horizontal": true,
+     "coord": -2.953908153427112,
+     "std": 0.011117536703409215,
+     "n": 4326,
+     "measured": true,
+     "length": 3.2680319362296997,
+     "mid": -1.8447426778452831
+    },
+    {
+     "horizontal": false,
+     "coord": -3.478758645960133,
+     "std": 0.006585060442723769,
+     "n": 2305,
+     "measured": true,
+     "length": 3.575304844372607,
+     "mid": -1.1662557312408086
+    }
+   ],
+   "features": {
+    "area": 11.684210413166436,
+    "inscribed_width": 3.2799999713897705,
+    "long": 3.575304844372607,
+    "short": 3.2680319362296997,
+    "elongation": 1.0940238388543428,
+    "floor_seen": 0.2785230352303523,
+    "walked": 0.09471544715447154,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 684
+   },
+   "type": "Stairs",
+   "type_reason": "Stairs 4.0",
+   "fixtures": {
+    "desk": 1,
+    "wardrobe": 1
+   },
+   "name": "Room3",
+   "folder_label": "Room3",
+   "position_known": true,
+   "snap_rotation_deg": 3.57
+  }
+ ],
+ "openings": [],
+ "adjacency": [
+  [
+   "R3",
+   "R5"
+  ]
+ ],
+ "footprint_m2": 25.947,
+ "stitch": {
+  "links": [
+   {
+    "from": "Room3",
+    "to": "Hall2",
+    "photo": 38,
+    "inliers": 30,
+    "residual_m": 0.0719,
+    "scale_disagreement": 0.9462,
+    "score": 17.4551
+   },
+   {
+    "from": "Hall2",
+    "to": "Balcony2",
+    "photo": 25,
+    "inliers": 25,
+    "residual_m": 0.0315,
+    "scale_disagreement": 1.0381,
+    "score": 19.0109
+   }
+  ],
+  "unplaced": [
+   "Balcony1",
+   "Balcony3",
+   "Bathroom1",
+   "Bathroom2",
+   "Hall1",
+   "Room1",
+   "Room2"
+  ],
+  "overlaps": [],
+  "note": "rooms are joined only through doorway photos that see the next room"
+ },
+ "wall_faces": [],
+ "objects": [],
+ "drift": {
+  "mode": "n/a (photos: no trajectory)"
+ },
+ "debug": {},
+ "damage": {
+  "inspected": {
+   "cells_classified": 79,
+   "tile_m": 0.4
+  },
+  "regions": []
+ },
+ "concealed_damage_flags": [],
+ "scope": []
+}

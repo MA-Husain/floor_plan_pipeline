@@ -18,7 +18,7 @@ def locate(plan, spec):
     if spec.get('photo_folder'):
         m = [r for r in rooms if r.get('folder_label') == spec['photo_folder']]
         if m:
-            return max(m, key=lambda r: r['folder_votes'].get(spec['photo_folder'], 0)), 'photo folder'
+            return max(m, key=lambda r: r.get('folder_votes', {}).get(spec['photo_folder'], 1)), 'photo folder'
     dbg = plan.get('debug', {})
     if spec.get('video_seconds') and dbg.get('camera_time_s'):
         a, b = spec['video_seconds']
