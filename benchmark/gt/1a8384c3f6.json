@@ -1,0 +1,105 @@
+{
+ "capture": "1a8384c3f6",
+ "source": "Hand-labelled from the RGB video (tools/video_atlas.py, 36 evenly spaced frames). Each entry: the camera at that frame stands inside the named space. Ambiguous frames (thresholds, doorways) are omitted.",
+ "spaces": {
+  "studio_living": {
+   "type": [
+    "Living",
+    "Living / Kitchen",
+    "Kitchen",
+    "Bedroom",
+    "Room"
+   ],
+   "frames": [
+    5,
+    154,
+    304,
+    4943,
+    5093,
+    5243
+   ],
+   "evidence": "fridge, sofa, wardrobe, TV"
+  },
+  "bath_a": {
+   "type": [
+    "Bathroom"
+   ],
+   "frames": [
+    603,
+    753,
+    902,
+    1052
+   ],
+   "evidence": "glass shower, vanity, toilet"
+  },
+  "corridor": {
+   "type": [
+    "Corridor",
+    "Hall"
+   ],
+   "frames": [
+    1202,
+    1351
+   ],
+   "evidence": "narrow tiled passage"
+  },
+  "stair_hall": {
+   "type": [
+    "Stairs",
+    "Hall",
+    "Corridor"
+   ],
+   "frames": [
+    1651,
+    1800,
+    1950,
+    2100
+   ],
+   "evidence": "stair gate, staircase going down"
+  },
+  "bath_b": {
+   "type": [
+    "Bathroom",
+    "WC"
+   ],
+   "frames": [
+    2549,
+    2698,
+    2848,
+    2998
+   ],
+   "evidence": "toilet, sink"
+  },
+  "study": {
+   "type": [
+    "Study",
+    "Bedroom",
+    "Room"
+   ],
+   "frames": [
+    3147,
+    3297,
+    3447,
+    3596
+   ],
+   "evidence": "whiteboard, desk with iMac"
+  },
+  "dining_living": {
+   "type": [
+    "Dining",
+    "Living",
+    "Living / Dining",
+    "Room"
+   ],
+   "frames": [
+    4045,
+    4195,
+    4345,
+    4494,
+    4644
+   ],
+   "evidence": "dining table, plants, curtained window"
+  }
+ },
+ "type_policy": "'Room' is accepted for habitable spaces: when fixtures are not decisive the pipeline names the generic type rather than guess."
+}

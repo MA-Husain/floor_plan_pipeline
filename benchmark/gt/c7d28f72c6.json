@@ -1,0 +1,89 @@
+{
+ "capture": "c7d28f72c6",
+ "source": "Hand-labelled from the RGB video (tools/video_atlas.py, 42 evenly spaced frames; atlas shows raw wall points only). HELD OUT: never used for tuning.",
+ "spaces": {
+  "study": {
+   "type": [
+    "Study",
+    "Bedroom",
+    "Room"
+   ],
+   "frames": [
+    5,
+    242,
+    4989,
+    5227,
+    5464,
+    9737
+   ],
+   "evidence": "TV + desk, whiteboard"
+  },
+  "dining_living": {
+   "type": [
+    "Dining",
+    "Living",
+    "Living / Dining",
+    "Room"
+   ],
+   "frames": [
+    954,
+    1191,
+    5939,
+    6176
+   ],
+   "evidence": "plant, curtained window, dining area"
+  },
+  "studio_living": {
+   "type": [
+    "Living",
+    "Living / Kitchen",
+    "Kitchen",
+    "Bedroom",
+    "Room"
+   ],
+   "frames": [
+    1666,
+    1903,
+    2141,
+    6888
+   ],
+   "evidence": "TV, fridge, sofa"
+  },
+  "bath_a": {
+   "type": [
+    "Bathroom"
+   ],
+   "frames": [
+    2616,
+    2853
+   ],
+   "evidence": "vanity, glass shower"
+  },
+  "stair_hall": {
+   "type": [
+    "Stairs",
+    "Hall",
+    "Corridor"
+   ],
+   "frames": [
+    3802,
+    8312,
+    8550,
+    8787
+   ],
+   "evidence": "staircase, stair gate"
+  },
+  "bath_b": {
+   "type": [
+    "Bathroom",
+    "WC"
+   ],
+   "frames": [
+    4514,
+    9024
+   ],
+   "evidence": "tiled walls, shelf"
+  }
+ },
+ "type_policy": "'Room' is accepted for habitable spaces: when fixtures are not decisive the pipeline names the generic type rather than guess."
+}
