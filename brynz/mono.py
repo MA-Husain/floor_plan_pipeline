@@ -9,7 +9,14 @@ import os
 import sys
 from pathlib import Path
 
+import warnings
+
 import numpy as np
+
+# MoGe asks for an fp32 autocast region; PyTorch's MPS backend notes it only autocasts to fp16/bf16 and
+# simply runs it in fp32 - harmless, silenced so the run log stays readable
+warnings.filterwarnings('ignore', message='.*MPS Autocast only supports.*')
+warnings.filterwarnings('ignore', message='In MPS autocast.*')
 
 ROOT = Path(__file__).resolve().parent.parent
 HF_CACHE = str(ROOT / 'weights' / 'hf')

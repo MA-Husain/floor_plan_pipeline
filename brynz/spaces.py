@@ -91,7 +91,8 @@ def clean_regions(polys, grid, floor_mask, walk_mask, min_width=priors.SPACE_MIN
 
 def features(P, grid, floor_mask, walk_mask, uv, h, ny, openings_for_room, neighbours):
     m = raster_mask(P, grid)
-    b = P.minimum_rotated_rectangle.exterior.coords
+    with np.errstate(divide='ignore', invalid='ignore'):   # shapely warns on collinear hull edges; result is valid
+        b = P.minimum_rotated_rectangle.exterior.coords
     e = [np.hypot(b[k + 1][0] - b[k][0], b[k + 1][1] - b[k][1]) for k in range(2)]
     w_in = inscribed_width(P, grid)
     sel = (ny > 0.9) & (h < -0.12) & (h > -3.5)

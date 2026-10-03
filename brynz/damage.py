@@ -244,7 +244,9 @@ def regions_from_cells(cell_probs, meta, surfaces, classes, plan, ctx):
                     nk = _key(si, ca + da, cb + db)
                     if nk in pos and nk not in seen and pos[nk][0] == cls:
                         seen.add(nk); stack.append(nk)
-        regions.append(_region(comp, pos, meta, surfaces[si], plan, ctx))
+        r = _region(comp, pos, meta, surfaces[si], plan, ctx)
+        r['_cells'] = comp
+        regions.append(r)
     regions.sort(key=lambda r: -r['area_m2']['value'])
     for j, r in enumerate(regions):
         r['id'] = f'D{j + 1}'
@@ -315,6 +317,13 @@ def scan(capture, poses, plan, ctx, log=print, cache=None, clf=None):
                                          'probs': {str(k): v.round(4).tolist() for k, v in probs.items()}}))
     probs = {k: v for k, v in probs.items() if k in meta and k in views}   # cache may hold cells of an older surface set
     regions = regions_from_cells(probs, meta, surfaces, classes, plan, ctx)
+    for r in regions:       # evidence: the best view of the region's most confident cell, for damage.png
+        cells = [c for c in r.pop('_cells') if c in views]
+        if cells:
+            best = max(cells, key=lambda c: views[c][0][0])
+            q, frame, box, rng = views[best][0]
+            boxes = [v[0][2] for c in cells for v in [views[c]] if v[0][1] == frame]
+            r['evidence'] = {'frame': int(frame), 'boxes_px': boxes, 'range_m': round(float(rng), 2)}
     log(f'[damage] {len(probs)} cells classified -> {len(regions)} damage regions')
     inspected = {'cells_classified': len(probs), 'tile_m': TILE_M,
                  'surface_area_inspected_m2': round(len(probs) * TILE_M ** 2, 1)}
@@ -396,3 +405,71 @@ def scope_items(regions, flags, plan):
 
 def _item(r, tgt, action, qty, unit):
     return {'damage_id': r['id'], 'target': tgt, 'action': action, 'qty': qty, 'unit': unit}
+
+
+# ---------------------------------------------------------------- human-readable outputs
+def evidence_sheet(regions, capture_of, out_path, flags=(), inspected_m2=None, max_regions=12, names=None):
+    """damage.png: for each region, the camera frame it was judged from, damaged tiles boxed,
+    labelled with id, class, room, area and the concealed-damage rule(s) it fired."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    rules = {}
+    for f in flags:
+        rules.setdefault(f['damage_id'], []).append(f['rule'].split('-')[0])
+    regs = [r for r in regions if r.get('evidence')][:max_regions]
+    if not regs:
+        fig, ax = plt.subplots(figsize=(8, 2))
+        ax.text(0.5, 0.5, f"No damage found" + (f" on {inspected_m2} m2 of wall / ceiling inspected" if inspected_m2 else ''),
+                ha='center', va='center', fontsize=14); ax.axis('off')
+        fig.savefig(out_path, dpi=100, bbox_inches='tight'); plt.close(fig)
+        return
+    n = len(regs); cols = min(3, n); rows = (n + cols - 1) // cols
+    fig, axs = plt.subplots(rows, cols, figsize=(5.2 * cols, 6.2 * rows), squeeze=False)
+    for ax in axs.ravel():
+        ax.axis('off')
+    for ax, r in zip(axs.ravel(), regs):
+        cap = capture_of(r)
+        ev = r['evidence']
+        img = dict(cap.rgb_frames([ev['frame']]))[ev['frame']]
+        H = img.shape[0]
+        upright = getattr(cap, 'upright', False)
+        boxes = [list(b) for b in ev['boxes_px']]
+        if not upright:      # Stray RGB is stored sideways: rotate 90 deg CW with the boxes
+            img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+            boxes = [[H - 1 - b[3], b[0], H - 1 - b[1], b[2]] for b in boxes]
+        x0 = max(0, min(b[0] for b in boxes) - 350); y0 = max(0, min(b[1] for b in boxes) - 350)
+        x1 = min(img.shape[1], max(b[2] for b in boxes) + 350); y1 = min(img.shape[0], max(b[3] for b in boxes) + 350)
+        crop = cv2.cvtColor(img[y0:y1, x0:x1], cv2.COLOR_BGR2RGB)
+        ax.imshow(crop)
+        for b in boxes:
+            ax.add_patch(plt.Rectangle((b[0] - x0, b[1] - y0), b[2] - b[0], b[3] - b[1], fill=False, ec='red', lw=2.5))
+        s = r['surface']
+        where = f"{(names or {}).get(s.get('room'), s.get('room') or '?')} {s['kind']}" + (f", {r['height_m'][0]:.1f}-{r['height_m'][1]:.1f} m above floor" if r.get('height_m') else '')
+        rl = f"  rules: {', '.join(rules[r['id']])}" if r['id'] in rules else ''
+        ax.set_title(f"{r['id']}  {r['class'].replace('_', ' ')}{' (' + r['severity'] + ')' if r.get('severity') else ''}\n"
+                     f"{where}\n{r['area_m2']['value']:.2f} +- {r['area_m2']['ci95']:.2f} m2, confidence {r['confidence']:.2f}{rl}",
+                     fontsize=10, loc='left')
+    fig.suptitle('Damage evidence (red boxes = 0.4 m wall/ceiling tiles judged damaged)', fontsize=12)
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=90, bbox_inches='tight'); plt.close(fig)
+
+
+def summary_text(plan):
+    d = plan.get('damage') or {}
+    regs, flags, scope = d.get('regions', []), plan.get('concealed_damage_flags', []), plan.get('scope', [])
+    ins = d.get('inspected', {})
+    nm = {r['id']: r.get('name', r['id']) for r in plan.get('rooms', [])}
+    lines = [f"[damage] inspected {ins.get('surface_area_inspected_m2', ins.get('cells_classified', '?'))} "
+             f"{'m2' if 'surface_area_inspected_m2' in ins else 'tiles'}: {len(regs)} region(s), {len(flags)} concealed-damage flag(s), {len(scope)} scope item(s)"]
+    for g in regs:
+        s = g['surface']
+        lines.append(f"   {g['id']}: {g['class']} on {nm.get(s.get('room'), '?')} {s['kind']}, {g['area_m2']['value']:.2f} +- {g['area_m2']['ci95']:.2f} m2")
+    for f in flags:
+        lines.append(f"   flag {f['rule']} ({f['damage_id']}): {f['finding']}")
+    for it in scope:
+        tgt = it.get('target', '')
+        for rid, n in nm.items():
+            tgt = tgt.replace(rid + ' ', n + ' ') if tgt.startswith(rid + ' ') else tgt
+        lines.append(f"   scope {it['id']}: {it['action']} - {it['qty']} {it['unit']} ({tgt})")
+    return '\n'.join(lines)

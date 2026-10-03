@@ -46,6 +46,9 @@ def opening_rect(o, depth=0.7):
     return box(c - depth / 2, a0, c + depth / 2, a1)
 
 
+DAMAGE = '#d62728'
+
+
 def draw_plan(plan, out_path, title='FLOOR PLAN', show_objects=False):
     rooms = [Polygon(r['polygon']).buffer(0) for r in plan['rooms']]
     walls = wall_solid(rooms)
@@ -101,6 +104,23 @@ def draw_plan(plan, out_path, title='FLOOR PLAN', show_objects=False):
         rot = 90 if (small and dv > du * 1.8) else 0
         ax.text(c.x, c.y, r.get('name', 'Room').upper() + '\n' + '\n'.join(lines), ha='center', va='center',
                 fontsize=fs, rotation=rot, linespacing=1.5, zorder=6, color=INK)
+
+    # damage: a red bar on the affected wall face (or a ring for ceiling damage) with its id
+    if plan.get('tier') != 'photo':      # photo-tier damage lives in each room's own frame
+        for g in (plan.get('damage') or {}).get('regions', []):
+            s_ = g['surface']
+            if s_['kind'] == 'wall' and g.get('span_along_m'):
+                a, b = g['span_along_m']; c0 = s_['coord'] + 0.05 * s_['normal_sign']
+                xs, ys = ((a, b), (c0, c0)) if s_['axis'] == 'u' else ((c0, c0), (a, b))
+                ax.plot(xs, ys, color=DAMAGE, lw=5, solid_capstyle='butt', zorder=7)
+                tx, ty = (np.mean(xs), c0 + 0.22 * s_['normal_sign']) if s_['axis'] == 'u' else (c0 + 0.22 * s_['normal_sign'], np.mean(ys))
+            elif g.get('center_uv'):
+                tx, ty = g['center_uv']
+                ax.plot(tx, ty, 'o', ms=14, mfc='none', mec=DAMAGE, mew=2.5, zorder=7)
+                ty += 0.25
+            else:
+                continue
+            ax.text(tx, ty, g['id'], color=DAMAGE, fontsize=9, weight='bold', ha='center', va='center', zorder=8)
 
     if show_objects:
         for o in plan.get('objects', []):

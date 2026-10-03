@@ -83,6 +83,7 @@ def main():
                 for g in regs:
                     if g['surface'].get('room') == rid:
                         g['surface']['room'] = new_id
+                        g['_cap'] = d['ctx']['capture']
                         regions.append(g)
             for j, g in enumerate(regions):
                 g['id'] = f'D{j + 1}'
@@ -100,9 +101,18 @@ def main():
             plan['damage'] = {'inspected': inspected, 'regions': regions}
             plan['concealed_damage_flags'] = flags
             plan['scope'] = damage.scope_items(regions, flags, plan)
+    if not a.no_damage:
+        regs = plan['damage']['regions']
+        caps = {id(g): g.pop('_cap', None) for g in regs}
+        default = per[next(iter(per))]['ctx']['capture'] if tier == 'photo' else ctx['capture']
+        damage.evidence_sheet(regs, lambda g: caps.get(id(g)) or default, out / 'damage.png',
+                              plan.get('concealed_damage_flags', []),
+                              plan['damage']['inspected'].get('surface_area_inspected_m2'),
+                              names={r['id']: r.get('name', r['id']) for r in plan['rooms']})
+        print(damage.summary_text(plan))
     (out / 'plan.json').write_text(json.dumps(plan, indent=1, cls=NpEncoder))
     draw_plan(plan, out / 'plan.png')
-    print(f'wrote {out}/plan.json, {out}/plan.png')
+    print(f'wrote {out}/plan.json, {out}/plan.png' + ('' if a.no_damage else f', {out}/damage.png'))
 
 
 if __name__ == '__main__':
