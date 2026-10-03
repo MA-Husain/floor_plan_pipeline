@@ -19,7 +19,7 @@ python run_capture.py c7d28f72c6 --no-damage && python run_capture.py 1a8384c3f6
 python tools/repeatability.py c7d28f72c6 1a8384c3f6 --rooms     # -> median 20.3 cm, 0/8
 
 # after (the fix commit; main gives the same LiDAR numbers)
-git checkout 9303deb
+git checkout 19310ed
 python run_capture.py c7d28f72c6 --no-damage && python run_capture.py 1a8384c3f6 --no-damage
 python tools/repeatability.py c7d28f72c6 1a8384c3f6 --rooms     # -> median 17.2 cm, 0/8
 ```
@@ -27,5 +27,5 @@ python tools/repeatability.py c7d28f72c6 1a8384c3f6 --rooms     # -> median 17.2
 ## Readable diff
 
 ```bash
-git show 9303deb -- brynz/lidar.py     # the fix commit: room_dimensions() extremes -> principal measured walls
+git show 19310ed -- brynz/lidar.py     # the fix commit: room_dimensions() extremes -> principal measured walls
 ```
