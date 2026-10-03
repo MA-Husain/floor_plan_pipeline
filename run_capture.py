@@ -70,14 +70,36 @@ def main():
         rot = {'cw': cv2.ROTATE_90_CLOCKWISE, 'ccw': cv2.ROTATE_90_COUNTERCLOCKWISE, '180': cv2.ROTATE_180}.get(a.rotate)
         capture = (rgb.video_capture(src, rotate=rot, cache=recon_cache) if tier == 'video'
                    else rgb.photo_capture(src, cache=recon_cache))
-    plan, ctx = lidar.run(capture, step=a.step, detect=not a.no_detect, cache_dir=None if a.live else out / 'cache', drift_mode=a.drift)
-    if not a.no_damage:
-        regions, inspected, _ = damage.scan(ctx['capture'], ctx['poses'], plan, ctx,
-                                            cache=None if a.live else out / 'cache' / 'damage_cells.json')
-        flags = damage.concealed_flags(regions, plan)
-        plan['damage'] = {'inspected': inspected, 'regions': regions}
-        plan['concealed_damage_flags'] = flags
-        plan['scope'] = damage.scope_items(regions, flags, plan)
+    if tier == 'photo':
+        from brynx import photo
+        plan, per = photo.run(capture, detect=not a.no_detect, cache_dir=None if a.live else out / 'cache')
+        if not a.no_damage:
+            regions, cells = [], 0
+            for F, d in per.items():           # damage per room run; keep regions on that room's own surfaces
+                rid = d['room']['id']; new_id = next(r['id'] for r in plan['rooms'] if r['name'] == F)
+                regs, ins, _ = damage.scan(d['ctx']['capture'], d['ctx']['poses'], d['plan'], d['ctx'],
+                                           cache=None if a.live else out / 'cache' / F / 'damage_cells.json')
+                cells += ins['cells_classified']
+                for g in regs:
+                    if g['surface'].get('room') == rid:
+                        g['surface']['room'] = new_id
+                        regions.append(g)
+            for j, g in enumerate(regions):
+                g['id'] = f'D{j + 1}'
+            flags = damage.concealed_flags(regions, plan)
+            plan['damage'] = {'inspected': {'cells_classified': cells, 'tile_m': damage.TILE_M}, 'regions': regions}
+            plan['concealed_damage_flags'] = flags
+            plan['scope'] = damage.scope_items(regions, flags, plan)
+    else:
+        plan, ctx = lidar.run(capture, step=a.step, detect=not a.no_detect, cache_dir=None if a.live else out / 'cache',
+                              drift_mode=a.drift)
+        if not a.no_damage:
+            regions, inspected, _ = damage.scan(ctx['capture'], ctx['poses'], plan, ctx,
+                                                cache=None if a.live else out / 'cache' / 'damage_cells.json')
+            flags = damage.concealed_flags(regions, plan)
+            plan['damage'] = {'inspected': inspected, 'regions': regions}
+            plan['concealed_damage_flags'] = flags
+            plan['scope'] = damage.scope_items(regions, flags, plan)
     (out / 'plan.json').write_text(json.dumps(plan, indent=1, cls=NpEncoder))
     draw_plan(plan, out / 'plan.png')
     print(f'wrote {out}/plan.json, {out}/plan.png')

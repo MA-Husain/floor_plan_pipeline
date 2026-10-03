@@ -301,6 +301,8 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
                 r['folder_label'] = best
                 r['folder_votes'] = {l: inside.count(l) for l in set(inside)}
                 r['name'] = best
+                unplaced = (getattr(cap, 'alignment', None) or {}).get('unplaced', []) if isinstance(getattr(cap, 'alignment', None), dict) else []
+                r['position_known'] = best not in unplaced   # False: no doorway photo tied it to the other rooms
 
     for o in openings + windows:
         idx = o.pop('room_index')

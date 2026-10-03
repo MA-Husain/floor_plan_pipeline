@@ -96,6 +96,8 @@ def draw_plan(plan, out_path, title='FLOOR PLAN', show_objects=False):
         lines = [f"{du:.2f} × {dv:.2f} m" if Pg.area > 0.85 * du * dv else f"{Pg.area:.1f} m²"]
         if r.get('ceiling_height'):
             lines.append(f"ceiling {r['ceiling_height']['value_m']:.2f} m")
+        if r.get('position_known') is False:
+            lines.append('(position unknown)')   # photo tier: no doorway photo tied it to the plan
         rot = 90 if (small and dv > du * 1.8) else 0
         ax.text(c.x, c.y, r.get('name', 'Room').upper() + '\n' + '\n'.join(lines), ha='center', va='center',
                 fontsize=fs, rotation=rot, linespacing=1.5, zorder=6, color=INK)

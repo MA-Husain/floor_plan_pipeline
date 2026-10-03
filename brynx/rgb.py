@@ -691,6 +691,25 @@ def photo_capture(folder, rec=None, cache=None, log=print):
 # ---------------------------------------------------------------- photo stitching
 MAX_LINK_RESIDUAL_M = 0.25   # a doorway photo whose two reconstructions disagree more than this is not a link
 
+def photo_depths(crops, Ks, size, log=print):
+    """Per photo: MoGe-2 metric depth at the model size, with the EXIF focal when present; photos
+    without EXIF get MoGe's own focal estimate."""
+    from .mono import MetricDepth
+    md = MetricDepth()
+    depths, Ko, est = [], [], 0
+    for c, K in zip(crops, Ks):
+        W, H = c.shape[1], c.shape[0]
+        fov = float(np.degrees(2 * np.arctan(W / 2 / K[0, 0]))) if K is not None else None
+        d, fov_est = md.infer(cv2.resize(c, size, interpolation=cv2.INTER_AREA), fov_x_deg=fov)
+        if K is None:
+            f = W / 2 / np.tan(np.radians(fov_est) / 2); est += 1
+            K = np.array([[f, 0, W / 2], [0, f, H / 2], [0, 0, 1.0]])
+        depths.append(d.astype(np.float16)); Ko.append(K)
+    md.free()
+    log(f'[photo] MoGe-2 metric depth for {len(crops)} photos ({len(crops) - est} with EXIF focal, {est} estimated)')
+    return depths, Ko
+
+
 def photo_links(crops, room_of, min_inliers=25, per_room=4, log=print):
     """Which photos of one room look into another room: SIFT + RANSAC inliers between a photo and
     every photo of the other folders. Returns {room B: [(photo id from another room, inliers, room A)]}."""
@@ -736,15 +755,19 @@ def photo_stitch(crops, Ks, room_of, size, rec=None, log=print):
     in B's run - so its pixels give dense 3-D correspondences between the two rooms' frames. A rigid
     transform (each room keeps its own metric scale) is fitted per link; the rooms are placed along
     the maximum-confidence spanning tree from the room with most photos."""
-    rec = rec or Reconstructor()
     rooms = sorted(set(room_of))
     links = photo_links(crops, room_of, log=log)
+    depths, Ks = photo_depths(crops, Ks, size, log=log)       # MoGe-2 metric depth + focal (EXIF or estimated)
+    rec = rec or Reconstructor()
     runs = {}
     for B in rooms:
         members = [i for i in range(len(crops)) if room_of[i] == B]
         guests = [i for i, _, _ in links[B]]
         ids = members + guests
-        pr = rec.infer([crops[i] for i in ids], size, [Ks[i] for i in ids])
+        pr = rec.infer([crops[i] for i in ids], size, [Ks[i] for i in ids], depths=[depths[i] for i in ids])
+        for i, p in zip(ids, pr):          # geometry from the calibrated metric depth (as in the video tier)
+            d = cv2.resize(np.asarray(depths[i], np.float32), p['depth'].shape[::-1], interpolation=cv2.INTER_NEAREST)
+            p['depth'] = np.where(p['mask'], d, 0)
         runs[B] = {'members': dict(zip(members, pr[:len(members)])), 'guests': dict(zip(guests, pr[len(members):]))}
         # level each room on its own (floor normal -> +Y) so unlinked rooms are still upright
         tmp = [_to_view(dict(p, T=p['T'])) for p in pr[:len(members)]]
