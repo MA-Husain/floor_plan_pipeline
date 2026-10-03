@@ -29,10 +29,17 @@ Status: **Done** (built and measured) - **Partial** (built, gate not met or evid
 | Photo-tier whole-property stitch, footprint +-8 % | `brynx/photo.py`, `tools/make_photo_set.py` | photo sets cut from LiDAR captures, LiDAR as truth | Partial |
 | Photo +-8 % / video +-3 % wall lengths, calibrated | `tools/rgb_vs_lidar.py`, `benchmark/eval_tape.py` | see `docs/BENCHMARK.md` | Partial |
 
+## Constraints
+| Requirement | File path | Artifact | Status |
+|---|---|---|---|
+| Offline, any pretrained model with disclosure | `README.md` (models table), `run_capture.py` (HF offline) | no network at run time | Done |
+| Weights fetched by script | `scripts/fetch_weights.py` | MapAnything, MoGe-2, CLIP, YOLO-World, code clones | Done |
+| Mirrors, glass, wet-look surfaces, low light | `docs/CAPTURE_PROTOCOL.md` (capture rules), `docs/TECHNICAL_REPORT.md` s8, `docs/DEVICE_MATRIX.md` | protocol instructions + stated failure modes | Partial (not handled in code beyond LiDAR confidence filtering) |
+
 ## Part 3 - head-to-head
 | Requirement | File path | Artifact | Status |
 |---|---|---|---|
-| LiDAR tier vs Polycam / magicplan on 2 rooms | - | needs an iPhone Pro + app export | Missing (no Pro device available) |
+| LiDAR tier vs Polycam / magicplan on 2 rooms | `docs/BENCHMARK.md` (head-to-head), `benchmark/gt/home.json`, `data/rooms_data/Room1-Room2.pdf` | magicplan (iPhone 17, non-LiDAR AR) vs our video and photo tiers vs tape, 2 rooms | Partial (no Pro device: compared at the RGB tiers, not LiDAR) |
 
 ## Part 4 - fix loop
 | Requirement | File path | Artifact | Status |
@@ -51,8 +58,8 @@ Status: **Done** (built and measured) - **Partial** (built, gate not met or evid
 | Compliance matrix | `docs/COMPLIANCE_MATRIX.md` | Done |
 | Capture route + device matrix | `docs/CAPTURE_PROTOCOL.md`, `docs/DEVICE_MATRIX.md` | Done |
 | README, < 15 min to running, one command | `README.md`, `requirements.txt`, `scripts/fetch_weights.py` | Done |
-| Reproduction bundle (cached model outputs replay; live path runs) | `outputs/<name>/cache/`, `--live` flag | Done |
+| Reproduction bundle (cached model outputs replay; live path runs) | `outputs/<name>/cache/` (shared via the data link: too large for git), `--live`, `results/` snapshot | Done |
 | Benchmark report | `docs/BENCHMARK.md` | see file |
 | Fix loop bundle | `docs/fixloop/` | Done |
 | Technical report <= 6 pages | `docs/TECHNICAL_REPORT.md` | see file |
-| Raw benchmark data | captures `c00a170fe1`, `1a8384c3f6`, `c7d28f72c6`, `data/home/`, `benchmark/gt/` | Partial (laser GT only for home Room2) |
+| Raw benchmark data | sample captures `c00a170fe1`, `1a8384c3f6`, `c7d28f72c6`; own iPhone 17 data `data/home/`, `data/rooms_data/` (video, photos, magicplan export); `benchmark/gt/` | Partial (tape GT for home Room1 + Room2 only; no laser) |

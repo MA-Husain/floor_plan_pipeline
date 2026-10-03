@@ -104,8 +104,26 @@ Per-room folders; each room planned from its own photos, rooms joined through do
 
 | Set | Photos / folders | Rooms placed by doorway links | Result |
 |---|---|---|---|
-| c7d28f72c6 cut set | 44 / 7 (14 doorway shots) | 5 of 7 (link residuals 0.7-6 cm) | per-room dims vs LiDAR: pending |
-| home photos (iPhone 17) | 46 / 10 | taken before the doorway rule: few links | Room2 vs tape: pending; early run ceiling 2.67 vs 2.718 m (-1.8 %) |
+| c7d28f72c6 cut set | 44 / 7 (14 doorway shots) | 5 of 7 (link residuals 0.7-6 cm) | see per-room table below |
+| home photos (iPhone 17) | 46 / 10 | photos taken before the doorway rule: 2 rooms linked, 8 unplaced (flagged) | Room2 vs tape below; an earlier version measured its ceiling 2.67 vs 2.718 m (-1.8 %) |
+
+Per-room dimensions, photo tier vs reference (`python run_capture.py data/photo_sets/c7d28f72c6`):
+
+| Room (c7 cut set) | Photo tier (m) | 95 % CI | LiDAR (m) |
+|---|---|---|---|
+| Bathroom 1 | 1.42 x 2.48 | +-0.38 | 2.50 x 2.21 |
+| Bathroom 2 | 2.26 x 3.06 | +-0.56 | 1.92 x 2.01 |
+| Room 1 | 4.30 x 4.14 | +-1.03 | 2.86 x 4.34 |
+| Stairs | 2.14 x 6.36 | +-0.53 | 3.50 x 4.08 |
+| Room 2 | 0.37 x 8.20 (failed) | +-0.12 | 3.14 x 3.15 |
+| Corridor, Living/Kitchen | no room found | - | 0.99 x 0.91, 3.44 x 3.03 |
+
+Home Room2 vs tape (`python benchmark/eval_tape.py outputs/home_photos_v2/plan.json benchmark/gt/home.json`):
+length 4.83 +- 1.16 m vs 3.708 (+30 %, inside CI), width 3.18 +- 0.76 vs 3.048 (+4.3 %, inside CI).
+
+**Verdict: the photo tier runs end to end and its intervals are honest (the truth falls inside them),
+but it does not meet the +-8 % gate: per-room errors are 4-50 %, and on sparse stills the room
+outline is often bounded by what the photos happened to see.**
 
 ## Damage
 
@@ -114,7 +132,7 @@ Per-room folders; each room planned from its own photos, rooms joined through do
 | BD3 public test split (793 images, 7 classes) | 90.2 % class accuracy; defect vs plain **99.4 %** (0 % plain flagged, 0.75 % defects missed) |
 | Clean sample flat c7d28f72c6, 137 m2 of wall/ceiling | 1 region flagged (faint light patch) after excluding floors and gating fixtures |
 | Real cracked bedroom photo (`data/damage_tests/`) | both walls' cracks + cornice cracks found; furniture/clothes gated out; one mild spalling (confirmed by owner) |
-| Home Room3 (real damp/peeling patch) | pending |
+| Home Room3 (real damp/peeling patch near the skirting, ~5 % of the photo) | **missed** (`results/damage_photo/IMG_9125.jpg`): 4 of 703 tiles call it a stain, below the region vote; small defects are a known failure mode |
 
 ## Timing (cold run, this machine)
 
@@ -127,7 +145,15 @@ Per-room folders; each room planned from its own photos, rooms joined through do
 | c7d28f72c6 (3.5 min video) | Video | pending | | |
 | 44 photos | Photo | ~5 min | ~2 min | ~7 min |
 
-## Head-to-head vs magicplan / Polycam
-Not done at the LiDAR tier: no iPhone Pro was available to scan benchmark rooms with both Stray
-Scanner and an incumbent app. Planned substitute: magicplan (non-LiDAR AR mode) vs our video tier vs
-tape on two rooms of the home flat - see the table below if present.
+## Head-to-head vs magicplan
+No iPhone Pro was available, so the LiDAR-tier comparison could not be run. Substitute on two rooms of
+the home flat, all on an iPhone 17 (non-Pro): **magicplan** (Sensopia, free tier, AR mode; export
+`data/rooms_data/Room1-Room2.pdf`) vs **our video and photo tiers** (`data/rooms_data/room1|room2`) vs a
+tape measure (`benchmark/gt/home.json`; Room1 length ~132 in is from memory, +-5 cm).
+
+| Room | Dimension | Tape (m) | magicplan (m) | magicplan error | Ours (m) | Our error |
+|---|---|---|---|---|---|---|
+| Room1 | length | 3.35 | 3.29 | -1.9 % | pending | |
+| Room1 | width | 3.43 | 2.90 | -15.4 % | pending | |
+| Room2 | length | 3.71 | 3.96 | +6.8 % | pending | |
+| Room2 | width | 3.05 | 3.05 | +0.1 % | pending | |

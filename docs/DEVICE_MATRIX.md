@@ -15,7 +15,7 @@ Processing machine for all numbers below: Apple M5, 16 GB, macOS, PyTorch MPS. N
 | Metric scale | sensor (no model) | MoGe-2 depth, calibrated: 1.02x LiDAR on the single-room walk; per-frame spread +-7 %, averaged over hundreds of frames [tools/depth_scale_eval.py, tools/rgb_vs_lidar.py] | MoGe-2 with EXIF focal; per-photo +-7 %, averaged over the room's photos |
 | Camera poses | ARKit VIO, 17 cm end drift over 54 m; plane-anchored drift correction on top | MapAnything (pose-conditioned windows): ~10-50 cm path error vs ARKit [tools/rgb_vs_lidar.py] | MapAnything per room; rooms joined only through doorway photos |
 | Wall position, single capture | wall crispness 10-12 mm | blurred by pose noise; interior walls can be lost | per room only |
-| Room length / width | 95 % CI typically +-2 cm | overall extent within 1.4-3.3 % of LiDAR on the single-room walk; CI +-0.2-0.4 m | see benchmark report; CI widened by 12 % scale term |
+| Room length / width | 95 % CI typically +-2 cm | overall extent within 1.4-3.3 % of LiDAR on the single-room walk; CI +-0.2-0.4 m | per-room errors 4-50 % (home Room2: +30 % / +4 %, inside CI); CI +-0.4-1.2 m |
 | Ceiling height | +-1.4 cm CI, only where the ceiling plane covers >= 50 % of the room | as LiDAR rule, scale term 3 % | as LiDAR rule, scale term 12 % |
 | Openings | width CI ~+-2 cm | +-3 % of width | per room |
 | Repeatability (same rooms, two captures) | 17.2 cm median per room dimension (gate 1 cm: **fails**, see fix loop) | not measured (one capture) | not measured |

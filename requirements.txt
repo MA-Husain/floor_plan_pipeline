@@ -27,3 +27,4 @@ trimesh
 einops
 timm
 jaxtyping
+click                      # MoGe-2 (code + its two helper packages installed by scripts/fetch_weights.py)
