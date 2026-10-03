@@ -26,7 +26,7 @@ python3.12 -m venv venv && source venv/bin/activate      # any Python 3.11-3.14 
 pip install -r requirements.txt
 python scripts/fetch_weights.py                            # once: model code + weights into ./third_party, ./weights
 
-python run_capture.py <capture>                            # -> outputs/<name>/plan.json + plan.png
+python run_capture.py <capture>                            # -> outputs/<name>/plan.json, plan.png, damage.png
 ```
 
 `<capture>` can be any tier - the tier is detected from what you pass:
@@ -47,6 +47,12 @@ as an RGB-only video), `--tier` (override detection), `--out`.
 Run time on an Apple M5 / 16 GB: LiDAR ~7 min, photos ~7 min, video ~10-15 min per minute of video.
 
 ## Output (schema `brynz.plan/1.0`)
+
+Three files per capture: `plan.png` (the floor plan; damaged walls marked in red D1, D2, ...),
+`damage.png` (evidence: for each damage region the camera frame it was judged from, tiles boxed,
+with class, room, area and the concealed-damage rule fired) and `plan.json` (every number). A damage
+summary is also printed at the end of the run.
+
 
 `plan.json`: `rooms[]` (polygon, `area_m2`, `dimensions.length_u/length_v` between the principal
 walls and `extent_u/extent_v`, each +- `ci95`; `ceiling_height` +- `ci95`, or `null` when the
