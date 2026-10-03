@@ -18,11 +18,13 @@
   "Room1": {
    "ceiling_height_m": 2.7178,
    "lengths_m": [
-    4.0132,
+    3.3528,
     3.429
    ],
-   "raw": "107 in (height) x 158 in x 135 in",
-   "photo_folder": "Room1"
+   "raw": "107 in (height) x ~132 in wall-to-wall (158 in including the wardrobe/window alcove) x 135 in",
+   "photo_folder": "Room1",
+   "length_including_alcove_m": 4.0132,
+   "note": "owner: 132 in is approximate (memory); 158 in includes the alcove"
   }
  },
  "damage": {
