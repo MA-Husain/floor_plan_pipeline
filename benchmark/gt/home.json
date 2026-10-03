@@ -1,0 +1,14 @@
+{
+ "capture": "data/home (iPhone 17, non-Pro: video + photo tiers)",
+ "source": "tape measure by the owner, inches converted at 0.0254 m/in",
+ "rooms": {
+  "Room2": {
+   "ceiling_height_m": 2.7178,
+   "lengths_m": [3.7084, 3.048],
+   "raw": "107 in (height) x 146 in x 120 in",
+   "photo_folder": "Room2",
+   "video_seconds": [59, 75]
+  }
+ },
+ "damage": {"Room3": "damp / peeling patch near the floor (video ~122 s, photos IMG_9122-9128)"}
+}
