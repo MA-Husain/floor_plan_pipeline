@@ -148,8 +148,25 @@ def crispness(cloud_uv, nuv, h, vertical):
     return float(np.mean(out)) if out else float('nan')
 
 
+def revisit_error(scans, keys, fps):
+    """Ghosting metric: for wall points seen again >= GAP_S later, the median distance between the
+    two sightings (same surface, different times). Pure drift shows up here as doubled walls."""
+    t = keys / fps
+    d_all = []
+    for k, s in enumerate(scans):
+        far = [j for j in range(len(scans)) if abs(t[j] - t[k]) >= GAP_S and len(scans[j])]
+        if len(s) < 200 or not far:
+            continue
+        d, _ = cKDTree(np.concatenate([scans[j] for j in far])).query(s, distance_upper_bound=0.15)
+        d_all.append(d[np.isfinite(d)])
+    d = np.concatenate(d_all) if d_all else np.zeros(0)
+    return float(np.median(d)) if len(d) else float('nan')
+
+
 def correct(cap, poses, floor_y, log=print):
-    scans, keys = segment_scans(cap, poses, floor_y)
+    # LiDAR: depth frames at ~60 Hz -> SEG_FRAMES ~ 1 s. RGB tiers: keyframes at cap.fps -> ~1.5 s
+    seg = SEG_FRAMES if getattr(cap, 'tier', 'lidar') == 'lidar' else max(3, int(round(cap.fps * 1.5)))
+    scans, keys = segment_scans(cap, poses, floor_y, step=max(1, seg // 10), seg=seg)
     meas = anchors(scans, keys, cap.fps)
     n_anchor = int((meas[:, 3] > 0).sum())
     log(f'[drift] {len(scans)} segments, {n_anchor} anchored by distant revisits')
@@ -157,7 +174,11 @@ def correct(cap, poses, floor_y, log=print):
         return poses, {'applied': False, 'reason': 'no revisits: nothing to anchor against', 'anchors': 0}
     corr = solve_graph(meas)
     new = apply(poses, keys, corr)
+    scans2, _ = segment_scans(cap, new, floor_y, step=max(1, seg // 10), seg=seg)
+    e0, e1 = revisit_error(scans, keys, cap.fps), revisit_error(scans2, keys, cap.fps)
+    log(f'[drift] revisit ghosting {e0 * 1000:.1f} -> {e1 * 1000:.1f} mm')
     info = {'anchors': n_anchor, 'segments': len(scans),
+            'revisit_error_raw_mm': round(e0 * 1000, 2), 'revisit_error_corrected_mm': round(e1 * 1000, 2),
             'max_correction_m': round(float(np.abs(corr[:, :2]).max()), 4),
             'max_yaw_correction_deg': round(float(np.degrees(np.abs(corr[:, 2]).max())), 3)}
     return new, info
