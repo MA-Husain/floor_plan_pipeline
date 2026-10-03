@@ -17,8 +17,8 @@ import numpy as np
 
 os.environ.setdefault('HF_HUB_OFFLINE', '1')
 os.environ.setdefault('KMP_DUPLICATE_LIB_OK', 'TRUE')   # torch + pycolmap both bundle libomp     # everything runs from ./weights (scripts/fetch_weights.py)
-from brynx import lidar, damage
-from brynx.render import draw_plan
+from brynz import lidar, damage
+from brynz.render import draw_plan
 
 
 class NpEncoder(json.JSONEncoder):
@@ -64,14 +64,14 @@ def main():
     if tier == 'lidar':
         capture = str(src)
     else:
-        from brynx import rgb
+        from brynz import rgb
         recon_cache = None if cache is None else cache / 'reconstruction.npz'
         import cv2
         rot = {'cw': cv2.ROTATE_90_CLOCKWISE, 'ccw': cv2.ROTATE_90_COUNTERCLOCKWISE, '180': cv2.ROTATE_180}.get(a.rotate)
         capture = (rgb.video_capture(src, rotate=rot, cache=recon_cache) if tier == 'video'
                    else rgb.photo_capture(src, cache=recon_cache))
     if tier == 'photo':
-        from brynx import photo
+        from brynz import photo
         plan, per = photo.run(capture, detect=not a.no_detect, cache_dir=None if a.live else out / 'cache')
         if not a.no_damage:
             regions, cells = [], 0

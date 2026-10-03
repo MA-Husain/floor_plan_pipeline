@@ -129,7 +129,7 @@ def run(cap, detect=True, log=print, cache_dir=None):
                         for l in links if l['from'] in per and l['to'] in per})
     ceilings = [r['ceiling_height']['value_m'] for r in rooms if r.get('ceiling_height')]
     plan = {
-        'schema': 'brynx.plan/1.0', 'tier': 'photo', 'capture': str(getattr(cap, 'root', '')),
+        'schema': 'brynz.plan/1.0', 'tier': 'photo', 'capture': str(getattr(cap, 'root', '')),
         'error_model': cap.error_model,
         'frame': {'yaw_rad': yaw0, 'units': 'm', 'axes': 'u,v horizontal (reference room frame); h up from floor'},
         'global_ceiling': {'value_m': round(float(np.median(ceilings)), 4), 'support': len(ceilings)} if ceilings else None,

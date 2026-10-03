@@ -6,8 +6,8 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from brynx import lidar
-import brynx.cells as C
+from brynz import lidar
+import brynz.cells as C
 
 cap_dir = sys.argv[1]; out = sys.argv[2]; detect = '--detect' in sys.argv
 plan, d = lidar.run(cap_dir, detect=detect)

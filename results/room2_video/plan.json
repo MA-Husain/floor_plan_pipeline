@@ -1,7 +1,7 @@
 {
- "schema": "brynx.plan/1.0",
+ "schema": "brynz.plan/1.0",
  "tier": "video",
- "capture": "<brynx.rgb.ReconCapture object at 0x1230d4440>",
+ "capture": "<brynz.rgb.ReconCapture object at 0x1230d4440>",
  "error_model": {
   "face_sys": 0.02,
   "drift_per_m": 0.01,

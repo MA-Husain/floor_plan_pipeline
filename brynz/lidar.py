@@ -1,6 +1,6 @@
 """Capture -> stitched multi-room plan JSON (output contract).
 
-Runs on a Stray Scanner LiDAR capture, or on any object with the same interface (brynx.rgb's
+Runs on a Stray Scanner LiDAR capture, or on any object with the same interface (brynz.rgb's
 ReconCapture for the video and photo tiers). The tier's error model widens every interval."""
 import time
 import numpy as np
@@ -313,7 +313,7 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
 
     total = unary_union(polys)
     result = {
-        'schema': 'brynx.plan/1.0', 'tier': tier, 'capture': str(getattr(cap, 'root', capture_dir)),
+        'schema': 'brynz.plan/1.0', 'tier': tier, 'capture': str(getattr(cap, 'root', capture_dir)),
         'error_model': dict(ERR),
         'frame': {'yaw_rad': yaw, 'floor_y_world': floor, 'units': 'm',
                   'axes': 'u,v horizontal, aligned to dominant walls; h up from floor'},

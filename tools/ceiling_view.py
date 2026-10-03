@@ -12,9 +12,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from brynx.capture import StrayCapture
-from brynx.cloud import build_cloud, voxel_reduce
-from brynx.geometry import plan_coords, rotate_dirs
+from brynz.capture import StrayCapture
+from brynz.cloud import build_cloud, voxel_reduce
+from brynz.geometry import plan_coords, rotate_dirs
 
 
 def main(cap_dir, out):

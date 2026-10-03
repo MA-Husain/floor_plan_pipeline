@@ -15,7 +15,7 @@ import cv2
 import numpy as np
 import torch
 
-from brynx.capture import StrayCapture
+from brynz.capture import StrayCapture
 
 DEV = 'mps' if torch.backends.mps.is_available() else 'cpu'
 HF = str(ROOT / 'weights' / 'hf')

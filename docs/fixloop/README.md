@@ -27,5 +27,5 @@ python tools/repeatability.py c7d28f72c6 1a8384c3f6 --rooms     # -> median 17.2
 ## Readable diff
 
 ```bash
-git show 9303deb -- brynx/lidar.py     # the fix commit: room_dimensions() extremes -> principal measured walls
+git show 9303deb -- brynz/lidar.py     # the fix commit: room_dimensions() extremes -> principal measured walls
 ```

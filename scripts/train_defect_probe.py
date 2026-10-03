@@ -49,12 +49,12 @@ def features(clf):
 def main():
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import confusion_matrix
-    from brynx.damage import DefectClassifier, PROBE
+    from brynz.damage import DefectClassifier, PROBE
     fetch()
     clf = DefectClassifier.__new__(DefectClassifier)       # embedder only (no probe yet)
     import torch
     from transformers import CLIPModel, CLIPProcessor
-    from brynx.damage import CLIP_ID, HF_CACHE
+    from brynz.damage import CLIP_ID, HF_CACHE
     clf.torch = torch
     clf.device = 'mps' if torch.backends.mps.is_available() else 'cpu'
     clf.model = CLIPModel.from_pretrained(CLIP_ID, cache_dir=HF_CACHE).to(clf.device).eval()

@@ -10,19 +10,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from brynx.cloud import build_cloud, voxel_reduce
-from brynx.geometry import floor_ceiling, manhattan_yaw, plan_coords
+from brynz.cloud import build_cloud, voxel_reduce
+from brynz.geometry import floor_ceiling, manhattan_yaw, plan_coords
 
 
 def load(src, cache):
     p = Path(src)
     if p.is_file():
-        from brynx import rgb
+        from brynz import rgb
         return rgb.video_capture(p, cache=cache)
     if (p / 'odometry.csv').exists():
-        from brynx.capture import StrayCapture
+        from brynz.capture import StrayCapture
         return StrayCapture(p)
-    from brynx import rgb
+    from brynz import rgb
     return rgb.photo_capture(p, cache=cache)
 
 

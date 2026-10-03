@@ -1,4 +1,4 @@
-"""Architectural rendering of a brynx plan JSON: solid walls, door gaps, windows, room labels
+"""Architectural rendering of a brynz plan JSON: solid walls, door gaps, windows, room labels
 (name, size, ceiling height), overall dimension strings."""
 import numpy as np
 import matplotlib

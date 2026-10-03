@@ -15,8 +15,8 @@ import cv2
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from brynx import rgb
-from brynx.capture import StrayCapture
+from brynz import rgb
+from brynz.capture import StrayCapture
 
 
 def main(cap_dir, use_k=False):

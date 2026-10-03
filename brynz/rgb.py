@@ -37,7 +37,7 @@ def _offline_dinov2(torch):
     """MapAnything builds its DINOv2 encoder through torch.hub (code + 1.1 GB ImageNet weights) and
     then overwrites every weight with its own checkpoint. Load the hub code from a local clone
     (scripts/fetch_weights.py) and skip the redundant weight download, so the run is offline."""
-    if getattr(torch.hub, '_brynx_patched', False):
+    if getattr(torch.hub, '_brynz_patched', False):
         return
     local = ROOT / 'weights' / 'torch' / 'hub' / 'facebookresearch_dinov2_main'
     orig = torch.hub.load
@@ -49,7 +49,7 @@ def _offline_dinov2(torch):
             return orig(str(local), model, *a, source='local', **k)
         return orig(repo, model, *a, **k)
     torch.hub.load = load
-    torch.hub._brynx_patched = True
+    torch.hub._brynz_patched = True
 
 
 class Reconstructor:
@@ -601,7 +601,7 @@ def mono_depths(load, idx, size, Ks=None, log=print, n_fov=24):
         if n % 100 == 99:
             log(f'[rgb] MoGe-2 depth {n + 1}/{len(idx)}')
     md.free()
-    log(f'[rgb] MoGe-2 metric depth for {len(depths)} views (scale calibrated x1/{__import__("brynx.mono", fromlist=["x"]).SCALE_CAL})')
+    log(f'[rgb] MoGe-2 metric depth for {len(depths)} views (scale calibrated x1/{__import__("brynz.mono", fromlist=["x"]).SCALE_CAL})')
     return depths, Ks
 
 

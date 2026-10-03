@@ -1,15 +1,28 @@
-# brynx floor-plan pipeline
+# brynz floor-plan pipeline
 
 Phone capture in, one whole-property floor plan out: rooms with dimensions and ceiling heights,
 doors / openings / windows, adjacency, per-surface damage with metric extent, concealed-damage
 flags with the rule that fired, scope line items, a 95 % interval on every measurement, JSON +
 rendered plan. Three input tiers, one output contract, one command. Runs fully offline.
 
+## Prerequisites (empty machine)
+
+You need **git** and **Python 3.11-3.14** (3.12 recommended), ~15 GB free disk, 16 GB RAM.
+
+| OS | Install |
+|---|---|
+| macOS (Apple Silicon recommended) | `xcode-select --install` (gives git), then `brew install python@3.12` (Homebrew: https://brew.sh) or the installer from https://www.python.org/downloads/ |
+| Ubuntu / Debian | `sudo apt update && sudo apt install -y git python3.12 python3.12-venv` |
+| Windows | install Git from https://git-scm.com and Python 3.12 from https://www.python.org/downloads/ (tick "Add python.exe to PATH"); use `venv\Scripts\activate` instead of `source venv/bin/activate` |
+
+Hardware: Apple Silicon (MPS) or an NVIDIA GPU (CUDA) are used automatically; CPU-only works but the
+video and photo tiers become several times slower. No other tools (ffmpeg, COLMAP, CUDA toolkit) are needed.
+
 ## Run it (clean machine: ~10 min of setup + the one-time ~8 GB download)
 
 ```bash
 git clone https://github.com/MA-Husain/floor_plan_pipeline.git && cd floor_plan_pipeline
-python3 -m venv venv && source venv/bin/activate          # Python 3.11+ (developed on 3.14, Apple Silicon)
+python3.12 -m venv venv && source venv/bin/activate      # any Python 3.11-3.14 (developed on 3.14, Apple Silicon)
 pip install -r requirements.txt
 python scripts/fetch_weights.py                            # once: model code + weights into ./third_party, ./weights
 
@@ -33,7 +46,7 @@ as an RGB-only video), `--tier` (override detection), `--out`.
 
 Run time on an Apple M5 / 16 GB: LiDAR ~7 min, photos ~7 min, video ~10-15 min per minute of video.
 
-## Output (schema `brynx.plan/1.0`)
+## Output (schema `brynz.plan/1.0`)
 
 `plan.json`: `rooms[]` (polygon, `area_m2`, `dimensions.length_u/length_v` between the principal
 walls and `extent_u/extent_v`, each +- `ci95`; `ceiling_height` +- `ci95`, or `null` when the
@@ -55,7 +68,7 @@ Photo tier also: `position_known` per room and `stitch` (links, unplaced rooms, 
 ## Layout
 ```
 run_capture.py            one command per capture (all tiers)
-brynx/
+brynz/
   capture.py              Stray Scanner loader (LiDAR tier)
   rgb.py                  video / photo tiers: keyframes, MapAnything windows, photo stitching, gravity
   mono.py                 MoGe-2 metric depth (scale source of the RGB tiers, calibrated vs LiDAR)

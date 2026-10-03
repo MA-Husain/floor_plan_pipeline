@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from brynx import rgb
-from brynx.cloud import build_cloud, voxel_reduce
-from brynx.geometry import floor_ceiling, manhattan_yaw, plan_coords
+from brynz import rgb
+from brynz.cloud import build_cloud, voxel_reduce
+from brynz.geometry import floor_ceiling, manhattan_yaw, plan_coords
 
 cap = rgb.photo_capture(sys.argv[1], cache=sys.argv[2], log=lambda *a: None)
 cl = voxel_reduce(build_cloud(cap, step=1, poses=cap.poses(), stride=2), 0.03)

@@ -14,8 +14,8 @@ import numpy as np
 from shapely.geometry import Point, Polygon
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from brynx.capture import StrayCapture
-from brynx.geometry import plan_coords
+from brynz.capture import StrayCapture
+from brynz.geometry import plan_coords
 
 
 def evaluate(cap_name):

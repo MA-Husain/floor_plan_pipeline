@@ -5,7 +5,7 @@ Pipeline:
  2. door-sized gaps bridged *along each wall's own axis* (so corridors are never filled)
  3. interior = observed floor + walked trajectory, holes (furniture footprints) filled
  4. rooms = connected components of interior minus closed walls
- Used as the connectivity barrier for the cell complex (brynx.cells).
+ Used as the connectivity barrier for the cell complex (brynz.cells).
 """
 import numpy as np
 import cv2

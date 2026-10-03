@@ -7,9 +7,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np, cv2
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
-from brynx.capture import StrayCapture
-from brynx.geometry import plan_coords, floor_ceiling, manhattan_yaw
-from brynx.cloud import build_cloud, voxel_reduce
+from brynz.capture import StrayCapture
+from brynz.geometry import plan_coords, floor_ceiling, manhattan_yaw
+from brynz.cloud import build_cloud, voxel_reduce
 
 cap_dir, out, n = sys.argv[1], sys.argv[2], int(sys.argv[3])
 cap = StrayCapture(cap_dir)

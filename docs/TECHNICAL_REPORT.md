@@ -2,7 +2,7 @@
 
 ## 1. What the system does
 `python run_capture.py <capture>` takes a Stray Scanner LiDAR folder, an iPhone walkthrough video,
-or a folder of per-room photo folders, and writes one `plan.json` (schema `brynx.plan/1.0`) plus a
+or a folder of per-room photo folders, and writes one `plan.json` (schema `brynz.plan/1.0`) plus a
 rendered architectural plan: rooms with length/width, area, ceiling height and type; doors, open
 passages and windows with widths; adjacency; per-surface damage regions with metric extent;
 concealed-damage flags with the rule that fired; scope line items; a 95 % interval on every number.
@@ -32,7 +32,7 @@ gaps (0.55-1.30 m, residential norms) are bridged into a barrier so doors separa
 passages do not. Faces cut the floor into a Manhattan cell complex; cells are inside if seen as floor,
 carved free by camera rays, or walked; cells are grouped by watershed over the barrier, then necks
 (<= 2.0 m between two >= 3 m2 sides) and cores are split, slivers merged and never-observed voids removed.
-Every threshold lives in `brynx/priors.py` with its building-norm justification; none is fitted to the
+Every threshold lives in `brynz/priors.py` with its building-norm justification; none is fitted to the
 benchmark, and `c7d28f72c6` was held out throughout.
 
 **Typing.** Structure first: narrow and elongated = corridor; small single-entry = closet; many
@@ -76,7 +76,7 @@ maximum-confidence spanning tree and snapped to the building's Manhattan axes. A
 doorway link is still measured, laid out beside the plan and flagged `position_known: false`.
 
 ## 4. Drift handling
-Plane-anchored pose graph (`brynx/drift.py`): ~1 s segments of wall points are ICP'd against the map
+Plane-anchored pose graph (`brynz/drift.py`): ~1 s segments of wall points are ICP'd against the map
 from temporally distant segments (>= 20 s apart; implausible corrections > 4 deg or 25 cm rejected);
 per-keyframe corrections (x, z, yaw) are solved by tridiagonal least squares (odometry smoothness +
 weighted anchors) and interpolated to all frames. The correction is applied only if *revisit ghosting*
@@ -113,7 +113,7 @@ same room by *different measured surfaces* (a wardrobe/vanity front in one, the 
 other) and see different extents of partially covered rooms. The root cause is surface selection
 (furniture faces accepted as walls), one level deeper than declared. Next fix: a face counts as a room
 boundary only if it reaches the ceiling band or continues behind furniture in the free-space carving.
-Before/after: `docs/fixloop/`, tag `fixloop-before`, `git diff fixloop-before -- brynx/lidar.py`.
+Before/after: `docs/fixloop/`, tag `fixloop-before`, `git diff fixloop-before -- brynz/lidar.py`.
 
 ## 7. Damage
 Water stains, mould, peeling and cracks are textures, which open-vocabulary detectors handled poorly

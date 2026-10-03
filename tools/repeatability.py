@@ -14,7 +14,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from brynx.drift import icp2d
+from brynz.drift import icp2d
 
 
 def faces(name):

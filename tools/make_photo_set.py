@@ -17,9 +17,9 @@ from PIL import Image
 from shapely.geometry import Point, Polygon
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from brynx.capture import StrayCapture
-from brynx.geometry import plan_coords, rotate_dirs
-from brynx.rgb import sharpness
+from brynz.capture import StrayCapture
+from brynz.geometry import plan_coords, rotate_dirs
+from brynz.rgb import sharpness
 
 
 def main(cap_dir, out_dir=None, per_room=6):
