@@ -41,23 +41,60 @@ def edge_faces(verts, faces, tol=0.03):
         horiz = abs(b[0] - a[0]) > abs(b[1] - a[1])
         c = a[1] if horiz else a[0]
         cand = [f for f in faces if f.axis == ('u' if horiz else 'v') and abs(f.coord - c) < tol]
+        L = float(np.hypot(*(b - a)))
+        mid = float((a[0] + b[0]) / 2 if horiz else (a[1] + b[1]) / 2)
         if cand:
             f = max(cand, key=lambda f: f.n)
-            out.append({'horizontal': bool(horiz), 'coord': float(c), 'std': f.std, 'n': f.n, 'measured': True})
+            out.append({'horizontal': bool(horiz), 'coord': float(c), 'std': f.std, 'n': f.n, 'measured': True,
+                        'length': L, 'mid': mid})
         else:
-            out.append({'horizontal': bool(horiz), 'coord': float(c), 'std': None, 'n': 0, 'measured': False})
+            out.append({'horizontal': bool(horiz), 'coord': float(c), 'std': None, 'n': 0, 'measured': False,
+                        'length': L, 'mid': mid})
     return out
 
 
+def _principal(edges, lo_side):
+    """Wall line carrying the most measured length on one side of the room (edges within 3 cm
+    are one line). Free-space edges count 30 %: they bound the room but were not seen as wall."""
+    if any(e['measured'] for e in edges):     # a measured wall on this side always beats free space
+        edges = [e for e in edges if e['measured']]
+    lines = []
+    for e in sorted(edges, key=lambda e: e['coord']):
+        w = e['length'] * (1.0 if e['measured'] else 0.3)
+        if lines and abs(e['coord'] - lines[-1]['coord']) < 0.03:
+            lines[-1]['w'] += w; lines[-1]['edges'].append(e)
+        else:
+            lines.append({'coord': e['coord'], 'w': w, 'edges': [e]})
+    best = max(lines, key=lambda l: l['w'])
+    e = max(best['edges'], key=lambda e: (e['measured'], e['n']))
+    return best['coord'], face_sigma(e), e['measured']
+
+
 def room_dimensions(faces_info):
-    """Extents along u and v between the extreme faces, with 95% CIs."""
+    """Room length / width as a tape would take them: between the principal opposing walls of
+    each axis (the wall line with the most measured length on each side of the room's centre), not
+    between the extreme corners of the outline, which alcoves, reveals and segmentation slivers
+    move. The extreme extents are kept as extent_u / extent_v (95 % CIs throughout)."""
     out = {}
-    for name, horiz in (('length_u', False), ('length_v', True)):
-        arr = [(f['coord'], face_sigma(f)) for f in faces_info if f['horizontal'] == horiz]
-        lo, hi = min(arr), max(arr)
-        L = hi[0] - lo[0]
-        s = np.sqrt(lo[1] ** 2 + hi[1] ** 2 + (ERR['drift_per_m'] * L) ** 2 + (ERR['scale_rel'] * L) ** 2)
-        out[name] = {'value_m': round(L, 4), 'ci95_m': round(Z95 * s, 4)}
+    for name, horiz in (('u', False), ('v', True)):
+        edges = [f for f in faces_info if f['horizontal'] == horiz]
+        cs = np.array([f['coord'] for f in edges]); ls = np.array([f['length'] for f in edges])
+        centre = float((cs * ls).sum() / ls.sum())
+        lo_e = [f for f in edges if f['coord'] < centre]
+        hi_e = [f for f in edges if f['coord'] > centre]
+        arr = [(f['coord'], face_sigma(f), f['measured']) for f in edges]
+        a, b = min(arr), max(arr)
+        if lo_e and hi_e:
+            a2, b2 = _principal(lo_e, True), _principal(hi_e, False)
+        else:
+            a2, b2 = a, b
+        for key, (lo, hi) in ((f'length_{name}', (a2, b2)), (f'extent_{name}', (a, b))):
+            L = hi[0] - lo[0]
+            s = np.sqrt(lo[1] ** 2 + hi[1] ** 2 + (ERR['drift_per_m'] * L) ** 2 + (ERR['scale_rel'] * L) ** 2)
+            out[key] = {'value_m': round(L, 4), 'ci95_m': round(Z95 * s, 4),
+                        # False: one end is where the capture's view ran out, not a seen wall -
+                        # the true wall is at least this far (CI widened by the free-space term)
+                        'bounded_by_measured_walls': bool(lo[2] and hi[2])}
     return out
 
 
@@ -224,7 +261,8 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
         verts = np.array(P.exterior.coords[:-1])
         finfo = edge_faces(verts, faces)
         dims = room_dimensions(finfo)
-        a_sig = np.hypot(dims['length_u']['ci95_m'] * dims['length_v']['value_m'], dims['length_v']['ci95_m'] * dims['length_u']['value_m'])
+        a_sig = P.area * np.hypot(dims['extent_u']['ci95_m'] / max(dims['extent_u']['value_m'], 0.1),
+                                  dims['extent_v']['ci95_m'] / max(dims['extent_v']['value_m'], 0.1))
         mine = [o for o in openings if k in o['room_index']]
         nbrs = {x for o in mine for x in o['room_index'] if x != k}
         rooms.append({'id': f'R{k + 1}', 'polygon': np.round(verts, 4).tolist(),

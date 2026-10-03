@@ -127,11 +127,12 @@ def rooms_table(a, b):
     for s in maps[a]:
         if s not in maps[b] or s in bad:
             continue
-        da = sorted([maps[a][s]['dimensions'][k]['value_m'] for k in ('length_u', 'length_v')])
-        db = sorted([maps[b][s]['dimensions'][k]['value_m'] for k in ('length_u', 'length_v')])
-        for x, y, lab in zip(da, db, ('short', 'long')):
+        get = lambda m: sorted([(m['dimensions'][k]['value_m'], m['dimensions'][k].get('bounded_by_measured_walls', True))
+                                for k in ('length_u', 'length_v')])
+        for (x, bx), (y, by), lab in zip(get(maps[a][s]), get(maps[b][s]), ('short', 'long')):
             d = abs(x - y)
             rows.append({'space': s, 'wall_pair': lab, a: x, b: y, 'diff_cm': round(d * 100, 1),
+                         'both_ends_measured_in_both': bool(bx and by),
                          'pass_1cm_or_0.5pct': d <= max(0.01, 0.005 * max(x, y))})
     return rows, sorted(bad & set(maps[a]) & set(maps[b]))
 
@@ -144,3 +145,9 @@ if __name__ == '__main__' and len(sys.argv) > 3 and sys.argv[3] == '--rooms':
     d = np.array([r['diff_cm'] for r in rows])
     print(f"{len(rows)} wall-to-wall dimensions in {len({r['space'] for r in rows})} rooms: median diff {np.median(d):.1f} cm, "
           f"pass (<=1 cm or 0.5 %) {sum(r['pass_1cm_or_0.5pct'] for r in rows)}/{len(rows)}")
+    if any('both_ends_measured_in_both' in r for r in rows):
+        m = [r for r in rows if r['both_ends_measured_in_both']]
+        if m:
+            dm = np.array([r['diff_cm'] for r in m])
+            print(f"  of which bounded by measured walls in both captures: {len(m)}, median diff {np.median(dm):.1f} cm, "
+                  f"pass {sum(r['pass_1cm_or_0.5pct'] for r in m)}/{len(m)}")
