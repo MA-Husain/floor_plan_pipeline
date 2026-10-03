@@ -15,7 +15,8 @@ from pathlib import Path
 
 import numpy as np
 
-os.environ.setdefault('HF_HUB_OFFLINE', '1')     # everything runs from ./weights (scripts/fetch_weights.py)
+os.environ.setdefault('HF_HUB_OFFLINE', '1')
+os.environ.setdefault('KMP_DUPLICATE_LIB_OK', 'TRUE')   # torch + pycolmap both bundle libomp     # everything runs from ./weights (scripts/fetch_weights.py)
 from brynx import lidar, damage
 from brynx.render import draw_plan
 
@@ -51,6 +52,8 @@ def main():
     ap.add_argument('--drift', default='auto', choices=['auto', 'on', 'off'])
     ap.add_argument('--no-damage', action='store_true')
     ap.add_argument('--tier', default=None, choices=['lidar', 'video', 'photo'])
+    ap.add_argument('--rotate', default=None, choices=['cw', 'ccw', '180'],
+                    help='video stored sideways (e.g. a Stray rgb.mp4 used as an RGB-only video): rotate upright')
     a = ap.parse_args()
     src = Path(a.capture)
     tier = a.tier or detect_tier(src)
@@ -63,7 +66,9 @@ def main():
     else:
         from brynx import rgb
         recon_cache = None if cache is None else cache / 'reconstruction.npz'
-        capture = (rgb.video_capture(src, cache=recon_cache) if tier == 'video'
+        import cv2
+        rot = {'cw': cv2.ROTATE_90_CLOCKWISE, 'ccw': cv2.ROTATE_90_COUNTERCLOCKWISE, '180': cv2.ROTATE_180}.get(a.rotate)
+        capture = (rgb.video_capture(src, rotate=rot, cache=recon_cache) if tier == 'video'
                    else rgb.photo_capture(src, cache=recon_cache))
     plan, ctx = lidar.run(capture, step=a.step, detect=not a.no_detect, cache_dir=None if a.live else out / 'cache', drift_mode=a.drift)
     if not a.no_damage:
