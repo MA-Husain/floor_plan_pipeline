@@ -16,6 +16,7 @@ HF_CACHE = str(ROOT / 'weights' / 'hf')
 MOGE_ID = 'Ruicheng/moge-2-vitl-normal'
 SCALE_CAL = 0.955        # MoGe-2 depth / LiDAR depth (median, 3 captures)
 SCALE_CAL_SPREAD = 0.01  # spread of that median across captures (0.947-0.956)
+NUM_TOKENS = 1200        # MoGe's low end of its suggested 1200-2500 (2x faster; input is only 392x518)
 
 
 class MetricDepth:
@@ -33,7 +34,7 @@ class MetricDepth:
         """rgb uint8 HxWx3 -> (metric depth HxW float32, 0 = invalid; horizontal FOV in degrees)."""
         x = self.torch.from_numpy(np.ascontiguousarray(rgb)).permute(2, 0, 1).float().div(255).to(self.device)
         with self.torch.no_grad():
-            o = self.model.infer(x, fov_x=fov_x_deg, use_fp16=False)
+            o = self.model.infer(x, fov_x=fov_x_deg, use_fp16=False, num_tokens=NUM_TOKENS)
         d = o['depth'].float().cpu().numpy()
         d[~np.isfinite(d)] = 0
         K = o['intrinsics'].float().cpu().numpy()            # normalised intrinsics

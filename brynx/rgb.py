@@ -598,6 +598,8 @@ def mono_depths(load, idx, size, Ks=None, log=print, n_fov=24):
         fov = float(np.degrees(2 * np.arctan(W / 2 / K[0, 0])))
         d, _ = md.infer(cv2.resize(load(i), size, interpolation=cv2.INTER_AREA), fov_x_deg=fov)
         depths[i] = d.astype(np.float16)
+        if n % 100 == 99:
+            log(f'[rgb] MoGe-2 depth {n + 1}/{len(idx)}')
     md.free()
     log(f'[rgb] MoGe-2 metric depth for {len(depths)} views (scale calibrated x1/{__import__("brynx.mono", fromlist=["x"]).SCALE_CAL})')
     return depths, Ks
