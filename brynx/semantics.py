@@ -57,13 +57,13 @@ def _detect_live(capture, poses, every_s, conf, device):
     sx, sy = capture.depth_size[0] / W, capture.depth_size[1] / H
     out = []
     for i, img in capture.rgb_frames(idx):
-        r = model.predict(cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE), conf=conf, verbose=False, device=device)[0]
+        upright = getattr(capture, 'upright', False)
+        r = model.predict(img if upright else cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE), conf=conf, verbose=False, device=device)[0]
         if len(r.boxes) == 0:
             continue
         f = capture.frame(i, poses[i])
         for (x1, y1, x2, y2), c, s in zip(r.boxes.xyxy.cpu().numpy(), r.boxes.cls.cpu().numpy(), r.boxes.conf.cpu().numpy()):
-            ox1, oy1 = rot_cw_to_orig(x1, y1, H)
-            ox2, oy2 = rot_cw_to_orig(x2, y2, H)
+            (ox1, oy1), (ox2, oy2) = ((x1, y1), (x2, y2)) if upright else (rot_cw_to_orig(x1, y1, H), rot_cw_to_orig(x2, y2, H))
             u0, u1 = sorted([ox1 * sx, ox2 * sx]); v0, v1 = sorted([oy1 * sy, oy2 * sy])
             cu, cv_ = (u0 + u1) / 2, (v0 + v1) / 2
             wu, wv = (u1 - u0) * 0.2, (v1 - v0) * 0.2

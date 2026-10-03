@@ -1,4 +1,7 @@
-"""LiDAR tier: Stray Scanner capture -> stitched multi-room plan JSON (output contract)."""
+"""Capture -> stitched multi-room plan JSON (output contract).
+
+Runs on a Stray Scanner LiDAR capture, or on any object with the same interface (brynx.rgb's
+ReconCapture for the video and photo tiers). The tier's error model widens every interval."""
 import time
 import numpy as np
 import cv2
@@ -19,10 +22,14 @@ Z95 = 1.96
 DOOR_MAX = priors.DOOR_MAX_M
 
 
+LIDAR_ERRORS = {'face_sys': SIGMA_FACE_SYS, 'drift_per_m': SIGMA_DRIFT_PER_M, 'scale_rel': 0.0}
+ERR = dict(LIDAR_ERRORS)   # active tier's error model (set by run)
+
+
 def face_sigma(f):
     if not f['measured']:
-        return 0.05  # edge inferred from free space only
-    return float(np.hypot(f['std'] / np.sqrt(max(f['n'], 1)) * 3, SIGMA_FACE_SYS))  # x3: correlated points
+        return 0.05 + ERR['face_sys']  # edge inferred from free space only
+    return float(np.hypot(f['std'] / np.sqrt(max(f['n'], 1)) * 3, ERR['face_sys']))  # x3: correlated points
 
 
 def edge_faces(verts, faces, tol=0.03):
@@ -49,7 +56,7 @@ def room_dimensions(faces_info):
         arr = [(f['coord'], face_sigma(f)) for f in faces_info if f['horizontal'] == horiz]
         lo, hi = min(arr), max(arr)
         L = hi[0] - lo[0]
-        s = np.sqrt(lo[1] ** 2 + hi[1] ** 2 + (SIGMA_DRIFT_PER_M * L) ** 2)
+        s = np.sqrt(lo[1] ** 2 + hi[1] ** 2 + (ERR['drift_per_m'] * L) ** 2 + (ERR['scale_rel'] * L) ** 2)
         out[name] = {'value_m': round(L, 4), 'ci95_m': round(Z95 * s, 4)}
     return out
 
@@ -80,7 +87,8 @@ def room_ceiling(uv, h, ny, poly, floor_sigma, band=(1.9, 4.5), cell=0.25):
     if best is None:
         return None
     inl = hh[np.abs(hh - best[0]) < 0.03]
-    s = np.hypot(np.hypot(np.std(inl) / np.sqrt(len(inl)) * 3, SIGMA_FACE_SYS), floor_sigma)
+    hc = float(np.mean(inl))
+    s = np.sqrt((np.std(inl) / np.sqrt(len(inl)) * 3) ** 2 + ERR['face_sys'] ** 2 + floor_sigma ** 2 + (ERR['scale_rel'] * hc) ** 2)
     return {'value_m': round(float(np.mean(inl)), 4), 'ci95_m': round(Z95 * float(s), 4),
             'n_points': int(len(inl)), 'coverage': round(float(best[1]), 3)}
 
@@ -108,7 +116,7 @@ def find_windows(polys, faces, uv, h, fam_u, fam_v, min_w=0.5, max_w=3.0):
             if low.sum() > 30 and high.sum() < 0.3 * low.sum():
                 out.append({'type': 'window', 'room_index': spaces.room_of(polys, p_in), 'axis': f.axis,
                             'wall_coord': round(f.coord, 4), 'span': [round(g0, 4), round(g1, 4)],
-                            'width_m': {'value': round(g1 - g0, 4), 'ci95': round(Z95 * 0.02, 4)},
+                            'width_m': {'value': round(g1 - g0, 4), 'ci95': round(Z95 * float(np.hypot(0.02, ERR['scale_rel'] * (g1 - g0))), 4)},
                             'sill_height_m': round(float(np.percentile(hh[low], 98)), 3)})
     return out
 
@@ -124,7 +132,8 @@ def _crisp(cap, poses):
 
 def drift_stage(cap, poses, mode, log):
     """Plane-anchored pose-graph correction. 'auto' applies it only if walls get crisper
-    (ablation numbers are always reported); 'off' = raw ARKit poses; 'on' = always apply."""
+    (ablation numbers are always reported); 'off' = raw ARKit poses; 'on' = always apply.
+    'off' still measures the raw ghosting so the ablation can quote it."""
     if mode == 'off':
         return poses, {'mode': 'off', 'applied': False}
     c0, fl = _crisp(cap, poses)
@@ -133,16 +142,21 @@ def drift_stage(cap, poses, mode, log):
         info.update(mode=mode, crispness_raw_mm=round(c0 * 1000, 2))
         return poses, info
     c1, _ = _crisp(cap, new)
-    apply = mode == 'on' or c1 < c0 * 0.97
+    # accept when ghosting between revisits drops >= 5 % and walls do not get blurrier (> 5 %)
+    better = info['revisit_error_corrected_mm'] < 0.95 * info['revisit_error_raw_mm'] and c1 < c0 * 1.05
+    apply = mode == 'on' or better
     info.update(mode=mode, applied=bool(apply), crispness_raw_mm=round(c0 * 1000, 2), crispness_corrected_mm=round(c1 * 1000, 2))
-    log(f"[drift] wall crispness {c0 * 1000:.1f} -> {c1 * 1000:.1f} mm : {'applied' if apply else 'rejected (no improvement)'}")
+    log(f"[drift] wall crispness {c0 * 1000:.1f} -> {c1 * 1000:.1f} mm, revisit ghosting {info['revisit_error_raw_mm']} -> "
+        f"{info['revisit_error_corrected_mm']} mm : {'applied' if apply else 'rejected (no improvement)'}")
     return (new if apply else poses), info
 
 
 def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=None, drift_mode='auto'):
     t0 = time.time()
-    cap = StrayCapture(capture_dir)
-    step = step or max(2, cap.n // 1600)
+    cap = StrayCapture(capture_dir) if isinstance(capture_dir, (str, bytes)) or hasattr(capture_dir, 'is_dir') else capture_dir
+    tier = getattr(cap, 'tier', 'lidar')
+    ERR.clear(); ERR.update(getattr(cap, 'error_model', LIDAR_ERRORS))
+    step = step or (max(2, cap.n // 1600) if tier == 'lidar' else 1)
     log(f'[lidar] {cap.n} frames, step {step}')
     poses = cap.poses() if poses is None else poses
     poses, drift_info = drift_stage(cap, poses, drift_mode, log)
@@ -200,7 +214,7 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
         sig = 0.008 if kind == 'door' else 0.03
         openings.append({'type': kind, 'room_index': rs, 'axis': o['axis'], 'wall_coord': round(float(o['wall_coord']), 4),
                          'span': [round(float(a0), 4), round(float(a1), 4)],
-                         'width_m': {'value': round(float(a1 - a0), 4), 'ci95': round(Z95 * float(np.hypot(sig, sig)), 4)},
+                         'width_m': {'value': round(float(a1 - a0), 4), 'ci95': round(Z95 * float(np.sqrt(2 * max(sig, ERR['face_sys']) ** 2 + (ERR['scale_rel'] * (a1 - a0)) ** 2)), 4)},
                          'walked_through': bool(walk[rr[0], cc[0]])})
     windows = find_windows(polys, faces, uv, h, fam_u, fam_v)
 
@@ -240,6 +254,15 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
         r['type'], r['type_reason'] = spaces.classify(r['features'], s)
         r['fixtures'] = s
     spaces.name_spaces(rooms)
+    labels = getattr(cap, 'room_of', None)
+    if labels:   # photo tier: the user's room folders name the spaces their photos were taken in
+        for k, r in enumerate(rooms):
+            inside = [labels[i] for i, xy in enumerate(cam_uv) if polys[k].buffer(0.1).contains(Point(*xy))]
+            if inside:
+                best = max(set(inside), key=inside.count)
+                r['folder_label'] = best
+                r['folder_votes'] = {l: inside.count(l) for l in set(inside)}
+                r['name'] = best
 
     for o in openings + windows:
         idx = o.pop('room_index')
@@ -250,7 +273,8 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
 
     total = unary_union(polys)
     result = {
-        'schema': 'brynx.plan/1.0', 'tier': 'lidar', 'capture': str(capture_dir),
+        'schema': 'brynx.plan/1.0', 'tier': tier, 'capture': str(getattr(cap, 'root', capture_dir)),
+        'error_model': dict(ERR),
         'frame': {'yaw_rad': yaw, 'floor_y_world': floor, 'units': 'm',
                   'axes': 'u,v horizontal, aligned to dominant walls; h up from floor'},
         'global_ceiling': None if ceil is None else {'value_m': round(ceil - floor, 4), 'support': ceil_support},
@@ -261,7 +285,11 @@ def run(capture_dir, step=None, detect=True, poses=None, log=print, cache_dir=No
         'wall_faces': [f.to_dict() for f in faces],
         'objects': objects,
         'timing_s': round(time.time() - t0, 1),
-        'debug': {'trajectory_uv': cam_uv[::10].round(3).tolist()},
+        'debug': {'trajectory_uv': cam_uv[::10].round(3).tolist(),
+                  'camera_uv': cam_uv.round(3).tolist() if tier != 'lidar' else None,
+                  'camera_time_s': getattr(cap, 'times_s', None),
+                  'camera_label': getattr(cap, 'room_of', None),
+                  'rgb_alignment': getattr(cap, 'alignment', None)},
     }
     log(f'[lidar] {len(rooms)} spaces, {len(openings)} openings, {time.time() - t0:.0f}s')
     return result, {'grid': grid, 'uv': uv, 'h': h, 'nuv': nuv, 'ny': ny, 'W': W, 'barrier': barrier, 'F': F2,
