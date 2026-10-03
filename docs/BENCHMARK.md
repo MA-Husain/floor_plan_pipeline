@@ -162,4 +162,16 @@ Dimensions are compared longer-to-longer and shorter-to-shorter (axis naming dif
 
 Ours beat or tied on **1 of 4** shared dimensions (gate: 70 %) - **fail**. Both photo-tier rooms were
 stitched through a doorway photo (link residual 2.7 cm). magicplan uses ARKit tracking live on the phone;
-our photo tier has 9 stills per room and no poses. Video-tier rows: see below if the runs completed.
+our photo tier has 9 stills per room and no poses.
+
+Video tier on the same rooms (one ~53 s clip per room, `data/rooms_data/room*/IMG_*.MOV`):
+
+| Room | Tape (m) | magicplan (m) | Ours, video tier (m) | Our error |
+|---|---|---|---|---|
+| Room1 | 3.43 x 3.35 | 3.29 x 2.90 | 5.04 x 4.53 +- 0.29 | +47 % / +35 %, outside CI |
+| Room2 | 3.71 x 3.05 | 3.96 x 3.05 | 5.19 x 4.27 +- 0.27 | +40 % / +40 %, outside CI |
+
+The video tier fails here and its intervals are overconfident: in a single small room the MapAnything
+pose noise (15-25 cm link residuals) smears walls outward and the room outline grows. On the slow
+sample walk (`c00a170fe1`) the same code was within 1.4-3.3 % of LiDAR, so accuracy depends strongly on
+the walk. The multi-room sample video (`c7d28f72c6`, ~1.5 h on this machine) was not run before the deadline.
