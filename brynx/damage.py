@@ -6,7 +6,7 @@ sample defects). Instead every measured surface of the plan (wall faces, measure
 is cut into fixed TILE_M x TILE_M cells in its own metric coordinates. Each cell is cropped from
 the frames that see it best (close, frontal, fully in view) and classified by a linear probe on
 CLIP ViT-L/14 image features, trained on the public BD3 building-defect dataset (CC-BY-4.0;
-scripts/train_defect_probe.py; held-out accuracy reported in weights/defect_probe.json).
+scripts/train_defect_probe.py; held-out accuracy reported in models/defect_probe.json).
 Because a cell is defined on the surface, a positive cell has a known area and position: damage
 extent is metric by construction, and a region is the union of adjacent positive cells.
 """
@@ -23,7 +23,7 @@ from .geometry import plan_coords, rotate_dirs
 ROOT = Path(__file__).resolve().parent.parent
 HF_CACHE = str(ROOT / 'weights' / 'hf')
 CLIP_ID = 'openai/clip-vit-large-patch14'
-PROBE = ROOT / 'weights' / 'defect_probe.npz'
+PROBE = ROOT / 'models' / 'defect_probe.npz'   # 21 KB, trained by scripts/train_defect_probe.py
 
 TILE_M = 0.4            # surface cell size (m)
 VIEWS_PER_TILE = 3      # best views classified per cell
