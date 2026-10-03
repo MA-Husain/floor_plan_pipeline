@@ -5,7 +5,7 @@ Two captures of the same home are registered by their measured wall faces (best 
 rotations, then trimmed 2-D ICP). Each wall face of A is matched to the parallel, same-facing,
 overlapping face of B; the residual offset is the wall-position disagreement. Room widths
 (distance between two facing walls) are compared the same way.
-usage: python tools/repeatability.py <captureA> <captureB>"""
+usage: python tools/repeatability.py <captureA> <captureB> [--rooms]   (--rooms: per-room dimension table)"""
 import json
 import sys
 from pathlib import Path
@@ -106,5 +106,41 @@ def main(a, b):
             print(f'     {wa:.3f} m  vs  {wb:.3f} m')
 
 
-if __name__ == '__main__':
+if __name__ == '__main__' and '--rooms' not in sys.argv:
     main(sys.argv[1], sys.argv[2])
+
+
+def rooms_table(a, b):
+    """Per-room dimension repeatability: rooms matched through the frame-level GT labels
+    (benchmark/gt/<capture>.json), dimensions compared after sorting (axis order may swap).
+    A space that is split or merged in either capture is not the same room in both plans and is
+    listed separately (that is a segmentation error, scored by eval_spaces.py)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'benchmark'))
+    import eval_spaces as E
+    rows, maps, bad = [], {}, set()
+    for c in (a, b):
+        r = E.evaluate(c)
+        bad |= set(r['split']) | {s for v in r['merge'].values() for s in v}
+        plan = json.load(open(f'outputs/{c}/plan.json'))
+        R = {x['id']: x for x in plan['rooms']}
+        maps[c] = {s: R[d['type'].split(':')[0]] for s, d in r['detail'].items()}
+    for s in maps[a]:
+        if s not in maps[b] or s in bad:
+            continue
+        da = sorted([maps[a][s]['dimensions'][k]['value_m'] for k in ('length_u', 'length_v')])
+        db = sorted([maps[b][s]['dimensions'][k]['value_m'] for k in ('length_u', 'length_v')])
+        for x, y, lab in zip(da, db, ('short', 'long')):
+            d = abs(x - y)
+            rows.append({'space': s, 'wall_pair': lab, a: x, b: y, 'diff_cm': round(d * 100, 1),
+                         'pass_1cm_or_0.5pct': d <= max(0.01, 0.005 * max(x, y))})
+    return rows, sorted(bad & set(maps[a]) & set(maps[b]))
+
+
+if __name__ == '__main__' and len(sys.argv) > 3 and sys.argv[3] == '--rooms':
+    rows, excluded = rooms_table(sys.argv[1], sys.argv[2])
+    for r in rows:
+        print(r)
+    print('excluded (split/merged in a capture):', excluded)
+    d = np.array([r['diff_cm'] for r in rows])
+    print(f"{len(rows)} wall-to-wall dimensions in {len({r['space'] for r in rows})} rooms: median diff {np.median(d):.1f} cm, "
+          f"pass (<=1 cm or 0.5 %) {sum(r['pass_1cm_or_0.5pct'] for r in rows)}/{len(rows)}")

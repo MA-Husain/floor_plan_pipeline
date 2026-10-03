@@ -1,29 +1,38 @@
-# Capture protocol (Route 2: stock app) — one page
+# Capture protocol (Route 2: stock apps) - one page
 
-**You need:** an iPhone 15 or newer. *LiDAR tier*: iPhone Pro / Pro Max (12 Pro or later works). *Video and photo tiers*: any iPhone 15+.
+**Pick the tier by phone.** iPhone **Pro / Pro Max** (12 Pro or later): LiDAR tier. **Any iPhone 15 or newer**: video tier, or photo tier.
+All three give the same plan; LiDAR is the most accurate, photos the least (see `DEVICE_MATRIX.md`).
 
-## LiDAR tier — Stray Scanner (free, App Store: "Stray Scanner", by Stray Robots)
-1. **Install** Stray Scanner. Open it once and allow camera access. In *Settings*, leave **Depth** and **Confidence** ON (the defaults) and set **FPS to 60** (the default).
-2. **Before you start:** switch on all the lights, open every internal door fully, and wipe the camera lens. Mirrors and glass are fine: just don't stand still facing one.
-3. **Start** in the room by the front door. Hold the phone **upright (portrait), at chest height, screen facing you**. Press record.
-4. **Walk slowly.** Take about one step per second along the walls, keeping about 1–2 m from them. In each room:
-   - Do one slow full turn so every wall is seen.
-   - **Ceiling sweep:** tilt the phone up until the ceiling fills the screen, count *one-two-three*, then tilt it back. Do this once per room. It is required for ceiling height.
-   - **Floor sweep:** tilt it down to the floor once.
-   - Point at each door and window for a second, so the whole frame is in view.
-5. **Go through every doorway**, walking through the middle. Don't walk backwards through doors.
-6. **Finish where you started**, in the first room, and look around it again for 5 seconds. This closes the loop for drift correction. Then stop recording.
-7. **Length:** about 1 minute per room. Keep one recording **under 6 minutes**. For a bigger property, record one floor per file.
+**Before any capture (all tiers):** switch on every light and open curtains; open every internal door fully;
+wipe the lens; move people and pets out of the way. Mirrors and glass are fine - never stand still facing one.
 
-**Avoid:** running or turning quickly; covering the top-back of the phone (that's where the LiDAR is); filming with people walking in front of you; pausing for more than 10 s.
+## A. LiDAR tier - Stray Scanner (free, App Store "Stray Scanner" by Stray Robots)
+1. Install, open once, allow camera. Settings: leave **Depth** and **Confidence** ON (defaults).
+2. Start in the room by the front door. Phone **upright (portrait), chest height, screen facing you**. Tap record.
+3. In each room: walk slowly along the walls about 1-2 m from them (one step per second), do **one slow full turn**,
+   then the **ceiling sweep** (tilt up until the ceiling fills the screen, count *one-two-three*, tilt back) and one **floor sweep**.
+   Point at every door and window for one second so the whole frame is in view.
+4. Walk **through the middle of every doorway**, facing forwards.
+5. **Finish where you started** and look around that first room again for 5 s (closes the loop). Stop.
+6. About 1 minute per room, **under 6 minutes per recording**; one recording per floor.
 
-## Video tier — native Camera app
-Use **Video, 4K 30 fps, 1× lens, portrait**, and the same walk as above (steps 2–7). Keep the phone level and do the ceiling and floor sweeps.
+## B. Video tier - native Camera app (any iPhone 15+)
+1. Camera -> **Video**, **1x** lens (not 0.5x), **30 fps**, portrait. Same walk as A, steps 2-6.
+2. **Turn slowly - a full turn should take about 8 seconds.** Fast pans blur the frames and break the reconstruction.
+3. Keep the phone level; do the ceiling and floor sweep in every room; do not zoom; do not switch lenses.
 
-## Photo tier — native Camera app
-Use one album per room, named after the room (e.g. `Kitchen`). In each room take **4–8 photos**: one from each corner looking diagonally across the room, plus one of each doorway taken from the doorway. Keep photos 1×, portrait, with no zoom and no portrait mode. In each doorway photo, part of the next room must be visible: that overlap is what stitches rooms together.
+## C. Photo tier - native Camera app (any iPhone 15+)
+1. Camera -> **Photo**, **1x**, portrait, no zoom, no Portrait mode, no Live-photo effects. Keep HEIC or JPEG - both work.
+2. In each room take **4-8 photos**: one from each corner looking diagonally across the room (walls, floor and some
+   ceiling in view), plus **one photo through each doorway, standing in the doorway, showing part of the next room** -
+   that overlap is what stitches the rooms into one plan.
+3. Keep each room's photos together: make one album per room named after the room (`Kitchen`, `Bedroom1`, ...).
 
 ## Hand the files to the pipeline
-- **Stray Scanner:** *Library → select the scan → Share → Save to Files*, or AirDrop it to the Mac. You get a folder with `rgb.mp4`, `depth/`, `confidence/`, `odometry.csv`, `camera_matrix.csv` and `imu.csv`.
-- **Video and photos:** AirDrop them to the Mac. Put photos in one folder per room.
-- **Run:** `python run_capture.py <folder>`. This writes `outputs/<folder>/plan.json` and `plan.png`.
+- **Stray Scanner:** Library -> select the scan -> Share -> Save to Files (or AirDrop). You get a folder with `rgb.mp4`, `depth/`, `confidence/`, `odometry.csv`.
+- **Video:** AirDrop the `.MOV` to the Mac.
+- **Photos:** AirDrop each album into its own folder: `my_flat/Kitchen/*.HEIC`, `my_flat/Bedroom1/*.HEIC`, ...
+- **Run:** `python run_capture.py <the folder or the .MOV>` -> `outputs/<name>/plan.json` and `plan.png`.
+
+**Avoid:** running, fast turns, walking backwards through doors, people in front of the camera, pausing over 10 s,
+covering the top-back of the phone (LiDAR), very dark rooms (switch lights on), filming straight into a window or mirror.

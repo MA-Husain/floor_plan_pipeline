@@ -1,0 +1,10 @@
+{'space': 'study', 'wall_pair': 'short', 'c7d28f72c6': 3.1399, '1a8384c3f6': 2.9943, 'diff_cm': 14.6, 'pass_1cm_or_0.5pct': False}
+{'space': 'study', 'wall_pair': 'long', 'c7d28f72c6': 4.9772, '1a8384c3f6': 6.1563, 'diff_cm': 117.9, 'pass_1cm_or_0.5pct': False}
+{'space': 'dining_living', 'wall_pair': 'short', 'c7d28f72c6': 4.2329, '1a8384c3f6': 4.1794, 'diff_cm': 5.3, 'pass_1cm_or_0.5pct': False}
+{'space': 'dining_living', 'wall_pair': 'long', 'c7d28f72c6': 4.3445, '1a8384c3f6': 4.8552, 'diff_cm': 51.1, 'pass_1cm_or_0.5pct': False}
+{'space': 'stair_hall', 'wall_pair': 'short', 'c7d28f72c6': 3.5011, '1a8384c3f6': 3.4087, 'diff_cm': 9.2, 'pass_1cm_or_0.5pct': False}
+{'space': 'stair_hall', 'wall_pair': 'long', 'c7d28f72c6': 4.5077, '1a8384c3f6': 3.9852, 'diff_cm': 52.2, 'pass_1cm_or_0.5pct': False}
+{'space': 'bath_b', 'wall_pair': 'short', 'c7d28f72c6': 2.0137, '1a8384c3f6': 2.2617, 'diff_cm': 24.8, 'pass_1cm_or_0.5pct': False}
+{'space': 'bath_b', 'wall_pair': 'long', 'c7d28f72c6': 2.4946, '1a8384c3f6': 2.3366, 'diff_cm': 15.8, 'pass_1cm_or_0.5pct': False}
+excluded (split/merged in a capture): ['bath_a', 'studio_living']
+8 wall-to-wall dimensions in 4 rooms: median diff 20.3 cm, pass (<=1 cm or 0.5 %) 0/8

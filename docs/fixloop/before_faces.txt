@@ -1,0 +1,15 @@
+c7d28f72c6 vs 1a8384c3f6: registration residual yaw -0.02 deg, inlier 89%
+  matched wall faces 29/34; wall-position disagreement: median 5.0 cm, p90 20.1 cm
+  structural walls (>= 2.5 m solid): 10 matched, |offset| median 3.1 cm, max 23.7 cm
+  21 wall-to-wall spans: |difference| median 6.6 cm, p90 17.6 cm
+     0.994 m  vs  0.928 m
+     1.182 m  vs  1.068 m
+     2.042 m  vs  1.980 m
+     2.861 m  vs  2.780 m
+     3.442 m  vs  3.470 m
+     3.962 m  vs  3.786 m
+     4.050 m  vs  3.926 m
+     4.345 m  vs  4.607 m
+     5.348 m  vs  5.204 m
+     6.403 m  vs  6.392 m
+     7.885 m  vs  7.644 m
