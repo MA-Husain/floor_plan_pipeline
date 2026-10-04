@@ -1,0 +1,5112 @@
+{
+ "schema": "brynz.plan/1.0",
+ "tier": "lidar",
+ "capture": "1a8384c3f6",
+ "error_model": {
+  "face_sys": 0.006,
+  "drift_per_m": 0.002,
+  "scale_rel": 0.0
+ },
+ "frame": {
+  "yaw_rad": 1.5373599529266357,
+  "floor_y_world": -1.403976559638977,
+  "units": "m",
+  "axes": "u,v horizontal, aligned to dominant walls; h up from floor"
+ },
+ "global_ceiling": null,
+ "drift": {
+  "anchors": 11,
+  "segments": 88,
+  "revisit_error_raw_mm": 56.75,
+  "revisit_error_corrected_mm": 50.9,
+  "max_correction_m": 0.0829,
+  "max_yaw_correction_deg": 2.02,
+  "mode": "auto",
+  "applied": true,
+  "crispness_raw_mm": 11.36,
+  "crispness_corrected_mm": 10.41
+ },
+ "rooms": [
+  {
+   "id": "R1",
+   "polygon": [
+    [
+     2.7475,
+     7.2883
+    ],
+    [
+     3.659,
+     7.2883
+    ],
+    [
+     3.659,
+     6.7476
+    ],
+    [
+     4.4006,
+     6.7476
+    ],
+    [
+     4.4006,
+     6.2495
+    ],
+    [
+     5.0841,
+     6.2495
+    ],
+    [
+     5.0841,
+     5.0266
+    ],
+    [
+     2.7475,
+     5.0266
+    ]
+   ],
+   "area_m2": {
+    "value": 4.174,
+    "ci95": 0.207
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 2.3366,
+     "ci95_m": 0.019,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 2.3366,
+     "ci95_m": 0.019,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 1.721,
+     "ci95_m": 0.018,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 2.2617,
+     "ci95_m": 0.1107,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 7.288346142698685,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 0.911458936843442,
+     "mid": 3.203252034757865
+    },
+    {
+     "horizontal": false,
+     "coord": 3.6589815031795863,
+     "std": 0.010608255579851714,
+     "n": 4340,
+     "measured": true,
+     "length": 0.5407070654142574,
+     "mid": 7.0179926099915555
+    },
+    {
+     "horizontal": true,
+     "coord": 6.747639077284427,
+     "std": 0.010963113469972315,
+     "n": 20321,
+     "measured": true,
+     "length": 0.7416156067311594,
+     "mid": 4.029789306545166
+    },
+    {
+     "horizontal": false,
+     "coord": 4.400597109910746,
+     "std": 0.010931775845903786,
+     "n": 7083,
+     "measured": true,
+     "length": 0.4981395559605577,
+     "mid": 6.498569299304148
+    },
+    {
+     "horizontal": true,
+     "coord": 6.2494995213238695,
+     "std": 0.011756977578725285,
+     "n": 3906,
+     "measured": true,
+     "length": 0.68352755945146,
+     "mid": 4.742360889636476
+    },
+    {
+     "horizontal": false,
+     "coord": 5.084124669362206,
+     "std": 0.007943760977521332,
+     "n": 9577,
+     "measured": true,
+     "length": 1.2229008068097302,
+     "mid": 5.638049117919005
+    },
+    {
+     "horizontal": true,
+     "coord": 5.026598714514139,
+     "std": 0.01074015256589251,
+     "n": 8895,
+     "measured": true,
+     "length": 2.3366021030260615,
+     "mid": 3.915823617849175
+    },
+    {
+     "horizontal": false,
+     "coord": 2.7475225663361442,
+     "std": 0.01015507683515678,
+     "n": 13032,
+     "measured": true,
+     "length": 2.2617474281845453,
+     "mid": 6.157472428606412
+    }
+   ],
+   "features": {
+    "area": 4.173726703076053,
+    "inscribed_width": 1.7575194835662842,
+    "long": 2.3366021030260615,
+    "short": 2.2617474281845444,
+    "elongation": 1.0330959478095223,
+    "floor_seen": 0.5603229743686039,
+    "walked": 0.2965918693080462,
+    "n_openings": 1,
+    "degree": 1,
+    "floor_below_level_pts": 0
+   },
+   "type": "Bathroom",
+   "type_reason": "Bathroom 9.0",
+   "fixtures": {
+    "toilet": 2,
+    "sink": 1,
+    "bathtub": 1
+   },
+   "name": "Bathroom 1"
+  },
+  {
+   "id": "R2",
+   "polygon": [
+    [
+     -4.1557,
+     4.9686
+    ],
+    [
+     -4.1557,
+     6.7476
+    ],
+    [
+     -1.0722,
+     6.7476
+    ],
+    [
+     -1.0722,
+     4.9686
+    ]
+   ],
+   "area_m2": {
+    "value": 5.486,
+    "ci95": 0.205
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.0835,
+     "ci95_m": 0.111,
+     "bounded_by_measured_walls": false
+    },
+    "extent_u": {
+     "value_m": 3.0835,
+     "ci95_m": 0.111,
+     "bounded_by_measured_walls": false
+    },
+    "length_v": {
+     "value_m": 1.7791,
+     "ci95_m": 0.0181,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 1.7791,
+     "ci95_m": 0.0181,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": -4.155654226593801,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 1.7790870261751621,
+     "mid": 5.858095564196846
+    },
+    {
+     "horizontal": true,
+     "coord": 6.747639077284427,
+     "std": 0.010963113469972315,
+     "n": 20321,
+     "measured": true,
+     "length": 3.083470552224634,
+     "mid": -2.6139189504814837
+    },
+    {
+     "horizontal": false,
+     "coord": -1.0721836743691664,
+     "std": 0.007904848271617993,
+     "n": 6787,
+     "measured": true,
+     "length": 1.7790870261751621,
+     "mid": 5.858095564196846
+    },
+    {
+     "horizontal": true,
+     "coord": 4.968552051109265,
+     "std": 0.00969003161100713,
+     "n": 5632,
+     "measured": true,
+     "length": 3.083470552224634,
+     "mid": -2.6139189504814837
+    }
+   ],
+   "features": {
+    "area": 5.485762455056009,
+    "inscribed_width": 1.7999999523162842,
+    "long": 3.083470552224634,
+    "short": 1.7790870261751621,
+    "elongation": 1.7331757844661206,
+    "floor_seen": 0.2551858254105445,
+    "walked": 0.0,
+    "n_openings": 1,
+    "degree": 1,
+    "floor_below_level_pts": 0
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {},
+   "name": "Room 1"
+  },
+  {
+   "id": "R3",
+   "polygon": [
+    [
+     -1.0722,
+     3.7533
+    ],
+    [
+     -1.0722,
+     6.7476
+    ],
+    [
+     1.9958,
+     6.7476
+    ],
+    [
+     1.9958,
+     4.9686
+    ],
+    [
+     2.7475,
+     4.9686
+    ],
+    [
+     2.7475,
+     4.8212
+    ],
+    [
+     2.8989,
+     4.8212
+    ],
+    [
+     2.8989,
+     5.0266
+    ],
+    [
+     5.0841,
+     5.0266
+    ],
+    [
+     5.0841,
+     4.9686
+    ],
+    [
+     4.836,
+     4.9686
+    ],
+    [
+     4.836,
+     4.8212
+    ],
+    [
+     3.659,
+     4.8212
+    ],
+    [
+     3.659,
+     3.8928
+    ],
+    [
+     2.8989,
+     3.8928
+    ],
+    [
+     2.8989,
+     3.7533
+    ]
+   ],
+   "area_m2": {
+    "value": 11.38,
+    "ci95": 0.095
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.068,
+     "ci95_m": 0.0205,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 6.1563,
+     "ci95_m": 0.0293,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 2.9943,
+     "ci95_m": 0.0204,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 2.9943,
+     "ci95_m": 0.0204,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": -1.0721836743691664,
+     "std": 0.007904848271617993,
+     "n": 6787,
+     "measured": true,
+     "length": 2.9943282982743145,
+     "mid": 5.25047492814727
+    },
+    {
+     "horizontal": true,
+     "coord": 6.747639077284427,
+     "std": 0.010963113469972315,
+     "n": 20321,
+     "measured": true,
+     "length": 3.067999458336418,
+     "mid": 0.46181605479904264
+    },
+    {
+     "horizontal": false,
+     "coord": 1.9958157839672517,
+     "std": 0.007909307401895474,
+     "n": 7855,
+     "measured": true,
+     "length": 1.7790870261751621,
+     "mid": 5.858095564196846
+    },
+    {
+     "horizontal": true,
+     "coord": 4.968552051109265,
+     "std": 0.00969003161100713,
+     "n": 5632,
+     "measured": true,
+     "length": 0.7517067823688925,
+     "mid": 2.371669175151698
+    },
+    {
+     "horizontal": false,
+     "coord": 2.7475225663361442,
+     "std": 0.01015507683515678,
+     "n": 13032,
+     "measured": true,
+     "length": 0.14732582524677884,
+     "mid": 4.894889138485876
+    },
+    {
+     "horizontal": true,
+     "coord": 4.821226225862486,
+     "std": 0.01065723749444485,
+     "n": 14518,
+     "measured": true,
+     "length": 0.1514227907649306,
+     "mid": 2.8232339617186097
+    },
+    {
+     "horizontal": false,
+     "coord": 2.898945357101075,
+     "std": 0.010703264600662999,
+     "n": 10078,
+     "measured": true,
+     "length": 0.20537248865165303,
+     "mid": 4.923912470188313
+    },
+    {
+     "horizontal": true,
+     "coord": 5.026598714514139,
+     "std": 0.01074015256589251,
+     "n": 8895,
+     "measured": true,
+     "length": 2.185179312261131,
+     "mid": 3.9915350132316405
+    },
+    {
+     "horizontal": false,
+     "coord": 5.084124669362206,
+     "std": 0.007943760977521332,
+     "n": 9577,
+     "measured": true,
+     "length": 0.05804666340487419,
+     "mid": 4.997575382811702
+    },
+    {
+     "horizontal": true,
+     "coord": 4.968552051109265,
+     "std": 0.00969003161100713,
+     "n": 5632,
+     "measured": true,
+     "length": 0.24809832836943357,
+     "mid": 4.960075505177489
+    },
+    {
+     "horizontal": false,
+     "coord": 4.836026340992772,
+     "std": 0.010931229125621375,
+     "n": 17127,
+     "measured": true,
+     "length": 0.14732582524677884,
+     "mid": 4.894889138485876
+    },
+    {
+     "horizontal": true,
+     "coord": 4.821226225862486,
+     "std": 0.01065723749444485,
+     "n": 14518,
+     "measured": true,
+     "length": 1.177044837813186,
+     "mid": 4.247503922086179
+    },
+    {
+     "horizontal": false,
+     "coord": 3.6589815031795863,
+     "std": 0.010608255579851714,
+     "n": 4340,
+     "measured": true,
+     "length": 0.9284552761985658,
+     "mid": 4.356998587763203
+    },
+    {
+     "horizontal": true,
+     "coord": 3.8927709496639205,
+     "std": 0.006876476318724854,
+     "n": 5350,
+     "measured": true,
+     "length": 0.7600361460785114,
+     "mid": 3.2789634301403305
+    },
+    {
+     "horizontal": false,
+     "coord": 2.898945357101075,
+     "std": 0.010703264600662999,
+     "n": 10078,
+     "measured": true,
+     "length": 0.13946017065380767,
+     "mid": 3.823040864337017
+    },
+    {
+     "horizontal": true,
+     "coord": 3.753310779010113,
+     "std": 0.010033297706217024,
+     "n": 21453,
+     "measured": true,
+     "length": 3.971129031470241,
+     "mid": 0.9133808413659542
+    }
+   ],
+   "features": {
+    "area": 11.379693433369924,
+    "inscribed_width": 3.0,
+    "long": 6.156308343731372,
+    "short": 2.9943282982743145,
+    "elongation": 2.055989768149125,
+    "floor_seen": 0.7499215891270257,
+    "walked": 0.29656734622756575,
+    "n_openings": 3,
+    "degree": 3,
+    "floor_below_level_pts": 0
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {
+    "desk": 2,
+    "television": 3,
+    "office chair": 1
+   },
+   "name": "Room 2"
+  },
+  {
+   "id": "R4",
+   "polygon": [
+    [
+     -1.0722,
+     3.6678
+    ],
+    [
+     0.8564,
+     3.6678
+    ],
+    [
+     0.8564,
+     3.7533
+    ],
+    [
+     2.8989,
+     3.7533
+    ],
+    [
+     2.8989,
+     3.8928
+    ],
+    [
+     3.659,
+     3.8928
+    ],
+    [
+     3.659,
+     3.6678
+    ],
+    [
+     2.8989,
+     3.6678
+    ],
+    [
+     2.8989,
+     3.5689
+    ],
+    [
+     0.2289,
+     3.5689
+    ],
+    [
+     0.2289,
+     2.069
+    ],
+    [
+     -1.0722,
+     2.069
+    ]
+   ],
+   "area_m2": {
+    "value": 2.69,
+    "ci95": 0.03
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 1.3011,
+     "ci95_m": 0.0174,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 4.7312,
+     "ci95_m": 0.0249,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 1.5988,
+     "ci95_m": 0.0178,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 1.8238,
+     "ci95_m": 0.0182,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 3.6678250433784725,
+     "std": 0.009697362415375273,
+     "n": 16885,
+     "measured": true,
+     "length": 1.928573311003765,
+     "mid": -0.10789701886728387
+    },
+    {
+     "horizontal": false,
+     "coord": 0.8563896366345987,
+     "std": 0.010403452150391275,
+     "n": 4225,
+     "measured": true,
+     "length": 0.0854857356316403,
+     "mid": 3.7105679111942926
+    },
+    {
+     "horizontal": true,
+     "coord": 3.753310779010113,
+     "std": 0.010033297706217024,
+     "n": 21453,
+     "measured": true,
+     "length": 2.042555720466476,
+     "mid": 1.8776674968678368
+    },
+    {
+     "horizontal": false,
+     "coord": 2.898945357101075,
+     "std": 0.010703264600662999,
+     "n": 10078,
+     "measured": true,
+     "length": 0.13946017065380767,
+     "mid": 3.823040864337017
+    },
+    {
+     "horizontal": true,
+     "coord": 3.8927709496639205,
+     "std": 0.006876476318724854,
+     "n": 5350,
+     "measured": true,
+     "length": 0.7600361460785114,
+     "mid": 3.2789634301403305
+    },
+    {
+     "horizontal": false,
+     "coord": 3.6589815031795863,
+     "std": 0.010608255579851714,
+     "n": 4340,
+     "measured": true,
+     "length": 0.22494590628544797,
+     "mid": 3.7802979965211962
+    },
+    {
+     "horizontal": true,
+     "coord": 3.6678250433784725,
+     "std": 0.009697362415375273,
+     "n": 16885,
+     "measured": true,
+     "length": 0.7600361460785114,
+     "mid": 3.2789634301403305
+    },
+    {
+     "horizontal": false,
+     "coord": 2.898945357101075,
+     "std": 0.010703264600662999,
+     "n": 10078,
+     "measured": true,
+     "length": 0.09890950668038645,
+     "mid": 3.6183702900382793
+    },
+    {
+     "horizontal": true,
+     "coord": 3.568915536698086,
+     "std": 0.011045212533602035,
+     "n": 21060,
+     "measured": true,
+     "length": 2.6700350597512594,
+     "mid": 1.563927827225445
+    },
+    {
+     "horizontal": false,
+     "coord": 0.22891029734981538,
+     "std": 0.011608867736099437,
+     "n": 7205,
+     "measured": true,
+     "length": 1.4999004272705831,
+     "mid": 2.8189653230627947
+    },
+    {
+     "horizontal": true,
+     "coord": 2.069015109427503,
+     "std": 0.011628230334305477,
+     "n": 2141,
+     "measured": true,
+     "length": 1.3010939717189818,
+     "mid": -0.4216366885096755
+    },
+    {
+     "horizontal": false,
+     "coord": -1.0721836743691664,
+     "std": 0.007904848271617993,
+     "n": 6787,
+     "measured": true,
+     "length": 1.5988099339509696,
+     "mid": 2.8684200764029875
+    }
+   ],
+   "features": {
+    "area": 2.689870215589385,
+    "inscribed_width": 1.3199999332427979,
+    "long": 4.826734871465983,
+    "short": 1.6698339817844354,
+    "elongation": 2.8905477575129876,
+    "floor_seen": 0.7596609682516879,
+    "walked": 0.0,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 0
+   },
+   "type": "Corridor",
+   "type_reason": "narrow (1.32 m) and elongated (2.9:1)",
+   "fixtures": {
+    "television": 1,
+    "desk": 1
+   },
+   "name": "Corridor"
+  },
+  {
+   "id": "R5",
+   "polygon": [
+    [
+     5.0841,
+     5.0266
+    ],
+    [
+     5.2511,
+     5.0266
+    ],
+    [
+     5.2511,
+     6.2495
+    ],
+    [
+     8.5929,
+     6.2495
+    ],
+    [
+     8.5929,
+     3.9525
+    ],
+    [
+     9.0693,
+     3.9525
+    ],
+    [
+     9.0693,
+     2.8408
+    ],
+    [
+     5.0841,
+     2.8408
+    ]
+   ],
+   "area_m2": {
+    "value": 12.286,
+    "ci95": 0.104
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.5088,
+     "ci95_m": 0.0216,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.9852,
+     "ci95_m": 0.0228,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.4087,
+     "ci95_m": 0.0214,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 3.4087,
+     "ci95_m": 0.0214,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 5.026598714514139,
+     "std": 0.01074015256589251,
+     "n": 8895,
+     "measured": true,
+     "length": 0.16694980743461585,
+     "mid": 5.167599573079514
+    },
+    {
+     "horizontal": false,
+     "coord": 5.251074476796822,
+     "std": 0.010605096869581861,
+     "n": 8733,
+     "measured": true,
+     "length": 1.2229008068097302,
+     "mid": 5.638049117919005
+    },
+    {
+     "horizontal": true,
+     "coord": 6.2494995213238695,
+     "std": 0.011756977578725285,
+     "n": 3906,
+     "measured": true,
+     "length": 3.341824935887127,
+     "mid": 6.921986944740385
+    },
+    {
+     "horizontal": false,
+     "coord": 8.592899412683948,
+     "std": 0.008747506951412335,
+     "n": 15571,
+     "measured": true,
+     "length": 2.2969935806437594,
+     "mid": 5.10100273100199
+    },
+    {
+     "horizontal": true,
+     "coord": 3.95250594068011,
+     "std": 0.01089620878677898,
+     "n": 2207,
+     "measured": true,
+     "length": 0.47637997517174746,
+     "mid": 8.831089400269821
+    },
+    {
+     "horizontal": false,
+     "coord": 9.069279387855696,
+     "std": 0.010476056958263218,
+     "n": 7841,
+     "measured": true,
+     "length": 1.1116993126892516,
+     "mid": 3.396656284335484
+    },
+    {
+     "horizontal": true,
+     "coord": 2.8408066279908586,
+     "std": 0.010495349477352001,
+     "n": 21353,
+     "measured": true,
+     "length": 3.98515471849349,
+     "mid": 7.076702028608951
+    },
+    {
+     "horizontal": false,
+     "coord": 5.084124669362206,
+     "std": 0.007943760977521332,
+     "n": 9577,
+     "measured": true,
+     "length": 2.1857920865232807,
+     "mid": 3.933702671252499
+    }
+   ],
+   "features": {
+    "area": 12.285763768636016,
+    "inscribed_width": 3.43999981880188,
+    "long": 3.98515471849349,
+    "short": 3.408692893333011,
+    "elongation": 1.1691152131328606,
+    "floor_seen": 0.5226850963076726,
+    "walked": 0.24438471875599924,
+    "n_openings": 1,
+    "degree": 1,
+    "floor_below_level_pts": 5719
+   },
+   "type": "Stairs",
+   "type_reason": "Stairs 4.0",
+   "fixtures": {},
+   "name": "Stairs"
+  },
+  {
+   "id": "R6",
+   "polygon": [
+    [
+     0.5375,
+     0.7891
+    ],
+    [
+     0.5375,
+     2.069
+    ],
+    [
+     0.2289,
+     2.069
+    ],
+    [
+     0.2289,
+     3.5689
+    ],
+    [
+     2.8989,
+     3.5689
+    ],
+    [
+     2.8989,
+     3.6678
+    ],
+    [
+     3.659,
+     3.6678
+    ],
+    [
+     3.659,
+     4.8212
+    ],
+    [
+     4.836,
+     4.8212
+    ],
+    [
+     4.836,
+     4.9686
+    ],
+    [
+     5.0841,
+     4.9686
+    ],
+    [
+     5.0841,
+     2.8408
+    ],
+    [
+     4.5527,
+     2.8408
+    ],
+    [
+     4.5527,
+     0.7891
+    ]
+   ],
+   "area_m2": {
+    "value": 13.908,
+    "ci95": 0.106
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 4.8552,
+     "ci95_m": 0.0253,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 4.8552,
+     "ci95_m": 0.0253,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 2.7798,
+     "ci95_m": 0.0199,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 4.1794,
+     "ci95_m": 0.0234,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": 0.5374654173667834,
+     "std": 0.01123180373835896,
+     "n": 4140,
+     "measured": true,
+     "length": 1.2799021993959339,
+     "mid": 1.429064009729536
+    },
+    {
+     "horizontal": true,
+     "coord": 2.069015109427503,
+     "std": 0.011628230334305477,
+     "n": 2141,
+     "measured": true,
+     "length": 0.30855512001696805,
+     "mid": 0.3831878573582994
+    },
+    {
+     "horizontal": false,
+     "coord": 0.22891029734981538,
+     "std": 0.011608867736099437,
+     "n": 7205,
+     "measured": true,
+     "length": 1.4999004272705831,
+     "mid": 2.8189653230627947
+    },
+    {
+     "horizontal": true,
+     "coord": 3.568915536698086,
+     "std": 0.011045212533602035,
+     "n": 21060,
+     "measured": true,
+     "length": 2.6700350597512594,
+     "mid": 1.563927827225445
+    },
+    {
+     "horizontal": false,
+     "coord": 2.898945357101075,
+     "std": 0.010703264600662999,
+     "n": 10078,
+     "measured": true,
+     "length": 0.09890950668038645,
+     "mid": 3.6183702900382793
+    },
+    {
+     "horizontal": true,
+     "coord": 3.6678250433784725,
+     "std": 0.009697362415375273,
+     "n": 16885,
+     "measured": true,
+     "length": 0.7600361460785114,
+     "mid": 3.2789634301403305
+    },
+    {
+     "horizontal": false,
+     "coord": 3.6589815031795863,
+     "std": 0.010608255579851714,
+     "n": 4340,
+     "measured": true,
+     "length": 1.1534011824840138,
+     "mid": 4.244525634620479
+    },
+    {
+     "horizontal": true,
+     "coord": 4.821226225862486,
+     "std": 0.01065723749444485,
+     "n": 14518,
+     "measured": true,
+     "length": 1.177044837813186,
+     "mid": 4.247503922086179
+    },
+    {
+     "horizontal": false,
+     "coord": 4.836026340992772,
+     "std": 0.010931229125621375,
+     "n": 17127,
+     "measured": true,
+     "length": 0.14732582524677884,
+     "mid": 4.894889138485876
+    },
+    {
+     "horizontal": true,
+     "coord": 4.968552051109265,
+     "std": 0.00969003161100713,
+     "n": 5632,
+     "measured": true,
+     "length": 0.24809832836943357,
+     "mid": 4.960075505177489
+    },
+    {
+     "horizontal": false,
+     "coord": 5.084124669362206,
+     "std": 0.007943760977521332,
+     "n": 9577,
+     "measured": true,
+     "length": 2.1277454231184065,
+     "mid": 3.9046793395500616
+    },
+    {
+     "horizontal": true,
+     "coord": 2.8408066279908586,
+     "std": 0.010495349477352001,
+     "n": 21353,
+     "measured": true,
+     "length": 0.5314419491916604,
+     "mid": 4.818403694766376
+    },
+    {
+     "horizontal": false,
+     "coord": 4.552682720170545,
+     "std": 0.01109028245709492,
+     "n": 9298,
+     "measured": true,
+     "length": 2.0516937179592896,
+     "mid": 1.8149597690112138
+    },
+    {
+     "horizontal": true,
+     "coord": 0.7891129100315691,
+     "std": 0.007405576284546914,
+     "n": 17306,
+     "measured": true,
+     "length": 4.015217302803762,
+     "mid": 2.545074068768664
+    }
+   ],
+   "features": {
+    "area": 13.907709290825256,
+    "inscribed_width": 2.8623876571655273,
+    "long": 4.855214372012391,
+    "short": 4.179439141077696,
+    "elongation": 1.1616904106325716,
+    "floor_seen": 0.9165622864951036,
+    "walked": 0.4404463675700296,
+    "n_openings": 3,
+    "degree": 3,
+    "floor_below_level_pts": 0
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {
+    "desk": 2,
+    "dining table": 1,
+    "office chair": 1
+   },
+   "name": "Room 3"
+  },
+  {
+   "id": "R7",
+   "polygon": [
+    [
+     -0.2874,
+     0.7891
+    ],
+    [
+     4.4006,
+     0.7891
+    ],
+    [
+     4.4006,
+     0.6515
+    ],
+    [
+     4.3361,
+     0.6515
+    ],
+    [
+     4.3361,
+     -0.3831
+    ],
+    [
+     2.6019,
+     -0.3831
+    ],
+    [
+     2.6019,
+     -2.8227
+    ],
+    [
+     -0.2874,
+     -2.8227
+    ]
+   ],
+   "area_m2": {
+    "value": 12.477,
+    "ci95": 0.1
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 2.8893,
+     "ci95_m": 0.0201,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 4.688,
+     "ci95_m": 0.0248,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.6118,
+     "ci95_m": 0.0219,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 3.6118,
+     "ci95_m": 0.0219,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 0.7891129100315691,
+     "std": 0.007405576284546914,
+     "n": 17306,
+     "measured": true,
+     "length": 4.6879608963543244,
+     "mid": 2.0566166617335835
+    },
+    {
+     "horizontal": false,
+     "coord": 4.400597109910746,
+     "std": 0.010931775845903786,
+     "n": 7083,
+     "measured": true,
+     "length": 0.13766036953693894,
+     "mid": 0.7202827252630997
+    },
+    {
+     "horizontal": true,
+     "coord": 0.6514525404946302,
+     "std": 0.009079168068050841,
+     "n": 15280,
+     "measured": true,
+     "length": 0.06448262936057336,
+     "mid": 4.368355795230459
+    },
+    {
+     "horizontal": false,
+     "coord": 4.336114480550172,
+     "std": 0.010055133822836014,
+     "n": 5117,
+     "measured": true,
+     "length": 1.0345602602540824,
+     "mid": 0.13417241036758898
+    },
+    {
+     "horizontal": true,
+     "coord": -0.38310771975945224,
+     "std": 0.008167207554230756,
+     "n": 4623,
+     "measured": true,
+     "length": 1.7342141594123355,
+     "mid": 3.4690074008440046
+    },
+    {
+     "horizontal": false,
+     "coord": 2.601900321137837,
+     "std": 0.010985949636934509,
+     "n": 7693,
+     "measured": true,
+     "length": 2.439549928541882,
+     "mid": -1.6028826840303934
+    },
+    {
+     "horizontal": true,
+     "coord": -2.8226576483013344,
+     "std": 0.01108209153063245,
+     "n": 6646,
+     "measured": true,
+     "length": 2.889264107581415,
+     "mid": 1.1572682673471293
+    },
+    {
+     "horizontal": false,
+     "coord": -0.2873637864435783,
+     "std": 0.010495079200957954,
+     "n": 7841,
+     "measured": true,
+     "length": 3.6117705583329034,
+     "mid": -1.0167723691348827
+    }
+   ],
+   "features": {
+    "area": 12.47711735573587,
+    "inscribed_width": 2.919999837875366,
+    "long": 4.6879608963543244,
+    "short": 3.6117705583329034,
+    "elongation": 1.2979675260762304,
+    "floor_seen": 0.5872162862742619,
+    "walked": 0.3315736233166846,
+    "n_openings": 1,
+    "degree": 1,
+    "floor_below_level_pts": 0
+   },
+   "type": "Living / Kitchen",
+   "type_reason": "open plan: Living 6.0, Kitchen 5.0",
+   "fixtures": {
+    "sofa": 2,
+    "refrigerator": 2,
+    "toilet": 1,
+    "sink": 1,
+    "desk": 1,
+    "bathtub": 1
+   },
+   "name": "Living / Kitchen"
+  },
+  {
+   "id": "R8",
+   "polygon": [
+    [
+     4.3361,
+     -0.3831
+    ],
+    [
+     4.3361,
+     0.6515
+    ],
+    [
+     4.4006,
+     0.6515
+    ],
+    [
+     4.4006,
+     0.7891
+    ],
+    [
+     4.5527,
+     0.7891
+    ],
+    [
+     4.5527,
+     2.8408
+    ],
+    [
+     4.836,
+     2.8408
+    ],
+    [
+     4.836,
+     0.3702
+    ],
+    [
+     4.6995,
+     0.3702
+    ],
+    [
+     4.6995,
+     -0.3091
+    ],
+    [
+     5.6047,
+     -0.3091
+    ],
+    [
+     5.6047,
+     -2.8227
+    ],
+    [
+     5.2511,
+     -2.8227
+    ],
+    [
+     5.2511,
+     -2.9219
+    ],
+    [
+     4.4006,
+     -2.9219
+    ],
+    [
+     4.4006,
+     -3.5517
+    ],
+    [
+     3.659,
+     -3.5517
+    ],
+    [
+     3.659,
+     -0.3831
+    ]
+   ],
+   "area_m2": {
+    "value": 6.494,
+    "ci95": 0.13
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 1.9457,
+     "ci95_m": 0.0183,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 1.9457,
+     "ci95_m": 0.0183,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 2.6127,
+     "ci95_m": 0.0196,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 6.3925,
+     "ci95_m": 0.1132,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": 4.336114480550172,
+     "std": 0.010055133822836014,
+     "n": 5117,
+     "measured": true,
+     "length": 1.0345602602540824,
+     "mid": 0.13417241036758898
+    },
+    {
+     "horizontal": true,
+     "coord": 0.6514525404946302,
+     "std": 0.009079168068050841,
+     "n": 15280,
+     "measured": true,
+     "length": 0.06448262936057336,
+     "mid": 4.368355795230459
+    },
+    {
+     "horizontal": false,
+     "coord": 4.400597109910746,
+     "std": 0.010931775845903786,
+     "n": 7083,
+     "measured": true,
+     "length": 0.13766036953693894,
+     "mid": 0.7202827252630997
+    },
+    {
+     "horizontal": true,
+     "coord": 0.7891129100315691,
+     "std": 0.007405576284546914,
+     "n": 17306,
+     "measured": true,
+     "length": 0.1520856102597996,
+     "mid": 4.4766399150406455
+    },
+    {
+     "horizontal": false,
+     "coord": 4.552682720170545,
+     "std": 0.01109028245709492,
+     "n": 9298,
+     "measured": true,
+     "length": 2.0516937179592896,
+     "mid": 1.8149597690112138
+    },
+    {
+     "horizontal": true,
+     "coord": 2.8408066279908586,
+     "std": 0.010495349477352001,
+     "n": 21353,
+     "measured": true,
+     "length": 0.28334362082222686,
+     "mid": 4.694354530581659
+    },
+    {
+     "horizontal": false,
+     "coord": 4.836026340992772,
+     "std": 0.010931229125621375,
+     "n": 17127,
+     "measured": true,
+     "length": 2.4705951688323595,
+     "mid": 1.6055090435746788
+    },
+    {
+     "horizontal": true,
+     "coord": 0.37021145915849896,
+     "std": 0.011466479995683003,
+     "n": 4087,
+     "measured": true,
+     "length": 0.13657565235367652,
+     "mid": 4.7677385148159335
+    },
+    {
+     "horizontal": false,
+     "coord": 4.699450688639096,
+     "std": 0.010096599710576786,
+     "n": 6392,
+     "measured": true,
+     "length": 0.6793398701339557,
+     "mid": 0.03054152409152111
+    },
+    {
+     "horizontal": true,
+     "coord": -0.30912841097545674,
+     "std": 0.01118325499687918,
+     "n": 6168,
+     "measured": true,
+     "length": 0.9052285957687909,
+     "mid": 5.1520649865234915
+    },
+    {
+     "horizontal": false,
+     "coord": 5.6046792844078865,
+     "std": 0.011093921269230879,
+     "n": 5630,
+     "measured": true,
+     "length": 2.5135292373258777,
+     "mid": -1.5658930296383955
+    },
+    {
+     "horizontal": true,
+     "coord": -2.8226576483013344,
+     "std": 0.01108209153063245,
+     "n": 6646,
+     "measured": true,
+     "length": 0.35360480761106494,
+     "mid": 5.427876880602354
+    },
+    {
+     "horizontal": false,
+     "coord": 5.251074476796822,
+     "std": 0.010605096869581861,
+     "n": 8733,
+     "measured": true,
+     "length": 0.09919850862723889,
+     "mid": -2.8722569026149536
+    },
+    {
+     "horizontal": true,
+     "coord": -2.9218561569285733,
+     "std": 0.01086182610170496,
+     "n": 5410,
+     "measured": true,
+     "length": 0.8504773668860759,
+     "mid": 4.825835793353784
+    },
+    {
+     "horizontal": false,
+     "coord": 4.400597109910746,
+     "std": 0.010931775845903786,
+     "n": 7083,
+     "measured": true,
+     "length": 0.629797700372742,
+     "mid": -3.2367550071149442
+    },
+    {
+     "horizontal": true,
+     "coord": -3.551653857301315,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 0.7416156067311594,
+     "mid": 4.029789306545166
+    },
+    {
+     "horizontal": false,
+     "coord": 3.6589815031795863,
+     "std": 0.010608255579851714,
+     "n": 4340,
+     "measured": true,
+     "length": 3.168546137541863,
+     "mid": -1.9673807885303838
+    },
+    {
+     "horizontal": true,
+     "coord": -0.38310771975945224,
+     "std": 0.008167207554230756,
+     "n": 4623,
+     "measured": true,
+     "length": 0.6771329773705861,
+     "mid": 3.997547991864879
+    }
+   ],
+   "features": {
+    "area": 6.494175683099719,
+    "inscribed_width": 2.0,
+    "long": 6.392460485292174,
+    "short": 1.9456977812283007,
+    "elongation": 3.2854334043885656,
+    "floor_seen": 0.8418818747011,
+    "walked": 0.25944524151123866,
+    "n_openings": 0,
+    "degree": 0,
+    "floor_below_level_pts": 0
+   },
+   "type": "Bathroom",
+   "type_reason": "Bathroom 3.0, Kitchen 2.0",
+   "fixtures": {
+    "toilet": 1,
+    "refrigerator": 1
+   },
+   "name": "Bathroom 2"
+  }
+ ],
+ "openings": [
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": -1.0722,
+   "span": [
+    5.0266,
+    6.2495
+   ],
+   "width_m": {
+    "value": 1.2229,
+    "ci95": 0.0222
+   },
+   "walked_through": false,
+   "rooms": [
+    "R2",
+    "R3"
+   ],
+   "id": "O1"
+  },
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": 3.659,
+   "span": [
+    3.8928,
+    4.8212
+   ],
+   "width_m": {
+    "value": 0.9285,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R3",
+    "R6"
+   ],
+   "id": "O2"
+  },
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": 5.0841,
+   "span": [
+    2.8408,
+    3.9525
+   ],
+   "width_m": {
+    "value": 1.1117,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R5",
+    "R6"
+   ],
+   "id": "O3"
+  },
+  {
+   "type": "door",
+   "axis": "u",
+   "wall_coord": 0.7891,
+   "span": [
+    3.9005,
+    4.4006
+   ],
+   "width_m": {
+    "value": 0.5001,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R6",
+    "R7"
+   ],
+   "id": "O4"
+  },
+  {
+   "type": "door",
+   "axis": "u",
+   "wall_coord": 5.0266,
+   "span": [
+    2.8989,
+    3.5315
+   ],
+   "width_m": {
+    "value": 0.6325,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R1",
+    "R3"
+   ],
+   "id": "O5"
+  },
+  {
+   "type": "window",
+   "axis": "v",
+   "wall_coord": -0.2874,
+   "span": [
+    -1.3185,
+    0.0815
+   ],
+   "width_m": {
+    "value": 1.4,
+    "ci95": 0.0392
+   },
+   "sill_height_m": 0.842,
+   "rooms": [
+    "R7"
+   ],
+   "id": "O6"
+  }
+ ],
+ "adjacency": [
+  [
+   "R1",
+   "R3"
+  ],
+  [
+   "R2",
+   "R3"
+  ],
+  [
+   "R3",
+   "R6"
+  ],
+  [
+   "R5",
+   "R6"
+  ],
+  [
+   "R6",
+   "R7"
+  ]
+ ],
+ "footprint_m2": 68.894,
+ "wall_faces": [
+  {
+   "axis": "u",
+   "coord": -2.9219,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.075,
+     5.175
+    ]
+   ],
+   "std_m": 0.0109,
+   "n": 5410,
+   "solid_length_m": 1.1
+  },
+  {
+   "axis": "u",
+   "coord": -2.8227,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.461,
+     5.661
+    ]
+   ],
+   "std_m": 0.0111,
+   "n": 6646,
+   "solid_length_m": 1.2
+  },
+  {
+   "axis": "u",
+   "coord": -0.3831,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.976,
+     4.026
+    ]
+   ],
+   "std_m": 0.0082,
+   "n": 4623,
+   "solid_length_m": 1.05
+  },
+  {
+   "axis": "u",
+   "coord": 0.6587,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.229,
+     3.829
+    ]
+   ],
+   "std_m": 0.0103,
+   "n": 7888,
+   "solid_length_m": 1.6
+  },
+  {
+   "axis": "u",
+   "coord": 0.7891,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     0.5,
+     3.9
+    ]
+   ],
+   "std_m": 0.0074,
+   "n": 17306,
+   "solid_length_m": 3.4
+  },
+  {
+   "axis": "u",
+   "coord": 2.069,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     0.072,
+     0.672
+    ]
+   ],
+   "std_m": 0.0116,
+   "n": 2141,
+   "solid_length_m": 0.6
+  },
+  {
+   "axis": "u",
+   "coord": 2.7014,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.708,
+     6.608
+    ],
+    [
+     6.908,
+     8.958
+    ]
+   ],
+   "std_m": 0.0103,
+   "n": 26609,
+   "solid_length_m": 3.95
+  },
+  {
+   "axis": "u",
+   "coord": 2.8408,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.795,
+     9.095
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 21353,
+   "solid_length_m": 4.3
+  },
+  {
+   "axis": "u",
+   "coord": 3.6777,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -0.538,
+     -0.188
+    ],
+    [
+     0.062,
+     2.662
+    ]
+   ],
+   "std_m": 0.0097,
+   "n": 16885,
+   "solid_length_m": 2.95
+  },
+  {
+   "axis": "u",
+   "coord": 3.7533,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -1.044,
+     2.906
+    ]
+   ],
+   "std_m": 0.01,
+   "n": 21453,
+   "solid_length_m": 3.95
+  },
+  {
+   "axis": "u",
+   "coord": 3.8928,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.748,
+     3.798
+    ]
+   ],
+   "std_m": 0.0069,
+   "n": 5350,
+   "solid_length_m": 1.05
+  },
+  {
+   "axis": "u",
+   "coord": 4.9686,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.141,
+     5.091
+    ]
+   ],
+   "std_m": 0.0097,
+   "n": 5632,
+   "solid_length_m": 0.95
+  },
+  {
+   "axis": "u",
+   "coord": -0.3091,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     4.676,
+     5.726
+    ]
+   ],
+   "std_m": 0.0112,
+   "n": 6168,
+   "solid_length_m": 1.05
+  },
+  {
+   "axis": "u",
+   "coord": -0.0231,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.211,
+     0.911
+    ]
+   ],
+   "std_m": 0.01,
+   "n": 4393,
+   "solid_length_m": 0.7
+  },
+  {
+   "axis": "u",
+   "coord": 0.3702,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     1.031,
+     2.431
+    ]
+   ],
+   "std_m": 0.0115,
+   "n": 4087,
+   "solid_length_m": 1.4
+  },
+  {
+   "axis": "u",
+   "coord": 0.6474,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.032,
+     0.282
+    ],
+    [
+     0.882,
+     3.482
+    ]
+   ],
+   "std_m": 0.0091,
+   "n": 15280,
+   "solid_length_m": 2.85
+  },
+  {
+   "axis": "u",
+   "coord": 3.5689,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.209,
+     3.109
+    ]
+   ],
+   "std_m": 0.011,
+   "n": 21060,
+   "solid_length_m": 2.9
+  },
+  {
+   "axis": "u",
+   "coord": 3.6576,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -1.175,
+     1.075
+    ],
+    [
+     2.975,
+     3.575
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 13451,
+   "solid_length_m": 2.85
+  },
+  {
+   "axis": "u",
+   "coord": 3.9525,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     8.557,
+     9.007
+    ]
+   ],
+   "std_m": 0.0109,
+   "n": 2207,
+   "solid_length_m": 0.45
+  },
+  {
+   "axis": "u",
+   "coord": 4.8212,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     1.879,
+     2.929
+    ],
+    [
+     3.629,
+     4.679
+    ]
+   ],
+   "std_m": 0.0107,
+   "n": 14518,
+   "solid_length_m": 2.1
+  },
+  {
+   "axis": "u",
+   "coord": 5.0266,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     3.531,
+     5.131
+    ]
+   ],
+   "std_m": 0.0107,
+   "n": 8895,
+   "solid_length_m": 1.6
+  },
+  {
+   "axis": "u",
+   "coord": 6.2495,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     4.388,
+     5.088
+    ]
+   ],
+   "std_m": 0.0118,
+   "n": 3906,
+   "solid_length_m": 0.7
+  },
+  {
+   "axis": "u",
+   "coord": 6.6272,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     7.236,
+     8.586
+    ]
+   ],
+   "std_m": 0.0096,
+   "n": 8588,
+   "solid_length_m": 1.35
+  },
+  {
+   "axis": "u",
+   "coord": 6.7476,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -3.664,
+     -2.264
+    ],
+    [
+     -1.114,
+     1.036
+    ],
+    [
+     1.686,
+     2.036
+    ]
+   ],
+   "std_m": 0.011,
+   "n": 20321,
+   "solid_length_m": 3.9
+  },
+  {
+   "axis": "v",
+   "coord": -1.0722,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     3.629,
+     5.029
+    ],
+    [
+     6.429,
+     6.779
+    ]
+   ],
+   "std_m": 0.0079,
+   "n": 6787,
+   "solid_length_m": 1.75
+  },
+  {
+   "axis": "v",
+   "coord": -0.2874,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -2.368,
+     -1.318
+    ],
+    [
+     0.082,
+     1.182
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 7841,
+   "solid_length_m": 2.15
+  },
+  {
+   "axis": "v",
+   "coord": 0.0083,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -1.521,
+     0.679
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 12750,
+   "solid_length_m": 2.2
+  },
+  {
+   "axis": "v",
+   "coord": 0.2289,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.144,
+     3.544
+    ]
+   ],
+   "std_m": 0.0116,
+   "n": 7205,
+   "solid_length_m": 1.4
+  },
+  {
+   "axis": "v",
+   "coord": 0.5375,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     0.776,
+     2.026
+    ]
+   ],
+   "std_m": 0.0112,
+   "n": 4140,
+   "solid_length_m": 1.25
+  },
+  {
+   "axis": "v",
+   "coord": 0.8564,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -0.036,
+     0.614
+    ]
+   ],
+   "std_m": 0.0104,
+   "n": 4225,
+   "solid_length_m": 0.65
+  },
+  {
+   "axis": "v",
+   "coord": 2.7475,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.747,
+     5.247
+    ],
+    [
+     5.697,
+     6.597
+    ],
+    [
+     6.897,
+     7.947
+    ]
+   ],
+   "std_m": 0.0102,
+   "n": 13032,
+   "solid_length_m": 2.45
+  },
+  {
+   "axis": "v",
+   "coord": 2.8989,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.794,
+     5.744
+    ],
+    [
+     7.644,
+     8.394
+    ]
+   ],
+   "std_m": 0.0107,
+   "n": 10078,
+   "solid_length_m": 1.7
+  },
+  {
+   "axis": "v",
+   "coord": 3.659,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     3.375,
+     3.775
+    ]
+   ],
+   "std_m": 0.0106,
+   "n": 4340,
+   "solid_length_m": 0.4
+  },
+  {
+   "axis": "v",
+   "coord": 5.2511,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.686,
+     6.086
+    ]
+   ],
+   "std_m": 0.0106,
+   "n": 8733,
+   "solid_length_m": 1.4
+  },
+  {
+   "axis": "v",
+   "coord": 1.9958,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     5.266,
+     6.766
+    ]
+   ],
+   "std_m": 0.0079,
+   "n": 7855,
+   "solid_length_m": 1.5
+  },
+  {
+   "axis": "v",
+   "coord": 2.6019,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -2.509,
+     -0.559
+    ]
+   ],
+   "std_m": 0.011,
+   "n": 7693,
+   "solid_length_m": 1.95
+  },
+  {
+   "axis": "v",
+   "coord": 4.3361,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -0.522,
+     0.678
+    ]
+   ],
+   "std_m": 0.0101,
+   "n": 5117,
+   "solid_length_m": 1.2
+  },
+  {
+   "axis": "v",
+   "coord": 4.4006,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -0.496,
+     0.804
+    ],
+    [
+     6.204,
+     6.554
+    ]
+   ],
+   "std_m": 0.0109,
+   "n": 7083,
+   "solid_length_m": 1.65
+  },
+  {
+   "axis": "v",
+   "coord": 4.5527,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.874,
+     2.924
+    ]
+   ],
+   "std_m": 0.0111,
+   "n": 9298,
+   "solid_length_m": 2.05
+  },
+  {
+   "axis": "v",
+   "coord": 4.6995,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -0.403,
+     0.747
+    ]
+   ],
+   "std_m": 0.0101,
+   "n": 6392,
+   "solid_length_m": 1.15
+  },
+  {
+   "axis": "v",
+   "coord": 4.836,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.451,
+     2.851
+    ]
+   ],
+   "std_m": 0.0109,
+   "n": 17127,
+   "solid_length_m": 2.4
+  },
+  {
+   "axis": "v",
+   "coord": 5.0841,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     4.061,
+     4.611
+    ],
+    [
+     4.911,
+     6.261
+    ]
+   ],
+   "std_m": 0.0079,
+   "n": 9577,
+   "solid_length_m": 1.9
+  },
+  {
+   "axis": "v",
+   "coord": 5.6047,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -2.869,
+     -1.569
+    ]
+   ],
+   "std_m": 0.0111,
+   "n": 5630,
+   "solid_length_m": 1.3
+  },
+  {
+   "axis": "v",
+   "coord": 8.5929,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     3.966,
+     6.616
+    ]
+   ],
+   "std_m": 0.0087,
+   "n": 15571,
+   "solid_length_m": 2.65
+  },
+  {
+   "axis": "v",
+   "coord": 9.0693,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     2.794,
+     3.894
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 7841,
+   "solid_length_m": 1.1
+  }
+ ],
+ "objects": [
+  {
+   "class": "toilet",
+   "uv": [
+    5.322,
+    -0.942
+   ],
+   "views": 12,
+   "conf": 0.96,
+   "frames": [
+    1035,
+    1012,
+    989,
+    575,
+    1127,
+    1104,
+    1081,
+    1058,
+    644,
+    621
+   ],
+   "room": "R8"
+  },
+  {
+   "class": "sofa",
+   "uv": [
+    1.898,
+    -1.734
+   ],
+   "views": 11,
+   "conf": 0.954,
+   "frames": [
+    368,
+    391,
+    345,
+    207,
+    414,
+    230,
+    322,
+    253,
+    276,
+    299
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "sofa",
+   "uv": [
+    0.882,
+    -1.435
+   ],
+   "views": 3,
+   "conf": 0.951,
+   "frames": [
+    184,
+    4807,
+    4945
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "toilet",
+   "uv": [
+    4.01,
+    6.394
+   ],
+   "views": 5,
+   "conf": 0.947,
+   "frames": [
+    2553,
+    2530,
+    2760,
+    2576,
+    2783
+   ],
+   "room": "R1"
+  },
+  {
+   "class": "refrigerator",
+   "uv": [
+    0.873,
+    0.202
+   ],
+   "views": 11,
+   "conf": 0.916,
+   "frames": [
+    5014,
+    5198,
+    4991,
+    4945,
+    4922,
+    4968,
+    4830,
+    4899,
+    5060,
+    4853
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "sink",
+   "uv": [
+    3.131,
+    6.566
+   ],
+   "views": 11,
+   "conf": 0.912,
+   "frames": [
+    2852,
+    2829,
+    2875,
+    2806,
+    2898,
+    2783,
+    2507,
+    2530,
+    2921,
+    2461
+   ],
+   "room": "R1"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    0.84,
+    5.0
+   ],
+   "views": 8,
+   "conf": 0.911,
+   "frames": [
+    3496,
+    3105,
+    3082,
+    2415,
+    2346,
+    2323,
+    2392,
+    2369
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "television",
+   "uv": [
+    1.203,
+    4.72
+   ],
+   "views": 12,
+   "conf": 0.907,
+   "frames": [
+    3496,
+    3082,
+    3565,
+    3105,
+    2346,
+    3013,
+    3036,
+    3473,
+    2415,
+    3542
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "sink",
+   "uv": [
+    3.593,
+    -2.263
+   ],
+   "views": 8,
+   "conf": 0.902,
+   "frames": [
+    759,
+    782,
+    736,
+    713,
+    690,
+    828,
+    851,
+    805
+   ],
+   "room": null
+  },
+  {
+   "class": "refrigerator",
+   "uv": [
+    0.135,
+    0.465
+   ],
+   "views": 7,
+   "conf": 0.902,
+   "frames": [
+    0,
+    46,
+    23,
+    5175,
+    69,
+    5221,
+    5244
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "toilet",
+   "uv": [
+    1.828,
+    -0.982
+   ],
+   "views": 6,
+   "conf": 0.885,
+   "frames": [
+    207,
+    4784,
+    276,
+    322,
+    4784,
+    253
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "bathtub",
+   "uv": [
+    4.885,
+    5.248
+   ],
+   "views": 5,
+   "conf": 0.874,
+   "frames": [
+    2576,
+    2622,
+    2599,
+    2645,
+    2668
+   ],
+   "room": "R1"
+  },
+  {
+   "class": "television",
+   "uv": [
+    -0.199,
+    4.565
+   ],
+   "views": 3,
+   "conf": 0.873,
+   "frames": [
+    3450,
+    3082,
+    3105
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    0.958,
+    4.212
+   ],
+   "views": 7,
+   "conf": 0.853,
+   "frames": [
+    3611,
+    3059,
+    3013,
+    2990,
+    3036,
+    3634,
+    3588
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "television",
+   "uv": [
+    0.404,
+    4.481
+   ],
+   "views": 4,
+   "conf": 0.851,
+   "frames": [
+    3473,
+    3496,
+    3105,
+    3082
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "office chair",
+   "uv": [
+    1.248,
+    4.776
+   ],
+   "views": 6,
+   "conf": 0.824,
+   "frames": [
+    3082,
+    2346,
+    2415,
+    3059,
+    3611,
+    3036
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "sink",
+   "uv": [
+    1.764,
+    -0.793
+   ],
+   "views": 3,
+   "conf": 0.702,
+   "frames": [
+    230,
+    253,
+    276
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "toilet",
+   "uv": [
+    4.919,
+    5.198
+   ],
+   "views": 2,
+   "conf": 0.7,
+   "frames": [
+    2668,
+    2645
+   ],
+   "room": "R1"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    2.943,
+    2.367
+   ],
+   "views": 3,
+   "conf": 0.681,
+   "frames": [
+    3933,
+    2116,
+    1219
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "dining table",
+   "uv": [
+    3.122,
+    2.354
+   ],
+   "views": 6,
+   "conf": 0.639,
+   "frames": [
+    3910,
+    3887,
+    1242,
+    1196,
+    1265,
+    1219
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "refrigerator",
+   "uv": [
+    4.292,
+    -2.881
+   ],
+   "views": 3,
+   "conf": 0.631,
+   "frames": [
+    713,
+    782,
+    759
+   ],
+   "room": "R8"
+  },
+  {
+   "class": "television",
+   "uv": [
+    3.26,
+    3.732
+   ],
+   "views": 4,
+   "conf": 0.624,
+   "frames": [
+    1334,
+    1219,
+    1288,
+    1265
+   ],
+   "room": "R4"
+  },
+  {
+   "class": "television",
+   "uv": [
+    -3.558,
+    4.802
+   ],
+   "views": 2,
+   "conf": 0.596,
+   "frames": [
+    3427,
+    3404
+   ],
+   "room": null
+  },
+  {
+   "class": "office chair",
+   "uv": [
+    3.282,
+    2.251
+   ],
+   "views": 5,
+   "conf": 0.528,
+   "frames": [
+    1196,
+    1242,
+    1288,
+    1219,
+    1265
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    2.604,
+    0.252
+   ],
+   "views": 2,
+   "conf": 0.501,
+   "frames": [
+    4807,
+    4830
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    0.243,
+    2.487
+   ],
+   "views": 3,
+   "conf": 0.443,
+   "frames": [
+    4094,
+    4071,
+    4025
+   ],
+   "room": "R4"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    2.24,
+    2.29
+   ],
+   "views": 2,
+   "conf": 0.438,
+   "frames": [
+    2139,
+    3956
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "bathtub",
+   "uv": [
+    1.948,
+    0.294
+   ],
+   "views": 2,
+   "conf": 0.372,
+   "frames": [
+    4899,
+    4922
+   ],
+   "room": "R7"
+  }
+ ],
+ "timing_s": 126.6,
+ "debug": {
+  "trajectory_uv": [
+   [
+    -0.043,
+    -0.224
+   ],
+   [
+    -0.023,
+    -0.233
+   ],
+   [
+    -0.006,
+    -0.239
+   ],
+   [
+    0.001,
+    -0.243
+   ],
+   [
+    0.003,
+    -0.245
+   ],
+   [
+    -0.001,
+    -0.241
+   ],
+   [
+    0.021,
+    -0.235
+   ],
+   [
+    0.055,
+    -0.234
+   ],
+   [
+    0.073,
+    -0.28
+   ],
+   [
+    0.103,
+    -0.352
+   ],
+   [
+    0.165,
+    -0.442
+   ],
+   [
+    0.259,
+    -0.542
+   ],
+   [
+    0.368,
+    -0.632
+   ],
+   [
+    0.476,
+    -0.703
+   ],
+   [
+    0.536,
+    -0.763
+   ],
+   [
+    0.52,
+    -0.81
+   ],
+   [
+    0.5,
+    -0.857
+   ],
+   [
+    0.542,
+    -0.882
+   ],
+   [
+    0.656,
+    -0.858
+   ],
+   [
+    0.77,
+    -0.757
+   ],
+   [
+    0.861,
+    -0.613
+   ],
+   [
+    0.92,
+    -0.507
+   ],
+   [
+    0.972,
+    -0.438
+   ],
+   [
+    1.031,
+    -0.408
+   ],
+   [
+    1.112,
+    -0.403
+   ],
+   [
+    1.206,
+    -0.415
+   ],
+   [
+    1.306,
+    -0.426
+   ],
+   [
+    1.393,
+    -0.422
+   ],
+   [
+    1.492,
+    -0.414
+   ],
+   [
+    1.584,
+    -0.408
+   ],
+   [
+    1.661,
+    -0.433
+   ],
+   [
+    1.729,
+    -0.472
+   ],
+   [
+    1.812,
+    -0.541
+   ],
+   [
+    1.892,
+    -0.623
+   ],
+   [
+    1.967,
+    -0.689
+   ],
+   [
+    2.043,
+    -0.745
+   ],
+   [
+    2.149,
+    -0.807
+   ],
+   [
+    2.232,
+    -0.872
+   ],
+   [
+    2.289,
+    -0.93
+   ],
+   [
+    2.34,
+    -0.997
+   ],
+   [
+    2.362,
+    -1.082
+   ],
+   [
+    2.372,
+    -1.139
+   ],
+   [
+    2.384,
+    -1.157
+   ],
+   [
+    2.388,
+    -1.109
+   ],
+   [
+    2.386,
+    -0.996
+   ],
+   [
+    2.368,
+    -0.846
+   ],
+   [
+    2.354,
+    -0.691
+   ],
+   [
+    2.343,
+    -0.511
+   ],
+   [
+    2.328,
+    -0.331
+   ],
+   [
+    2.333,
+    -0.192
+   ],
+   [
+    2.374,
+    -0.08
+   ],
+   [
+    2.417,
+    -0.014
+   ],
+   [
+    2.472,
+    0.029
+   ],
+   [
+    2.545,
+    0.066
+   ],
+   [
+    2.633,
+    0.116
+   ],
+   [
+    2.733,
+    0.167
+   ],
+   [
+    2.82,
+    0.212
+   ],
+   [
+    2.91,
+    0.251
+   ],
+   [
+    3.012,
+    0.273
+   ],
+   [
+    3.133,
+    0.285
+   ],
+   [
+    3.243,
+    0.291
+   ],
+   [
+    3.366,
+    0.291
+   ],
+   [
+    3.484,
+    0.278
+   ],
+   [
+    3.579,
+    0.252
+   ],
+   [
+    3.663,
+    0.206
+   ],
+   [
+    3.746,
+    0.137
+   ],
+   [
+    3.826,
+    0.058
+   ],
+   [
+    3.89,
+    -0.003
+   ],
+   [
+    3.956,
+    -0.068
+   ],
+   [
+    4.025,
+    -0.135
+   ],
+   [
+    4.077,
+    -0.208
+   ],
+   [
+    4.099,
+    -0.284
+   ],
+   [
+    4.101,
+    -0.38
+   ],
+   [
+    4.094,
+    -0.511
+   ],
+   [
+    4.092,
+    -0.639
+   ],
+   [
+    4.115,
+    -0.77
+   ],
+   [
+    4.159,
+    -0.899
+   ],
+   [
+    4.207,
+    -1.041
+   ],
+   [
+    4.224,
+    -1.192
+   ],
+   [
+    4.228,
+    -1.338
+   ],
+   [
+    4.228,
+    -1.49
+   ],
+   [
+    4.236,
+    -1.628
+   ],
+   [
+    4.259,
+    -1.762
+   ],
+   [
+    4.27,
+    -1.9
+   ],
+   [
+    4.253,
+    -1.992
+   ],
+   [
+    4.223,
+    -2.074
+   ],
+   [
+    4.191,
+    -2.167
+   ],
+   [
+    4.193,
+    -2.264
+   ],
+   [
+    4.244,
+    -2.312
+   ],
+   [
+    4.331,
+    -2.296
+   ],
+   [
+    4.414,
+    -2.235
+   ],
+   [
+    4.478,
+    -2.155
+   ],
+   [
+    4.517,
+    -2.072
+   ],
+   [
+    4.547,
+    -1.993
+   ],
+   [
+    4.556,
+    -1.942
+   ],
+   [
+    4.561,
+    -1.903
+   ],
+   [
+    4.561,
+    -1.88
+   ],
+   [
+    4.541,
+    -1.838
+   ],
+   [
+    4.488,
+    -1.777
+   ],
+   [
+    4.427,
+    -1.712
+   ],
+   [
+    4.359,
+    -1.629
+   ],
+   [
+    4.308,
+    -1.554
+   ],
+   [
+    4.295,
+    -1.493
+   ],
+   [
+    4.315,
+    -1.43
+   ],
+   [
+    4.358,
+    -1.343
+   ],
+   [
+    4.406,
+    -1.257
+   ],
+   [
+    4.441,
+    -1.18
+   ],
+   [
+    4.474,
+    -1.087
+   ],
+   [
+    4.518,
+    -0.978
+   ],
+   [
+    4.566,
+    -0.886
+   ],
+   [
+    4.614,
+    -0.848
+   ],
+   [
+    4.65,
+    -0.829
+   ],
+   [
+    4.668,
+    -0.817
+   ],
+   [
+    4.669,
+    -0.809
+   ],
+   [
+    4.643,
+    -0.791
+   ],
+   [
+    4.587,
+    -0.776
+   ],
+   [
+    4.51,
+    -0.778
+   ],
+   [
+    4.41,
+    -0.804
+   ],
+   [
+    4.322,
+    -0.848
+   ],
+   [
+    4.251,
+    -0.887
+   ],
+   [
+    4.201,
+    -0.9
+   ],
+   [
+    4.144,
+    -0.883
+   ],
+   [
+    4.088,
+    -0.846
+   ],
+   [
+    4.052,
+    -0.79
+   ],
+   [
+    4.035,
+    -0.711
+   ],
+   [
+    4.016,
+    -0.605
+   ],
+   [
+    3.992,
+    -0.495
+   ],
+   [
+    3.965,
+    -0.397
+   ],
+   [
+    3.947,
+    -0.3
+   ],
+   [
+    3.919,
+    -0.18
+   ],
+   [
+    3.897,
+    -0.069
+   ],
+   [
+    3.893,
+    0.042
+   ],
+   [
+    3.903,
+    0.157
+   ],
+   [
+    3.921,
+    0.293
+   ],
+   [
+    3.933,
+    0.414
+   ],
+   [
+    3.937,
+    0.531
+   ],
+   [
+    3.923,
+    0.676
+   ],
+   [
+    3.907,
+    0.808
+   ],
+   [
+    3.908,
+    0.962
+   ],
+   [
+    3.924,
+    1.13
+   ],
+   [
+    3.934,
+    1.312
+   ],
+   [
+    3.923,
+    1.462
+   ],
+   [
+    3.902,
+    1.637
+   ],
+   [
+    3.903,
+    1.802
+   ],
+   [
+    3.925,
+    1.945
+   ],
+   [
+    3.963,
+    2.09
+   ],
+   [
+    3.997,
+    2.227
+   ],
+   [
+    4.024,
+    2.359
+   ],
+   [
+    4.048,
+    2.499
+   ],
+   [
+    4.081,
+    2.64
+   ],
+   [
+    4.122,
+    2.747
+   ],
+   [
+    4.17,
+    2.83
+   ],
+   [
+    4.236,
+    2.905
+   ],
+   [
+    4.302,
+    2.969
+   ],
+   [
+    4.359,
+    3.025
+   ],
+   [
+    4.416,
+    3.088
+   ],
+   [
+    4.472,
+    3.156
+   ],
+   [
+    4.528,
+    3.232
+   ],
+   [
+    4.581,
+    3.287
+   ],
+   [
+    4.654,
+    3.33
+   ],
+   [
+    4.757,
+    3.343
+   ],
+   [
+    4.889,
+    3.339
+   ],
+   [
+    5.028,
+    3.342
+   ],
+   [
+    5.188,
+    3.358
+   ],
+   [
+    5.358,
+    3.365
+   ],
+   [
+    5.531,
+    3.36
+   ],
+   [
+    5.699,
+    3.343
+   ],
+   [
+    5.895,
+    3.315
+   ],
+   [
+    6.065,
+    3.304
+   ],
+   [
+    6.255,
+    3.311
+   ],
+   [
+    6.437,
+    3.313
+   ],
+   [
+    6.612,
+    3.289
+   ],
+   [
+    6.777,
+    3.247
+   ],
+   [
+    6.942,
+    3.2
+   ],
+   [
+    7.095,
+    3.165
+   ],
+   [
+    7.258,
+    3.148
+   ],
+   [
+    7.432,
+    3.129
+   ],
+   [
+    7.605,
+    3.097
+   ],
+   [
+    7.771,
+    3.062
+   ],
+   [
+    7.919,
+    3.038
+   ],
+   [
+    8.068,
+    3.036
+   ],
+   [
+    8.216,
+    3.084
+   ],
+   [
+    8.318,
+    3.158
+   ],
+   [
+    8.39,
+    3.252
+   ],
+   [
+    8.426,
+    3.357
+   ],
+   [
+    8.407,
+    3.431
+   ],
+   [
+    8.357,
+    3.48
+   ],
+   [
+    8.292,
+    3.533
+   ],
+   [
+    8.23,
+    3.601
+   ],
+   [
+    8.187,
+    3.663
+   ],
+   [
+    8.139,
+    3.735
+   ],
+   [
+    8.088,
+    3.817
+   ],
+   [
+    8.033,
+    3.914
+   ],
+   [
+    7.975,
+    3.989
+   ],
+   [
+    7.914,
+    4.046
+   ],
+   [
+    7.839,
+    4.101
+   ],
+   [
+    7.752,
+    4.154
+   ],
+   [
+    7.663,
+    4.195
+   ],
+   [
+    7.586,
+    4.208
+   ],
+   [
+    7.516,
+    4.201
+   ],
+   [
+    7.441,
+    4.193
+   ],
+   [
+    7.377,
+    4.177
+   ],
+   [
+    7.343,
+    4.134
+   ],
+   [
+    7.339,
+    4.065
+   ],
+   [
+    7.345,
+    3.979
+   ],
+   [
+    7.349,
+    3.876
+   ],
+   [
+    7.333,
+    3.784
+   ],
+   [
+    7.3,
+    3.716
+   ],
+   [
+    7.232,
+    3.651
+   ],
+   [
+    7.13,
+    3.583
+   ],
+   [
+    7.023,
+    3.512
+   ],
+   [
+    6.931,
+    3.438
+   ],
+   [
+    6.834,
+    3.357
+   ],
+   [
+    6.731,
+    3.295
+   ],
+   [
+    6.639,
+    3.263
+   ],
+   [
+    6.538,
+    3.248
+   ],
+   [
+    6.434,
+    3.251
+   ],
+   [
+    6.335,
+    3.253
+   ],
+   [
+    6.249,
+    3.247
+   ],
+   [
+    6.142,
+    3.234
+   ],
+   [
+    6.029,
+    3.214
+   ],
+   [
+    5.921,
+    3.211
+   ],
+   [
+    5.829,
+    3.22
+   ],
+   [
+    5.731,
+    3.247
+   ],
+   [
+    5.628,
+    3.283
+   ],
+   [
+    5.539,
+    3.316
+   ],
+   [
+    5.449,
+    3.34
+   ],
+   [
+    5.345,
+    3.357
+   ],
+   [
+    5.228,
+    3.383
+   ],
+   [
+    5.148,
+    3.401
+   ],
+   [
+    5.091,
+    3.416
+   ],
+   [
+    5.022,
+    3.445
+   ],
+   [
+    4.949,
+    3.489
+   ],
+   [
+    4.858,
+    3.545
+   ],
+   [
+    4.775,
+    3.584
+   ],
+   [
+    4.678,
+    3.618
+   ],
+   [
+    4.548,
+    3.661
+   ],
+   [
+    4.437,
+    3.708
+   ],
+   [
+    4.34,
+    3.766
+   ],
+   [
+    4.239,
+    3.838
+   ],
+   [
+    4.14,
+    3.912
+   ],
+   [
+    4.067,
+    3.96
+   ],
+   [
+    3.991,
+    4.007
+   ],
+   [
+    3.9,
+    4.056
+   ],
+   [
+    3.798,
+    4.112
+   ],
+   [
+    3.711,
+    4.175
+   ],
+   [
+    3.639,
+    4.239
+   ],
+   [
+    3.558,
+    4.324
+   ],
+   [
+    3.475,
+    4.415
+   ],
+   [
+    3.412,
+    4.494
+   ],
+   [
+    3.356,
+    4.581
+   ],
+   [
+    3.296,
+    4.677
+   ],
+   [
+    3.254,
+    4.778
+   ],
+   [
+    3.244,
+    4.862
+   ],
+   [
+    3.266,
+    4.963
+   ],
+   [
+    3.313,
+    5.056
+   ],
+   [
+    3.369,
+    5.124
+   ],
+   [
+    3.428,
+    5.176
+   ],
+   [
+    3.484,
+    5.219
+   ],
+   [
+    3.534,
+    5.254
+   ],
+   [
+    3.586,
+    5.282
+   ],
+   [
+    3.649,
+    5.291
+   ],
+   [
+    3.746,
+    5.284
+   ],
+   [
+    3.86,
+    5.269
+   ],
+   [
+    3.947,
+    5.244
+   ],
+   [
+    4.012,
+    5.212
+   ],
+   [
+    4.082,
+    5.195
+   ],
+   [
+    4.188,
+    5.224
+   ],
+   [
+    4.274,
+    5.26
+   ],
+   [
+    4.349,
+    5.316
+   ],
+   [
+    4.406,
+    5.377
+   ],
+   [
+    4.439,
+    5.443
+   ],
+   [
+    4.426,
+    5.498
+   ],
+   [
+    4.384,
+    5.536
+   ],
+   [
+    4.316,
+    5.55
+   ],
+   [
+    4.202,
+    5.54
+   ],
+   [
+    4.088,
+    5.501
+   ],
+   [
+    4.002,
+    5.451
+   ],
+   [
+    3.931,
+    5.423
+   ],
+   [
+    3.847,
+    5.402
+   ],
+   [
+    3.748,
+    5.38
+   ],
+   [
+    3.672,
+    5.368
+   ],
+   [
+    3.621,
+    5.374
+   ],
+   [
+    3.577,
+    5.427
+   ],
+   [
+    3.53,
+    5.511
+   ],
+   [
+    3.496,
+    5.589
+   ],
+   [
+    3.458,
+    5.648
+   ],
+   [
+    3.423,
+    5.689
+   ],
+   [
+    3.385,
+    5.722
+   ],
+   [
+    3.347,
+    5.761
+   ],
+   [
+    3.321,
+    5.797
+   ],
+   [
+    3.314,
+    5.818
+   ],
+   [
+    3.324,
+    5.826
+   ],
+   [
+    3.33,
+    5.789
+   ],
+   [
+    3.33,
+    5.705
+   ],
+   [
+    3.336,
+    5.575
+   ],
+   [
+    3.369,
+    5.43
+   ],
+   [
+    3.421,
+    5.31
+   ],
+   [
+    3.48,
+    5.182
+   ],
+   [
+    3.49,
+    5.081
+   ],
+   [
+    3.453,
+    5.006
+   ],
+   [
+    3.381,
+    4.934
+   ],
+   [
+    3.277,
+    4.844
+   ],
+   [
+    3.185,
+    4.764
+   ],
+   [
+    3.094,
+    4.691
+   ],
+   [
+    2.99,
+    4.609
+   ],
+   [
+    2.88,
+    4.534
+   ],
+   [
+    2.787,
+    4.499
+   ],
+   [
+    2.673,
+    4.482
+   ],
+   [
+    2.546,
+    4.477
+   ],
+   [
+    2.424,
+    4.475
+   ],
+   [
+    2.331,
+    4.483
+   ],
+   [
+    2.234,
+    4.492
+   ],
+   [
+    2.127,
+    4.512
+   ],
+   [
+    2.025,
+    4.541
+   ],
+   [
+    1.956,
+    4.584
+   ],
+   [
+    1.898,
+    4.653
+   ],
+   [
+    1.848,
+    4.725
+   ],
+   [
+    1.794,
+    4.801
+   ],
+   [
+    1.754,
+    4.87
+   ],
+   [
+    1.717,
+    4.949
+   ],
+   [
+    1.693,
+    5.027
+   ],
+   [
+    1.657,
+    5.118
+   ],
+   [
+    1.58,
+    5.226
+   ],
+   [
+    1.497,
+    5.348
+   ],
+   [
+    1.435,
+    5.455
+   ],
+   [
+    1.363,
+    5.538
+   ],
+   [
+    1.291,
+    5.614
+   ],
+   [
+    1.193,
+    5.686
+   ],
+   [
+    1.102,
+    5.756
+   ],
+   [
+    1.023,
+    5.837
+   ],
+   [
+    0.935,
+    5.919
+   ],
+   [
+    0.842,
+    5.978
+   ],
+   [
+    0.747,
+    6.016
+   ],
+   [
+    0.624,
+    6.045
+   ],
+   [
+    0.508,
+    6.059
+   ],
+   [
+    0.39,
+    6.068
+   ],
+   [
+    0.274,
+    6.064
+   ],
+   [
+    0.18,
+    6.032
+   ],
+   [
+    0.11,
+    5.975
+   ],
+   [
+    0.056,
+    5.895
+   ],
+   [
+    0.032,
+    5.816
+   ],
+   [
+    0.04,
+    5.737
+   ],
+   [
+    0.077,
+    5.67
+   ],
+   [
+    0.109,
+    5.629
+   ],
+   [
+    0.15,
+    5.6
+   ],
+   [
+    0.234,
+    5.583
+   ],
+   [
+    0.351,
+    5.597
+   ],
+   [
+    0.483,
+    5.633
+   ],
+   [
+    0.601,
+    5.658
+   ],
+   [
+    0.704,
+    5.672
+   ],
+   [
+    0.789,
+    5.67
+   ],
+   [
+    0.869,
+    5.641
+   ],
+   [
+    0.966,
+    5.582
+   ],
+   [
+    1.066,
+    5.524
+   ],
+   [
+    1.172,
+    5.474
+   ],
+   [
+    1.283,
+    5.418
+   ],
+   [
+    1.385,
+    5.335
+   ],
+   [
+    1.471,
+    5.226
+   ],
+   [
+    1.526,
+    5.122
+   ],
+   [
+    1.56,
+    5.003
+   ],
+   [
+    1.581,
+    4.872
+   ],
+   [
+    1.611,
+    4.756
+   ],
+   [
+    1.653,
+    4.663
+   ],
+   [
+    1.715,
+    4.562
+   ],
+   [
+    1.786,
+    4.48
+   ],
+   [
+    1.869,
+    4.412
+   ],
+   [
+    1.957,
+    4.365
+   ],
+   [
+    2.06,
+    4.365
+   ],
+   [
+    2.175,
+    4.406
+   ],
+   [
+    2.296,
+    4.455
+   ],
+   [
+    2.405,
+    4.48
+   ],
+   [
+    2.51,
+    4.474
+   ],
+   [
+    2.625,
+    4.449
+   ],
+   [
+    2.735,
+    4.422
+   ],
+   [
+    2.835,
+    4.406
+   ],
+   [
+    2.929,
+    4.404
+   ],
+   [
+    3.053,
+    4.413
+   ],
+   [
+    3.187,
+    4.414
+   ],
+   [
+    3.297,
+    4.397
+   ],
+   [
+    3.41,
+    4.362
+   ],
+   [
+    3.53,
+    4.309
+   ],
+   [
+    3.647,
+    4.249
+   ],
+   [
+    3.748,
+    4.196
+   ],
+   [
+    3.845,
+    4.136
+   ],
+   [
+    3.938,
+    4.07
+   ],
+   [
+    4.008,
+    4.01
+   ],
+   [
+    4.055,
+    3.937
+   ],
+   [
+    4.095,
+    3.856
+   ],
+   [
+    4.13,
+    3.77
+   ],
+   [
+    4.138,
+    3.683
+   ],
+   [
+    4.121,
+    3.591
+   ],
+   [
+    4.093,
+    3.496
+   ],
+   [
+    4.055,
+    3.414
+   ],
+   [
+    4.018,
+    3.361
+   ],
+   [
+    3.965,
+    3.323
+   ],
+   [
+    3.901,
+    3.288
+   ],
+   [
+    3.819,
+    3.249
+   ],
+   [
+    3.763,
+    3.209
+   ],
+   [
+    3.694,
+    3.149
+   ],
+   [
+    3.62,
+    3.08
+   ],
+   [
+    3.534,
+    3.017
+   ],
+   [
+    3.458,
+    2.98
+   ],
+   [
+    3.357,
+    2.96
+   ],
+   [
+    3.23,
+    2.952
+   ],
+   [
+    3.112,
+    2.941
+   ],
+   [
+    2.995,
+    2.914
+   ],
+   [
+    2.861,
+    2.873
+   ],
+   [
+    2.725,
+    2.842
+   ],
+   [
+    2.602,
+    2.829
+   ],
+   [
+    2.478,
+    2.826
+   ],
+   [
+    2.326,
+    2.823
+   ],
+   [
+    2.223,
+    2.809
+   ],
+   [
+    2.112,
+    2.785
+   ],
+   [
+    1.986,
+    2.771
+   ],
+   [
+    1.869,
+    2.766
+   ],
+   [
+    1.767,
+    2.778
+   ],
+   [
+    1.648,
+    2.806
+   ],
+   [
+    1.517,
+    2.841
+   ],
+   [
+    1.41,
+    2.859
+   ],
+   [
+    1.313,
+    2.871
+   ],
+   [
+    1.221,
+    2.887
+   ],
+   [
+    1.162,
+    2.913
+   ],
+   [
+    1.122,
+    2.947
+   ],
+   [
+    1.067,
+    2.95
+   ],
+   [
+    0.997,
+    2.896
+   ],
+   [
+    0.973,
+    2.799
+   ],
+   [
+    1.003,
+    2.703
+   ],
+   [
+    1.045,
+    2.614
+   ],
+   [
+    1.071,
+    2.53
+   ],
+   [
+    1.08,
+    2.47
+   ],
+   [
+    1.079,
+    2.417
+   ],
+   [
+    1.067,
+    2.357
+   ],
+   [
+    1.034,
+    2.278
+   ],
+   [
+    0.998,
+    2.201
+   ],
+   [
+    0.97,
+    2.136
+   ],
+   [
+    0.961,
+    2.074
+   ],
+   [
+    0.959,
+    1.989
+   ],
+   [
+    0.961,
+    1.89
+   ],
+   [
+    0.964,
+    1.818
+   ],
+   [
+    0.982,
+    1.755
+   ],
+   [
+    0.995,
+    1.682
+   ],
+   [
+    1.021,
+    1.618
+   ],
+   [
+    1.06,
+    1.551
+   ],
+   [
+    1.119,
+    1.509
+   ],
+   [
+    1.211,
+    1.467
+   ],
+   [
+    1.297,
+    1.419
+   ],
+   [
+    1.367,
+    1.37
+   ],
+   [
+    1.439,
+    1.317
+   ],
+   [
+    1.52,
+    1.267
+   ],
+   [
+    1.596,
+    1.225
+   ],
+   [
+    1.681,
+    1.205
+   ],
+   [
+    1.783,
+    1.2
+   ],
+   [
+    1.899,
+    1.189
+   ],
+   [
+    2.002,
+    1.18
+   ],
+   [
+    2.111,
+    1.176
+   ],
+   [
+    2.223,
+    1.166
+   ],
+   [
+    2.332,
+    1.164
+   ],
+   [
+    2.424,
+    1.17
+   ],
+   [
+    2.537,
+    1.185
+   ],
+   [
+    2.651,
+    1.204
+   ],
+   [
+    2.755,
+    1.225
+   ],
+   [
+    2.863,
+    1.239
+   ],
+   [
+    2.983,
+    1.25
+   ],
+   [
+    3.116,
+    1.253
+   ],
+   [
+    3.224,
+    1.263
+   ],
+   [
+    3.355,
+    1.278
+   ],
+   [
+    3.477,
+    1.275
+   ],
+   [
+    3.572,
+    1.255
+   ],
+   [
+    3.656,
+    1.226
+   ],
+   [
+    3.755,
+    1.182
+   ],
+   [
+    3.849,
+    1.144
+   ],
+   [
+    3.931,
+    1.115
+   ],
+   [
+    4.01,
+    1.066
+   ],
+   [
+    4.072,
+    0.979
+   ],
+   [
+    4.093,
+    0.875
+   ],
+   [
+    4.099,
+    0.753
+   ],
+   [
+    4.094,
+    0.631
+   ],
+   [
+    4.07,
+    0.525
+   ],
+   [
+    4.022,
+    0.419
+   ],
+   [
+    3.958,
+    0.324
+   ],
+   [
+    3.891,
+    0.28
+   ],
+   [
+    3.819,
+    0.268
+   ],
+   [
+    3.725,
+    0.266
+   ],
+   [
+    3.641,
+    0.258
+   ],
+   [
+    3.567,
+    0.24
+   ],
+   [
+    3.489,
+    0.21
+   ],
+   [
+    3.41,
+    0.163
+   ],
+   [
+    3.328,
+    0.101
+   ],
+   [
+    3.252,
+    0.038
+   ],
+   [
+    3.17,
+    -0.009
+   ],
+   [
+    3.067,
+    -0.051
+   ],
+   [
+    2.959,
+    -0.084
+   ],
+   [
+    2.857,
+    -0.12
+   ],
+   [
+    2.772,
+    -0.163
+   ],
+   [
+    2.662,
+    -0.216
+   ],
+   [
+    2.552,
+    -0.25
+   ],
+   [
+    2.449,
+    -0.272
+   ],
+   [
+    2.342,
+    -0.287
+   ],
+   [
+    2.206,
+    -0.313
+   ],
+   [
+    2.097,
+    -0.365
+   ],
+   [
+    2.003,
+    -0.431
+   ],
+   [
+    1.888,
+    -0.497
+   ],
+   [
+    1.788,
+    -0.538
+   ],
+   [
+    1.692,
+    -0.562
+   ],
+   [
+    1.581,
+    -0.575
+   ],
+   [
+    1.454,
+    -0.595
+   ],
+   [
+    1.344,
+    -0.619
+   ],
+   [
+    1.246,
+    -0.651
+   ],
+   [
+    1.124,
+    -0.692
+   ],
+   [
+    1.012,
+    -0.714
+   ],
+   [
+    0.9,
+    -0.719
+   ],
+   [
+    0.796,
+    -0.723
+   ],
+   [
+    0.683,
+    -0.716
+   ],
+   [
+    0.587,
+    -0.719
+   ],
+   [
+    0.503,
+    -0.712
+   ],
+   [
+    0.416,
+    -0.703
+   ],
+   [
+    0.349,
+    -0.694
+   ],
+   [
+    0.308,
+    -0.672
+   ],
+   [
+    0.276,
+    -0.632
+   ],
+   [
+    -0.061,
+    -0.081
+   ],
+   [
+    -0.11,
+    -0.028
+   ],
+   [
+    -0.135,
+    -0.013
+   ],
+   [
+    -0.151,
+    -0.01
+   ],
+   [
+    -0.157,
+    -0.006
+   ],
+   [
+    -0.169,
+    -0.004
+   ]
+  ],
+  "camera_uv": null,
+  "camera_time_s": null,
+  "camera_label": null,
+  "rgb_alignment": null
+ },
+ "damage": {
+  "inspected": {
+   "cells_classified": 478,
+   "tile_m": 0.4,
+   "surface_area_inspected_m2": 76.5
+  },
+  "regions": [
+   {
+    "class": "water_stain",
+    "confidence": 0.775,
+    "views": 2,
+    "cells": 1,
+    "area_m2": {
+     "value": 0.16,
+     "ci95": 0.096
+    },
+    "extent_m": [
+     0.4,
+     0.4
+    ],
+    "surface": {
+     "kind": "wall",
+     "face": 16,
+     "axis": "u",
+     "coord": 3.5689,
+     "normal_sign": -1,
+     "room": "R6"
+    },
+    "span_along_m": [
+     0.8,
+     1.2
+    ],
+    "height_m": [
+     1.2,
+     1.6
+    ],
+    "height_above_floor_m": 1.2,
+    "id": "D1",
+    "evidence": {
+     "frame": 4071,
+     "boxes_px": [
+      [
+       52,
+       1080,
+       487,
+       1267
+      ]
+     ],
+     "range_m": 1.74
+    }
+   }
+  ]
+ },
+ "concealed_damage_flags": [
+  {
+   "damage_id": "D1",
+   "rule": "R3-wet-room-wall",
+   "finding": "Moisture on a wall of / next to a wet room (Room, R7): concealed supply or waste leak likely behind the finish.",
+   "surface": {
+    "kind": "wall",
+    "face": 16,
+    "axis": "u",
+    "coord": 3.5689,
+    "normal_sign": -1,
+    "room": "R6"
+   }
+  }
+ ],
+ "scope": [
+  {
+   "damage_id": "D1",
+   "target": "R6 wall",
+   "action": "Stain-block primer and repaint",
+   "qty": 1.0,
+   "unit": "m2",
+   "id": "S1"
+  },
+  {
+   "damage_id": "D1",
+   "target": "R6 wall",
+   "action": "Investigate (R3-wet-room-wall)",
+   "qty": 1,
+   "unit": "ea",
+   "id": "S2"
+  }
+ ]
+}

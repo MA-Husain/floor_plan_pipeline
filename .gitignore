@@ -2,9 +2,9 @@ venv/
 __pycache__/
 .DS_Store
 # raw captures and model weights are large: fetched by script (see scripts/)
-1a8384c3f6/
-c00a170fe1/
-c7d28f72c6/
+/1a8384c3f6/
+/c00a170fe1/
+/c7d28f72c6/
 weights/
 outputs/
 data/

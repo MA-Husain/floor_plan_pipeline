@@ -1,0 +1,6594 @@
+{
+ "schema": "brynz.plan/1.0",
+ "tier": "lidar",
+ "capture": "c7d28f72c6",
+ "error_model": {
+  "face_sys": 0.006,
+  "drift_per_m": 0.002,
+  "scale_rel": 0.0
+ },
+ "frame": {
+  "yaw_rad": 0.48661887645721436,
+  "floor_y_world": -1.4936033487319946,
+  "units": "m",
+  "axes": "u,v horizontal, aligned to dominant walls; h up from floor"
+ },
+ "global_ceiling": {
+  "value_m": 3.0757,
+  "support": 33446
+ },
+ "drift": {
+  "anchors": 128,
+  "segments": 163,
+  "revisit_error_raw_mm": 11.76,
+  "revisit_error_corrected_mm": 9.46,
+  "max_correction_m": 0.0822,
+  "max_yaw_correction_deg": 0.762,
+  "mode": "auto",
+  "applied": true,
+  "crispness_raw_mm": 12.63,
+  "crispness_corrected_mm": 11.01
+ },
+ "rooms": [
+  {
+   "id": "R1",
+   "polygon": [
+    [
+     6.4291,
+     3.9248
+    ],
+    [
+     6.4291,
+     4.7374
+    ],
+    [
+     6.3084,
+     4.7374
+    ],
+    [
+     6.3084,
+     6.1393
+    ],
+    [
+     8.8073,
+     6.1393
+    ],
+    [
+     8.8073,
+     4.8332
+    ],
+    [
+     8.9666,
+     4.8332
+    ],
+    [
+     8.9666,
+     4.7374
+    ],
+    [
+     8.8073,
+     4.7374
+    ],
+    [
+     8.8073,
+     3.9248
+    ]
+   ],
+   "area_m2": {
+    "value": 5.451,
+    "ci95": 0.061
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 2.4989,
+     "ci95_m": 0.0193,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 2.6582,
+     "ci95_m": 0.0197,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 2.2145,
+     "ci95_m": 0.0188,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 2.2145,
+     "ci95_m": 0.0188,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": {
+    "value_m": 2.3744,
+    "ci95_m": 0.0143,
+    "n_points": 1339,
+    "coverage": 0.826
+   },
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": 6.42910311623146,
+     "std": 0.007704555993023794,
+     "n": 11561,
+     "measured": true,
+     "length": 0.812549861559507,
+     "mid": 4.331122624706755
+    },
+    {
+     "horizontal": true,
+     "coord": 4.737397555486509,
+     "std": 0.008809163891864168,
+     "n": 10779,
+     "measured": true,
+     "length": 0.12066547468779731,
+     "mid": 6.368770378887561
+    },
+    {
+     "horizontal": false,
+     "coord": 6.308437641543662,
+     "std": 0.010167903061974156,
+     "n": 10257,
+     "measured": true,
+     "length": 1.401914093496078,
+     "mid": 5.438354602234548
+    },
+    {
+     "horizontal": true,
+     "coord": 6.139311648982587,
+     "std": 0.010194130683674653,
+     "n": 18722,
+     "measured": true,
+     "length": 2.4988781735698886,
+     "mid": 7.557876728328607
+    },
+    {
+     "horizontal": false,
+     "coord": 8.80731581511355,
+     "std": 0.010517473558202515,
+     "n": 37470,
+     "measured": true,
+     "length": 1.3061427329609545,
+     "mid": 5.486240282502109
+    },
+    {
+     "horizontal": true,
+     "coord": 4.8331689160216325,
+     "std": 0.010037642188935344,
+     "n": 25605,
+     "measured": true,
+     "length": 0.15930604934756687,
+     "mid": 8.886968839787334
+    },
+    {
+     "horizontal": false,
+     "coord": 8.966621864461118,
+     "std": 0.010962977089444109,
+     "n": 6379,
+     "measured": true,
+     "length": 0.09577136053512358,
+     "mid": 4.78528323575407
+    },
+    {
+     "horizontal": true,
+     "coord": 4.737397555486509,
+     "std": 0.008809163891864168,
+     "n": 10779,
+     "measured": true,
+     "length": 0.15930604934756687,
+     "mid": 8.886968839787334
+    },
+    {
+     "horizontal": false,
+     "coord": 8.80731581511355,
+     "std": 0.010517473558202515,
+     "n": 37470,
+     "measured": true,
+     "length": 0.812549861559507,
+     "mid": 4.331122624706755
+    },
+    {
+     "horizontal": true,
+     "coord": 3.924847693927002,
+     "std": 0.010671050272334172,
+     "n": 7263,
+     "measured": true,
+     "length": 2.3782126988820913,
+     "mid": 7.618209465672505
+    }
+   ],
+   "features": {
+    "area": 5.450885885780563,
+    "inscribed_width": 2.240000009536743,
+    "long": 2.6581842229174555,
+    "short": 2.214463955055586,
+    "elongation": 1.2003736691441118,
+    "floor_seen": 0.7913099776994461,
+    "walked": 0.34465146392345875,
+    "n_openings": 1,
+    "degree": 1,
+    "floor_below_level_pts": 0
+   },
+   "type": "Bathroom",
+   "type_reason": "Bathroom 4.0",
+   "fixtures": {
+    "toilet": 1,
+    "sink": 1
+   },
+   "name": "Bathroom 1"
+  },
+  {
+   "id": "R2",
+   "polygon": [
+    [
+     1.0816,
+     4.8332
+    ],
+    [
+     1.9812,
+     4.8332
+    ],
+    [
+     1.9812,
+     6.1393
+    ],
+    [
+     2.0756,
+     6.1393
+    ],
+    [
+     2.0756,
+     3.9248
+    ],
+    [
+     1.0816,
+     3.9248
+    ]
+   ],
+   "area_m2": {
+    "value": 1.026,
+    "ci95": 0.02
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 0.994,
+     "ci95_m": 0.0171,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 0.994,
+     "ci95_m": 0.0171,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 0.9083,
+     "ci95_m": 0.017,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 2.2145,
+     "ci95_m": 0.0188,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": {
+    "value_m": 2.4375,
+    "ci95_m": 0.0143,
+    "n_points": 734,
+    "coverage": 0.731
+   },
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 4.8331689160216325,
+     "std": 0.010037642188935344,
+     "n": 25605,
+     "measured": true,
+     "length": 0.8996636168365413,
+     "mid": 1.5314036976070304
+    },
+    {
+     "horizontal": false,
+     "coord": 1.981235506025301,
+     "std": 0.010851380529549889,
+     "n": 7037,
+     "measured": true,
+     "length": 1.3061427329609545,
+     "mid": 5.486240282502109
+    },
+    {
+     "horizontal": true,
+     "coord": 6.139311648982587,
+     "std": 0.010194130683674653,
+     "n": 18722,
+     "measured": true,
+     "length": 0.09431620634888782,
+     "mid": 2.028393609199745
+    },
+    {
+     "horizontal": false,
+     "coord": 2.075551712374189,
+     "std": 0.008300550036255874,
+     "n": 10733,
+     "measured": true,
+     "length": 2.214463955055585,
+     "mid": 5.032079671454794
+    },
+    {
+     "horizontal": true,
+     "coord": 3.924847693927002,
+     "std": 0.010671050272334172,
+     "n": 7263,
+     "measured": true,
+     "length": 0.9939798231854291,
+     "mid": 1.5785618007814743
+    },
+    {
+     "horizontal": false,
+     "coord": 1.0815718891887598,
+     "std": 0.011847805625812509,
+     "n": 24715,
+     "measured": true,
+     "length": 0.9083212220946306,
+     "mid": 4.379008304974317
+    }
+   ],
+   "features": {
+    "area": 1.0260433952562396,
+    "inscribed_width": 0.9199999570846558,
+    "long": 2.214463955055585,
+    "short": 0.9939798231854291,
+    "elongation": 2.227876163480707,
+    "floor_seen": 1.0,
+    "walked": 0.5160466812545588,
+    "n_openings": 5,
+    "degree": 3,
+    "floor_below_level_pts": 0
+   },
+   "type": "Corridor",
+   "type_reason": "narrow (0.92 m) and elongated (2.2:1)",
+   "fixtures": {},
+   "name": "Corridor"
+  },
+  {
+   "id": "R3",
+   "polygon": [
+    [
+     -1.413,
+     3.9248
+    ],
+    [
+     -0.8381,
+     3.9248
+    ],
+    [
+     -0.8381,
+     4.7374
+    ],
+    [
+     -0.377,
+     4.7374
+    ],
+    [
+     -0.377,
+     4.8332
+    ],
+    [
+     1.0816,
+     4.8332
+    ],
+    [
+     1.0816,
+     2.8195
+    ],
+    [
+     -1.413,
+     2.8195
+    ]
+   ],
+   "area_m2": {
+    "value": 4.457,
+    "ci95": 0.202
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 1.9196,
+     "ci95_m": 0.0183,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 2.4946,
+     "ci95_m": 0.1108,
+     "bounded_by_measured_walls": false
+    },
+    "length_v": {
+     "value_m": 2.0137,
+     "ci95_m": 0.0184,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 2.0137,
+     "ci95_m": 0.0184,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": {
+    "value_m": 2.2683,
+    "ci95_m": 0.0142,
+    "n_points": 2015,
+    "coverage": 0.855
+   },
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 3.924847693927002,
+     "std": 0.010671050272334172,
+     "n": 7263,
+     "measured": true,
+     "length": 0.5749568745144996,
+     "mid": -1.1255337538275196
+    },
+    {
+     "horizontal": false,
+     "coord": -0.8380553165702699,
+     "std": 0.009564554885238977,
+     "n": 19130,
+     "measured": true,
+     "length": 0.812549861559507,
+     "mid": 4.331122624706755
+    },
+    {
+     "horizontal": true,
+     "coord": 4.737397555486509,
+     "std": 0.008809163891864168,
+     "n": 10779,
+     "measured": true,
+     "length": 0.46100889808639706,
+     "mid": -0.6075508675270713
+    },
+    {
+     "horizontal": false,
+     "coord": -0.3770464184838728,
+     "std": 0.01071159781278907,
+     "n": 7063,
+     "measured": true,
+     "length": 0.09577136053512358,
+     "mid": 4.78528323575407
+    },
+    {
+     "horizontal": true,
+     "coord": 4.8331689160216325,
+     "std": 0.010037642188935344,
+     "n": 25605,
+     "measured": true,
+     "length": 1.4586183076726327,
+     "mid": 0.35226273535244346
+    },
+    {
+     "horizontal": false,
+     "coord": 1.0815718891887598,
+     "std": 0.011847805625812509,
+     "n": 24715,
+     "measured": true,
+     "length": 2.0136917956762543,
+     "mid": 3.8263230181835053
+    },
+    {
+     "horizontal": true,
+     "coord": 2.819477120345378,
+     "std": 0.010156812363989225,
+     "n": 11893,
+     "measured": true,
+     "length": 2.4945840802735293,
+     "mid": -0.16572015094800485
+    },
+    {
+     "horizontal": false,
+     "coord": -1.4130121910847695,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 1.1053705735816237,
+     "mid": 3.37216240713619
+    }
+   ],
+   "features": {
+    "area": 4.456926515772149,
+    "inscribed_width": 1.9751317501068115,
+    "long": 2.4945840802735293,
+    "short": 2.0136917956762543,
+    "elongation": 1.2388112647773777,
+    "floor_seen": 0.5545994854963187,
+    "walked": 0.2637274904639404,
+    "n_openings": 2,
+    "degree": 2,
+    "floor_below_level_pts": 0
+   },
+   "type": "Bathroom",
+   "type_reason": "Bathroom 10.0",
+   "fixtures": {
+    "toilet": 2,
+    "bathtub": 1,
+    "sink": 2
+   },
+   "name": "Bathroom 2"
+  },
+  {
+   "id": "R4",
+   "polygon": [
+    [
+     -0.377,
+     8.918
+    ],
+    [
+     1.9812,
+     8.918
+    ],
+    [
+     1.9812,
+     9.3409
+    ],
+    [
+     3.1241,
+     9.3409
+    ],
+    [
+     3.1241,
+     4.8332
+    ],
+    [
+     2.0756,
+     4.8332
+    ],
+    [
+     2.0756,
+     6.1393
+    ],
+    [
+     1.9812,
+     6.1393
+    ],
+    [
+     1.9812,
+     4.8332
+    ],
+    [
+     -0.377,
+     4.8332
+    ]
+   ],
+   "area_m2": {
+    "value": 14.662,
+    "ci95": 0.12
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.5011,
+     "ci95_m": 0.0216,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.5011,
+     "ci95_m": 0.0216,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 4.0848,
+     "ci95_m": 0.0231,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 4.5077,
+     "ci95_m": 0.0243,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 8.91801457427245,
+     "std": 0.008790643325061059,
+     "n": 14845,
+     "measured": true,
+     "length": 2.358281924509174,
+     "mid": 0.8020945437707141
+    },
+    {
+     "horizontal": false,
+     "coord": 1.981235506025301,
+     "std": 0.010851380529549889,
+     "n": 7037,
+     "measured": true,
+     "length": 0.42284571644792024,
+     "mid": 9.12943743249641
+    },
+    {
+     "horizontal": true,
+     "coord": 9.34086029072037,
+     "std": 0.011503722428812814,
+     "n": 7569,
+     "measured": true,
+     "length": 1.142833813301253,
+     "mid": 2.5526524126759274
+    },
+    {
+     "horizontal": false,
+     "coord": 3.124069319326554,
+     "std": 0.010130869185200071,
+     "n": 46713,
+     "measured": true,
+     "length": 4.507691374698737,
+     "mid": 7.087014603371001
+    },
+    {
+     "horizontal": true,
+     "coord": 4.8331689160216325,
+     "std": 0.010037642188935344,
+     "n": 25605,
+     "measured": true,
+     "length": 1.0485176069523652,
+     "mid": 2.5998105158503715
+    },
+    {
+     "horizontal": false,
+     "coord": 2.075551712374189,
+     "std": 0.008300550036255874,
+     "n": 10733,
+     "measured": true,
+     "length": 1.3061427329609545,
+     "mid": 5.486240282502109
+    },
+    {
+     "horizontal": true,
+     "coord": 6.139311648982587,
+     "std": 0.010194130683674653,
+     "n": 18722,
+     "measured": true,
+     "length": 0.09431620634888782,
+     "mid": 2.028393609199745
+    },
+    {
+     "horizontal": false,
+     "coord": 1.981235506025301,
+     "std": 0.010851380529549889,
+     "n": 7037,
+     "measured": true,
+     "length": 1.3061427329609545,
+     "mid": 5.486240282502109
+    },
+    {
+     "horizontal": true,
+     "coord": 4.8331689160216325,
+     "std": 0.010037642188935344,
+     "n": 25605,
+     "measured": true,
+     "length": 2.358281924509174,
+     "mid": 0.8020945437707141
+    },
+    {
+     "horizontal": false,
+     "coord": -0.3770464184838728,
+     "std": 0.01071159781278907,
+     "n": 7063,
+     "measured": true,
+     "length": 4.084845658250817,
+     "mid": 6.875591745147041
+    }
+   ],
+   "features": {
+    "area": 14.66156937567176,
+    "inscribed_width": 3.07738995552063,
+    "long": 4.507691374698737,
+    "short": 3.501115737810427,
+    "elongation": 1.2875013887766578,
+    "floor_seen": 0.5421660843859177,
+    "walked": 0.2847621607094867,
+    "n_openings": 5,
+    "degree": 3,
+    "floor_below_level_pts": 6030
+   },
+   "type": "Stairs",
+   "type_reason": "Stairs 4.0",
+   "fixtures": {},
+   "name": "Stairs"
+  },
+  {
+   "id": "R5",
+   "polygon": [
+    [
+     2.4047,
+     3.9248
+    ],
+    [
+     2.0756,
+     3.9248
+    ],
+    [
+     2.0756,
+     4.8332
+    ],
+    [
+     6.3084,
+     4.8332
+    ],
+    [
+     6.3084,
+     4.7374
+    ],
+    [
+     5.3651,
+     4.7374
+    ],
+    [
+     5.3651,
+     2.9384
+    ],
+    [
+     5.2659,
+     2.9384
+    ],
+    [
+     5.2659,
+     0.4887
+    ],
+    [
+     2.4047,
+     0.4887
+    ]
+   ],
+   "area_m2": {
+    "value": 13.008,
+    "ci95": 0.101
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 2.8613,
+     "ci95_m": 0.0201,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 4.2329,
+     "ci95_m": 0.0235,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 4.3445,
+     "ci95_m": 0.0238,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 4.3445,
+     "ci95_m": 0.0238,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 3.924847693927002,
+     "std": 0.010671050272334172,
+     "n": 7263,
+     "measured": true,
+     "length": 0.3291347860637912,
+     "mid": 2.2401191054060847
+    },
+    {
+     "horizontal": false,
+     "coord": 2.075551712374189,
+     "std": 0.008300550036255874,
+     "n": 10733,
+     "measured": true,
+     "length": 0.9083212220946306,
+     "mid": 4.379008304974317
+    },
+    {
+     "horizontal": true,
+     "coord": 4.8331689160216325,
+     "std": 0.010037642188935344,
+     "n": 25605,
+     "measured": true,
+     "length": 4.232885929169473,
+     "mid": 4.191994676958926
+    },
+    {
+     "horizontal": false,
+     "coord": 6.308437641543662,
+     "std": 0.010167903061974156,
+     "n": 10257,
+     "measured": true,
+     "length": 0.09577136053512358,
+     "mid": 4.78528323575407
+    },
+    {
+     "horizontal": true,
+     "coord": 4.737397555486509,
+     "std": 0.008809163891864168,
+     "n": 10779,
+     "measured": true,
+     "length": 0.9433116930567094,
+     "mid": 5.836781795015307
+    },
+    {
+     "horizontal": false,
+     "coord": 5.365125948486953,
+     "std": 0.01047324724467393,
+     "n": 34833,
+     "measured": true,
+     "length": 1.7990422571775753,
+     "mid": 3.8378764268977212
+    },
+    {
+     "horizontal": true,
+     "coord": 2.9383552983089336,
+     "std": 0.01116246386207386,
+     "n": 9426,
+     "measured": true,
+     "length": 0.09918686321201609,
+     "mid": 5.315532516880944
+    },
+    {
+     "horizontal": false,
+     "coord": 5.265939085274937,
+     "std": 0.010470540251724848,
+     "n": 52040,
+     "measured": true,
+     "length": 2.4496401663495773,
+     "mid": 1.713535215134145
+    },
+    {
+     "horizontal": true,
+     "coord": 0.4887151319593562,
+     "std": 0.011285786977693509,
+     "n": 18294,
+     "measured": true,
+     "length": 2.8612525868369567,
+     "mid": 3.8353127918564587
+    },
+    {
+     "horizontal": false,
+     "coord": 2.40468649843798,
+     "std": 0.009856493282630718,
+     "n": 38988,
+     "measured": true,
+     "length": 3.4361325619676455,
+     "mid": 2.206781412943179
+    }
+   ],
+   "features": {
+    "area": 13.007822602518175,
+    "inscribed_width": 2.965395450592041,
+    "long": 4.344453784062276,
+    "short": 4.232885929169473,
+    "elongation": 1.0263573970004651,
+    "floor_seen": 0.9025058612185245,
+    "walked": 0.4910330968547331,
+    "n_openings": 3,
+    "degree": 3,
+    "floor_below_level_pts": 0
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {
+    "desk": 2,
+    "dining table": 2,
+    "office chair": 1
+   },
+   "name": "Room 1"
+  },
+  {
+   "id": "R6",
+   "polygon": [
+    [
+     5.3651,
+     4.7374
+    ],
+    [
+     6.4291,
+     4.7374
+    ],
+    [
+     6.4291,
+     3.0193
+    ],
+    [
+     8.8073,
+     3.0193
+    ],
+    [
+     8.8073,
+     -0.0104
+    ],
+    [
+     5.3651,
+     -0.0104
+    ]
+   ],
+   "area_m2": {
+    "value": 12.257,
+    "ci95": 0.1
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.4422,
+     "ci95_m": 0.0214,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.4422,
+     "ci95_m": 0.0214,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.0297,
+     "ci95_m": 0.0204,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 4.7478,
+     "ci95_m": 0.025,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": {
+    "value_m": 3.0757,
+    "ci95_m": 0.0141,
+    "n_points": 5746,
+    "coverage": 0.816
+   },
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 4.737397555486509,
+     "std": 0.008809163891864168,
+     "n": 10779,
+     "measured": true,
+     "length": 1.0639771677445067,
+     "mid": 5.897114532359206
+    },
+    {
+     "horizontal": false,
+     "coord": 6.42910311623146,
+     "std": 0.007704555993023794,
+     "n": 11561,
+     "measured": true,
+     "length": 1.7181135907808236,
+     "mid": 3.878340760096097
+    },
+    {
+     "horizontal": true,
+     "coord": 3.0192839647056853,
+     "std": 0.008617688611451058,
+     "n": 15396,
+     "measured": true,
+     "length": 2.3782126988820913,
+     "mid": 7.618209465672505
+    },
+    {
+     "horizontal": false,
+     "coord": 8.80731581511355,
+     "std": 0.010517473558202515,
+     "n": 37470,
+     "measured": true,
+     "length": 3.0297307363298813,
+     "mid": 1.5044185965407446
+    },
+    {
+     "horizontal": true,
+     "coord": -0.01044677162419624,
+     "std": 0.010551061426248537,
+     "n": 28122,
+     "measured": true,
+     "length": 3.442189866626598,
+     "mid": 7.0862208818002514
+    },
+    {
+     "horizontal": false,
+     "coord": 5.365125948486953,
+     "std": 0.01047324724467393,
+     "n": 34833,
+     "measured": true,
+     "length": 4.747844327110705,
+     "mid": 2.363475391931156
+    }
+   ],
+   "features": {
+    "area": 12.256942071384184,
+    "inscribed_width": 3.0799999237060547,
+    "long": 4.747844327110705,
+    "short": 3.442189866626598,
+    "elongation": 1.3793092511087048,
+    "floor_seen": 0.618142383261036,
+    "walked": 0.434071191630518,
+    "n_openings": 2,
+    "degree": 2,
+    "floor_below_level_pts": 0
+   },
+   "type": "Living / Kitchen",
+   "type_reason": "open plan: Living 12.0, Kitchen 4.0",
+   "fixtures": {
+    "sofa": 3,
+    "refrigerator": 2,
+    "television": 2,
+    "desk": 1,
+    "wardrobe": 1
+   },
+   "name": "Living / Kitchen"
+  },
+  {
+   "id": "R7",
+   "polygon": [
+    [
+     -0.7352,
+     2.0943
+    ],
+    [
+     1.0816,
+     2.0943
+    ],
+    [
+     1.0816,
+     3.9248
+    ],
+    [
+     2.4047,
+     3.9248
+    ],
+    [
+     2.4047,
+     0.8516
+    ],
+    [
+     2.2633,
+     0.8516
+    ],
+    [
+     2.2633,
+     -1.0523
+    ],
+    [
+     -0.7352,
+     -1.0523
+    ]
+   ],
+   "area_m2": {
+    "value": 12.033,
+    "ci95": 0.101
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 3.1399,
+     "ci95_m": 0.0207,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 3.1399,
+     "ci95_m": 0.0207,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.1466,
+     "ci95_m": 0.0207,
+     "bounded_by_measured_walls": true
+    },
+    "extent_v": {
+     "value_m": 4.9772,
+     "ci95_m": 0.0257,
+     "bounded_by_measured_walls": true
+    }
+   },
+   "ceiling_height": {
+    "value_m": 2.9589,
+    "ci95_m": 0.0142,
+    "n_points": 4696,
+    "coverage": 0.696
+   },
+   "wall_edges": [
+    {
+     "horizontal": true,
+     "coord": 2.094280177597157,
+     "std": 0.01161006886495284,
+     "n": 11373,
+     "measured": true,
+     "length": 1.8167677484030227,
+     "mid": 0.17318801498724845
+    },
+    {
+     "horizontal": false,
+     "coord": 1.0815718891887598,
+     "std": 0.011847805625812509,
+     "n": 24715,
+     "measured": true,
+     "length": 1.830567516329845,
+     "mid": 3.0095639357620794
+    },
+    {
+     "horizontal": true,
+     "coord": 3.924847693927002,
+     "std": 0.010671050272334172,
+     "n": 7263,
+     "measured": true,
+     "length": 1.3231146092492203,
+     "mid": 1.74312919381337
+    },
+    {
+     "horizontal": false,
+     "coord": 2.40468649843798,
+     "std": 0.009856493282630718,
+     "n": 38988,
+     "measured": true,
+     "length": 3.0732719887661277,
+     "mid": 2.388211699543938
+    },
+    {
+     "horizontal": true,
+     "coord": 0.8515757051608739,
+     "std": 0.00998110952824054,
+     "n": 5238,
+     "measured": true,
+     "length": 0.141354010742055,
+     "mid": 2.3340094930669526
+    },
+    {
+     "horizontal": false,
+     "coord": 2.263332487695925,
+     "std": 0.010310911477032638,
+     "n": 37188,
+     "measured": true,
+     "length": 1.9039173472464894,
+     "mid": -0.10038296846237083
+    },
+    {
+     "horizontal": true,
+     "coord": -1.0523416420856155,
+     "std": 0.009758058294526075,
+     "n": 15718,
+     "measured": true,
+     "length": 2.998528346910188,
+     "mid": 0.7640683142408311
+    },
+    {
+     "horizontal": false,
+     "coord": -0.7351958592142629,
+     "std": 0.01123877543273085,
+     "n": 56003,
+     "measured": true,
+     "length": 3.1466218196827724,
+     "mid": 0.5209692677557707
+    }
+   ],
+   "features": {
+    "area": 12.032946608743947,
+    "inscribed_width": 3.0399999618530273,
+    "long": 4.977189336012618,
+    "short": 3.139882357652243,
+    "elongation": 1.5851515340638966,
+    "floor_seen": 0.7100543300386202,
+    "walked": 0.356189042351247,
+    "n_openings": 3,
+    "degree": 3,
+    "floor_below_level_pts": 38
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {
+    "desk": 3,
+    "television": 4,
+    "office chair": 2
+   },
+   "name": "Room 2"
+  },
+  {
+   "id": "R8",
+   "polygon": [
+    [
+     -0.7352,
+     -4.606
+    ],
+    [
+     -0.7352,
+     -1.0523
+    ],
+    [
+     1.0816,
+     -1.0523
+    ],
+    [
+     1.0816,
+     -4.606
+    ]
+   ],
+   "area_m2": {
+    "value": 6.456,
+    "ci95": 0.212
+   },
+   "dimensions": {
+    "length_u": {
+     "value_m": 1.8168,
+     "ci95_m": 0.0181,
+     "bounded_by_measured_walls": true
+    },
+    "extent_u": {
+     "value_m": 1.8168,
+     "ci95_m": 0.0181,
+     "bounded_by_measured_walls": true
+    },
+    "length_v": {
+     "value_m": 3.5537,
+     "ci95_m": 0.1113,
+     "bounded_by_measured_walls": false
+    },
+    "extent_v": {
+     "value_m": 3.5537,
+     "ci95_m": 0.1113,
+     "bounded_by_measured_walls": false
+    }
+   },
+   "ceiling_height": null,
+   "wall_edges": [
+    {
+     "horizontal": false,
+     "coord": -0.7351958592142629,
+     "std": 0.01123877543273085,
+     "n": 56003,
+     "measured": true,
+     "length": 3.553670455336618,
+     "mid": -2.8291768697539244
+    },
+    {
+     "horizontal": true,
+     "coord": -1.0523416420856155,
+     "std": 0.009758058294526075,
+     "n": 15718,
+     "measured": true,
+     "length": 1.8167677484030227,
+     "mid": 0.17318801498724845
+    },
+    {
+     "horizontal": false,
+     "coord": 1.0815718891887598,
+     "std": 0.011847805625812509,
+     "n": 24715,
+     "measured": true,
+     "length": 3.553670455336618,
+     "mid": -2.8291768697539244
+    },
+    {
+     "horizontal": true,
+     "coord": -4.606012097422234,
+     "std": null,
+     "n": 0,
+     "measured": false,
+     "length": 1.8167677484030227,
+     "mid": 0.17318801498724845
+    }
+   ],
+   "features": {
+    "area": 6.456193871708252,
+    "inscribed_width": 1.8399999141693115,
+    "long": 3.553670455336618,
+    "short": 1.8167677484030227,
+    "elongation": 1.9560400378421345,
+    "floor_seen": 0.3401748846247267,
+    "walked": 0.0,
+    "n_openings": 1,
+    "degree": 1,
+    "floor_below_level_pts": 0
+   },
+   "type": "Room",
+   "type_reason": "use not certain from fixtures or structure",
+   "fixtures": {},
+   "name": "Room 3"
+  }
+ ],
+ "openings": [
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": 1.0816,
+   "span": [
+    3.0969,
+    3.6469
+   ],
+   "width_m": {
+    "value": 0.55,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R3",
+    "R7"
+   ],
+   "id": "O1"
+  },
+  {
+   "type": "opening",
+   "axis": "v",
+   "wall_coord": 1.9812,
+   "span": [
+    4.8332,
+    6.1393
+   ],
+   "width_m": {
+    "value": 1.3061,
+    "ci95": 0.0832
+   },
+   "walked_through": false,
+   "rooms": [
+    "R2",
+    "R4"
+   ],
+   "id": "O2"
+  },
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": 2.0756,
+   "span": [
+    3.9248,
+    4.8332
+   ],
+   "width_m": {
+    "value": 0.9083,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R2",
+    "R5"
+   ],
+   "id": "O3"
+  },
+  {
+   "type": "opening",
+   "axis": "v",
+   "wall_coord": 2.0756,
+   "span": [
+    4.8332,
+    6.1393
+   ],
+   "width_m": {
+    "value": 1.3061,
+    "ci95": 0.0832
+   },
+   "walked_through": false,
+   "rooms": [
+    "R2",
+    "R4"
+   ],
+   "id": "O4"
+  },
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": 5.3651,
+   "span": [
+    3.9248,
+    4.7374
+   ],
+   "width_m": {
+    "value": 0.8125,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R5",
+    "R6"
+   ],
+   "id": "O5"
+  },
+  {
+   "type": "door",
+   "axis": "v",
+   "wall_coord": 6.4291,
+   "span": [
+    4.0326,
+    4.7374
+   ],
+   "width_m": {
+    "value": 0.7048,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R1",
+    "R6"
+   ],
+   "id": "O6"
+  },
+  {
+   "type": "opening",
+   "axis": "u",
+   "wall_coord": -1.0523,
+   "span": [
+    -0.377,
+    1.0066
+   ],
+   "width_m": {
+    "value": 1.3837,
+    "ci95": 0.0832
+   },
+   "walked_through": false,
+   "rooms": [
+    "R7",
+    "R8"
+   ],
+   "id": "O7"
+  },
+  {
+   "type": "door",
+   "axis": "u",
+   "wall_coord": 3.9248,
+   "span": [
+    1.0816,
+    2.0756
+   ],
+   "width_m": {
+    "value": 0.994,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R2",
+    "R7"
+   ],
+   "id": "O8"
+  },
+  {
+   "type": "opening",
+   "axis": "u",
+   "wall_coord": 4.8332,
+   "span": [
+    -0.377,
+    1.0816
+   ],
+   "width_m": {
+    "value": 1.4586,
+    "ci95": 0.0832
+   },
+   "walked_through": false,
+   "rooms": [
+    "R3",
+    "R4"
+   ],
+   "id": "O9"
+  },
+  {
+   "type": "door",
+   "axis": "u",
+   "wall_coord": 4.8332,
+   "span": [
+    1.0816,
+    1.9812
+   ],
+   "width_m": {
+    "value": 0.8997,
+    "ci95": 0.0222
+   },
+   "walked_through": false,
+   "rooms": [
+    "R2",
+    "R4"
+   ],
+   "id": "O10"
+  },
+  {
+   "type": "door",
+   "axis": "u",
+   "wall_coord": 4.8332,
+   "span": [
+    2.0756,
+    3.1241
+   ],
+   "width_m": {
+    "value": 1.0485,
+    "ci95": 0.0222
+   },
+   "walked_through": true,
+   "rooms": [
+    "R4",
+    "R5"
+   ],
+   "id": "O11"
+  }
+ ],
+ "adjacency": [
+  [
+   "R1",
+   "R6"
+  ],
+  [
+   "R2",
+   "R4"
+  ],
+  [
+   "R2",
+   "R5"
+  ],
+  [
+   "R2",
+   "R7"
+  ],
+  [
+   "R3",
+   "R4"
+  ],
+  [
+   "R3",
+   "R7"
+  ],
+  [
+   "R4",
+   "R5"
+  ],
+  [
+   "R5",
+   "R6"
+  ],
+  [
+   "R7",
+   "R8"
+  ]
+ ],
+ "footprint_m2": 69.349,
+ "wall_faces": [
+  {
+   "axis": "u",
+   "coord": -1.0523,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -0.743,
+     -0.393
+    ],
+    [
+     1.007,
+     2.307
+    ]
+   ],
+   "std_m": 0.0098,
+   "n": 15718,
+   "solid_length_m": 1.65
+  },
+  {
+   "axis": "u",
+   "coord": -0.0104,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.499,
+     4.749
+    ],
+    [
+     5.299,
+     8.749
+    ]
+   ],
+   "std_m": 0.0106,
+   "n": 28122,
+   "solid_length_m": 3.7
+  },
+  {
+   "axis": "u",
+   "coord": 0.4887,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.444,
+     4.094
+    ],
+    [
+     4.444,
+     5.294
+    ]
+   ],
+   "std_m": 0.0113,
+   "n": 18294,
+   "solid_length_m": 2.5
+  },
+  {
+   "axis": "u",
+   "coord": 0.8516,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     5.465,
+     6.015
+    ]
+   ],
+   "std_m": 0.01,
+   "n": 5238,
+   "solid_length_m": 0.55
+  },
+  {
+   "axis": "u",
+   "coord": 2.8195,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -1.822,
+     -1.072
+    ],
+    [
+     -0.772,
+     0.178
+    ]
+   ],
+   "std_m": 0.0102,
+   "n": 11893,
+   "solid_length_m": 1.7
+  },
+  {
+   "axis": "u",
+   "coord": 2.9384,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -2.336,
+     -1.886
+    ],
+    [
+     0.764,
+     1.114
+    ]
+   ],
+   "std_m": 0.0112,
+   "n": 9426,
+   "solid_length_m": 0.8
+  },
+  {
+   "axis": "u",
+   "coord": 3.0071,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     0.567,
+     1.117
+    ]
+   ],
+   "std_m": 0.0106,
+   "n": 5754,
+   "solid_length_m": 0.55
+  },
+  {
+   "axis": "u",
+   "coord": 3.9248,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.073,
+     2.473
+    ]
+   ],
+   "std_m": 0.0107,
+   "n": 7263,
+   "solid_length_m": 0.4
+  },
+  {
+   "axis": "u",
+   "coord": 2.0943,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -0.768,
+     0.332
+    ],
+    [
+     0.882,
+     1.132
+    ]
+   ],
+   "std_m": 0.0116,
+   "n": 11373,
+   "solid_length_m": 1.35
+  },
+  {
+   "axis": "u",
+   "coord": 3.0231,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     6.377,
+     7.027
+    ],
+    [
+     7.727,
+     8.827
+    ]
+   ],
+   "std_m": 0.0086,
+   "n": 15396,
+   "solid_length_m": 1.75
+  },
+  {
+   "axis": "u",
+   "coord": 4.7374,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     5.169,
+     6.569
+    ]
+   ],
+   "std_m": 0.0088,
+   "n": 10779,
+   "solid_length_m": 1.4
+  },
+  {
+   "axis": "u",
+   "coord": 4.8332,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     3.129,
+     5.529
+    ]
+   ],
+   "std_m": 0.01,
+   "n": 25605,
+   "solid_length_m": 2.4
+  },
+  {
+   "axis": "u",
+   "coord": 6.1393,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     7.271,
+     8.821
+    ]
+   ],
+   "std_m": 0.0102,
+   "n": 18722,
+   "solid_length_m": 1.55
+  },
+  {
+   "axis": "u",
+   "coord": 8.8432,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.815,
+     1.965
+    ]
+   ],
+   "std_m": 0.0104,
+   "n": 6301,
+   "solid_length_m": 1.15
+  },
+  {
+   "axis": "u",
+   "coord": 8.918,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -0.852,
+     1.298
+    ]
+   ],
+   "std_m": 0.0088,
+   "n": 14845,
+   "solid_length_m": 2.15
+  },
+  {
+   "axis": "u",
+   "coord": 9.1716,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     2.301,
+     3.101
+    ]
+   ],
+   "std_m": 0.0075,
+   "n": 6694,
+   "solid_length_m": 0.8
+  },
+  {
+   "axis": "u",
+   "coord": 9.3409,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     2.04,
+     3.09
+    ]
+   ],
+   "std_m": 0.0115,
+   "n": 7569,
+   "solid_length_m": 1.05
+  },
+  {
+   "axis": "v",
+   "coord": -0.8381,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     7.225,
+     8.925
+    ]
+   ],
+   "std_m": 0.0096,
+   "n": 19130,
+   "solid_length_m": 1.7
+  },
+  {
+   "axis": "v",
+   "coord": -0.7352,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -4.101,
+     -2.201
+    ],
+    [
+     -1.151,
+     1.099
+    ],
+    [
+     1.649,
+     2.099
+    ]
+   ],
+   "std_m": 0.0112,
+   "n": 56003,
+   "solid_length_m": 4.6
+  },
+  {
+   "axis": "v",
+   "coord": -0.377,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     -1.345,
+     -1.045
+    ],
+    [
+     4.455,
+     5.105
+    ]
+   ],
+   "std_m": 0.0107,
+   "n": 7063,
+   "solid_length_m": 0.95
+  },
+  {
+   "axis": "v",
+   "coord": 1.0816,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     2.047,
+     3.097
+    ],
+    [
+     3.647,
+     5.397
+    ]
+   ],
+   "std_m": 0.0118,
+   "n": 24715,
+   "solid_length_m": 2.8
+  },
+  {
+   "axis": "v",
+   "coord": 1.9812,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     8.767,
+     9.267
+    ]
+   ],
+   "std_m": 0.0109,
+   "n": 7037,
+   "solid_length_m": 0.5
+  },
+  {
+   "axis": "v",
+   "coord": 2.4047,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     0.264,
+     3.914
+    ]
+   ],
+   "std_m": 0.0099,
+   "n": 38988,
+   "solid_length_m": 3.65
+  },
+  {
+   "axis": "v",
+   "coord": 5.3651,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     0.001,
+     0.251
+    ],
+    [
+     0.651,
+     3.851
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 34833,
+   "solid_length_m": 3.45
+  },
+  {
+   "axis": "v",
+   "coord": 6.3084,
+   "normal_sign": 1,
+   "intervals": [
+    [
+     4.733,
+     6.133
+    ]
+   ],
+   "std_m": 0.0102,
+   "n": 10257,
+   "solid_length_m": 1.4
+  },
+  {
+   "axis": "v",
+   "coord": 0.9258,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     4.055,
+     5.105
+    ]
+   ],
+   "std_m": 0.0113,
+   "n": 9184,
+   "solid_length_m": 1.05
+  },
+  {
+   "axis": "v",
+   "coord": 2.0756,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     2.732,
+     3.832
+    ]
+   ],
+   "std_m": 0.0083,
+   "n": 10733,
+   "solid_length_m": 1.1
+  },
+  {
+   "axis": "v",
+   "coord": 2.2633,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     -4.004,
+     -3.304
+    ],
+    [
+     -1.054,
+     2.846
+    ]
+   ],
+   "std_m": 0.0103,
+   "n": 37188,
+   "solid_length_m": 4.6
+  },
+  {
+   "axis": "v",
+   "coord": 3.1241,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     4.814,
+     7.364
+    ],
+    [
+     7.614,
+     9.314
+    ]
+   ],
+   "std_m": 0.0101,
+   "n": 46713,
+   "solid_length_m": 4.25
+  },
+  {
+   "axis": "v",
+   "coord": 3.2119,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     7.11,
+     8.11
+    ]
+   ],
+   "std_m": 0.0088,
+   "n": 8393,
+   "solid_length_m": 1.0
+  },
+  {
+   "axis": "v",
+   "coord": 5.2659,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.431,
+     4.081
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 52040,
+   "solid_length_m": 3.65
+  },
+  {
+   "axis": "v",
+   "coord": 6.4291,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     2.983,
+     4.033
+    ]
+   ],
+   "std_m": 0.0077,
+   "n": 11561,
+   "solid_length_m": 1.05
+  },
+  {
+   "axis": "v",
+   "coord": 8.8073,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     0.041,
+     4.641
+    ],
+    [
+     5.141,
+     6.091
+    ]
+   ],
+   "std_m": 0.0105,
+   "n": 37470,
+   "solid_length_m": 5.55
+  },
+  {
+   "axis": "v",
+   "coord": 8.9666,
+   "normal_sign": -1,
+   "intervals": [
+    [
+     4.605,
+     5.205
+    ]
+   ],
+   "std_m": 0.011,
+   "n": 6379,
+   "solid_length_m": 0.6
+  }
+ ],
+ "objects": [
+  {
+   "class": "sofa",
+   "uv": [
+    8.251,
+    1.811
+   ],
+   "views": 6,
+   "conf": 0.963,
+   "frames": [
+    2139,
+    2116,
+    2093,
+    2070,
+    2162,
+    2047
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "toilet",
+   "uv": [
+    -0.472,
+    3.89
+   ],
+   "views": 4,
+   "conf": 0.938,
+   "frames": [
+    4393,
+    4370,
+    4577,
+    4600
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "toilet",
+   "uv": [
+    7.01,
+    5.682
+   ],
+   "views": 8,
+   "conf": 0.935,
+   "frames": [
+    2461,
+    2990,
+    2484,
+    2530,
+    2553,
+    2507,
+    3013,
+    3036
+   ],
+   "room": "R1"
+  },
+  {
+   "class": "sofa",
+   "uv": [
+    8.241,
+    0.328
+   ],
+   "views": 3,
+   "conf": 0.911,
+   "frames": [
+    2024,
+    2001,
+    1518
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    1.812,
+    1.024
+   ],
+   "views": 12,
+   "conf": 0.907,
+   "frames": [
+    391,
+    253,
+    4715,
+    4784,
+    4807,
+    4738,
+    414,
+    4830,
+    4761,
+    4140
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "sink",
+   "uv": [
+    8.366,
+    4.034
+   ],
+   "views": 14,
+   "conf": 0.907,
+   "frames": [
+    2691,
+    2714,
+    2645,
+    2668,
+    2737,
+    2783,
+    2576,
+    2760,
+    2806,
+    2622
+   ],
+   "room": "R1"
+  },
+  {
+   "class": "television",
+   "uv": [
+    1.339,
+    1.101
+   ],
+   "views": 19,
+   "conf": 0.9,
+   "frames": [
+    4830,
+    4140,
+    253,
+    4807,
+    207,
+    4761,
+    4278,
+    230,
+    4784,
+    9338
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "television",
+   "uv": [
+    1.234,
+    -0.859
+   ],
+   "views": 6,
+   "conf": 0.891,
+   "frames": [
+    161,
+    138,
+    9407,
+    9384,
+    4830,
+    9361
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "bathtub",
+   "uv": [
+    0.374,
+    4.881
+   ],
+   "views": 8,
+   "conf": 0.885,
+   "frames": [
+    4416,
+    4393,
+    4531,
+    4462,
+    4485,
+    4439,
+    4508,
+    4508
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "refrigerator",
+   "uv": [
+    6.007,
+    0.427
+   ],
+   "views": 9,
+   "conf": 0.881,
+   "frames": [
+    1886,
+    1863,
+    1840,
+    1794,
+    1909,
+    6693,
+    1771,
+    1748,
+    6693
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "sink",
+   "uv": [
+    -0.544,
+    3.048
+   ],
+   "views": 6,
+   "conf": 0.873,
+   "frames": [
+    4646,
+    4623,
+    4370,
+    4347,
+    4600,
+    4324
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "television",
+   "uv": [
+    5.643,
+    2.17
+   ],
+   "views": 5,
+   "conf": 0.859,
+   "frames": [
+    6509,
+    1541,
+    6578,
+    2346,
+    1564
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    0.932,
+    -0.434
+   ],
+   "views": 3,
+   "conf": 0.855,
+   "frames": [
+    184,
+    138,
+    161
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "television",
+   "uv": [
+    5.574,
+    1.214
+   ],
+   "views": 5,
+   "conf": 0.818,
+   "frames": [
+    6647,
+    6624,
+    6670,
+    6693,
+    1518
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    1.186,
+    0.727
+   ],
+   "views": 5,
+   "conf": 0.814,
+   "frames": [
+    230,
+    207,
+    4278,
+    8786,
+    4163
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "refrigerator",
+   "uv": [
+    5.691,
+    0.86
+   ],
+   "views": 13,
+   "conf": 0.814,
+   "frames": [
+    1725,
+    1656,
+    1702,
+    1679,
+    6555,
+    6532,
+    6670,
+    6578,
+    1633,
+    6647
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    3.683,
+    2.728
+   ],
+   "views": 8,
+   "conf": 0.783,
+   "frames": [
+    5796,
+    782,
+    5819,
+    5773,
+    4002,
+    759,
+    4025,
+    4048
+   ],
+   "room": "R5"
+  },
+  {
+   "class": "television",
+   "uv": [
+    1.5,
+    -0.763
+   ],
+   "views": 5,
+   "conf": 0.78,
+   "frames": [
+    161,
+    184,
+    9407,
+    138,
+    5198
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "office chair",
+   "uv": [
+    0.931,
+    -0.464
+   ],
+   "views": 2,
+   "conf": 0.771,
+   "frames": [
+    161,
+    184
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "television",
+   "uv": [
+    1.44,
+    0.286
+   ],
+   "views": 3,
+   "conf": 0.755,
+   "frames": [
+    207,
+    4807,
+    184
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "dining table",
+   "uv": [
+    3.7,
+    3.117
+   ],
+   "views": 8,
+   "conf": 0.611,
+   "frames": [
+    736,
+    5750,
+    759,
+    5773,
+    5727,
+    4002,
+    4025,
+    713
+   ],
+   "room": "R5"
+  },
+  {
+   "class": "office chair",
+   "uv": [
+    1.26,
+    0.962
+   ],
+   "views": 7,
+   "conf": 0.599,
+   "frames": [
+    4140,
+    4784,
+    8786,
+    4278,
+    253,
+    4163,
+    5382
+   ],
+   "room": "R7"
+  },
+  {
+   "class": "toilet",
+   "uv": [
+    0.709,
+    4.846
+   ],
+   "views": 2,
+   "conf": 0.596,
+   "frames": [
+    4485,
+    4462
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "dining table",
+   "uv": [
+    4.354,
+    2.928
+   ],
+   "views": 2,
+   "conf": 0.557,
+   "frames": [
+    6210,
+    6187
+   ],
+   "room": "R5"
+  },
+  {
+   "class": "sofa",
+   "uv": [
+    7.333,
+    0.822
+   ],
+   "views": 3,
+   "conf": 0.546,
+   "frames": [
+    1541,
+    6486,
+    1564
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    5.67,
+    2.553
+   ],
+   "views": 4,
+   "conf": 0.541,
+   "frames": [
+    1541,
+    1564,
+    1518,
+    1587
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "desk",
+   "uv": [
+    4.394,
+    2.964
+   ],
+   "views": 2,
+   "conf": 0.468,
+   "frames": [
+    6256,
+    6210
+   ],
+   "room": "R5"
+  },
+  {
+   "class": "sink",
+   "uv": [
+    -0.205,
+    4.772
+   ],
+   "views": 2,
+   "conf": 0.463,
+   "frames": [
+    4554,
+    4531
+   ],
+   "room": "R3"
+  },
+  {
+   "class": "wardrobe",
+   "uv": [
+    8.326,
+    3.061
+   ],
+   "views": 5,
+   "conf": 0.402,
+   "frames": [
+    2231,
+    2185,
+    6946,
+    6923,
+    6969
+   ],
+   "room": "R6"
+  },
+  {
+   "class": "office chair",
+   "uv": [
+    3.669,
+    1.846
+   ],
+   "views": 2,
+   "conf": 0.352,
+   "frames": [
+    828,
+    805
+   ],
+   "room": "R5"
+  }
+ ],
+ "timing_s": 130.9,
+ "debug": {
+  "trajectory_uv": [
+   [
+    -0.002,
+    0.011
+   ],
+   [
+    0.002,
+    0.002
+   ],
+   [
+    0.007,
+    -0.008
+   ],
+   [
+    0.007,
+    -0.026
+   ],
+   [
+    0.019,
+    -0.049
+   ],
+   [
+    0.033,
+    -0.066
+   ],
+   [
+    0.075,
+    -0.076
+   ],
+   [
+    0.143,
+    -0.08
+   ],
+   [
+    0.211,
+    -0.084
+   ],
+   [
+    0.269,
+    -0.09
+   ],
+   [
+    0.315,
+    -0.089
+   ],
+   [
+    0.349,
+    -0.088
+   ],
+   [
+    0.37,
+    -0.1
+   ],
+   [
+    0.384,
+    -0.121
+   ],
+   [
+    0.397,
+    -0.138
+   ],
+   [
+    0.418,
+    -0.139
+   ],
+   [
+    0.433,
+    -0.121
+   ],
+   [
+    0.443,
+    -0.097
+   ],
+   [
+    0.433,
+    -0.06
+   ],
+   [
+    0.413,
+    0.004
+   ],
+   [
+    0.385,
+    0.099
+   ],
+   [
+    0.355,
+    0.192
+   ],
+   [
+    0.313,
+    0.303
+   ],
+   [
+    0.269,
+    0.42
+   ],
+   [
+    0.239,
+    0.523
+   ],
+   [
+    0.222,
+    0.595
+   ],
+   [
+    0.239,
+    0.665
+   ],
+   [
+    0.293,
+    0.768
+   ],
+   [
+    0.35,
+    0.878
+   ],
+   [
+    0.398,
+    0.995
+   ],
+   [
+    0.437,
+    1.115
+   ],
+   [
+    0.494,
+    1.243
+   ],
+   [
+    0.546,
+    1.321
+   ],
+   [
+    0.616,
+    1.392
+   ],
+   [
+    0.709,
+    1.465
+   ],
+   [
+    0.801,
+    1.528
+   ],
+   [
+    0.902,
+    1.59
+   ],
+   [
+    1.009,
+    1.647
+   ],
+   [
+    1.118,
+    1.7
+   ],
+   [
+    1.22,
+    1.732
+   ],
+   [
+    1.326,
+    1.733
+   ],
+   [
+    1.428,
+    1.687
+   ],
+   [
+    1.52,
+    1.668
+   ],
+   [
+    1.601,
+    1.756
+   ],
+   [
+    1.645,
+    1.909
+   ],
+   [
+    1.649,
+    2.053
+   ],
+   [
+    1.634,
+    2.187
+   ],
+   [
+    1.615,
+    2.281
+   ],
+   [
+    1.591,
+    2.375
+   ],
+   [
+    1.586,
+    2.457
+   ],
+   [
+    1.599,
+    2.54
+   ],
+   [
+    1.599,
+    2.594
+   ],
+   [
+    1.584,
+    2.653
+   ],
+   [
+    1.576,
+    2.733
+   ],
+   [
+    1.575,
+    2.806
+   ],
+   [
+    1.581,
+    2.877
+   ],
+   [
+    1.591,
+    2.967
+   ],
+   [
+    1.605,
+    3.072
+   ],
+   [
+    1.615,
+    3.175
+   ],
+   [
+    1.62,
+    3.277
+   ],
+   [
+    1.627,
+    3.371
+   ],
+   [
+    1.629,
+    3.469
+   ],
+   [
+    1.637,
+    3.575
+   ],
+   [
+    1.655,
+    3.647
+   ],
+   [
+    1.685,
+    3.709
+   ],
+   [
+    1.731,
+    3.775
+   ],
+   [
+    1.787,
+    3.835
+   ],
+   [
+    1.866,
+    3.9
+   ],
+   [
+    1.944,
+    3.959
+   ],
+   [
+    2.023,
+    4.009
+   ],
+   [
+    2.107,
+    4.067
+   ],
+   [
+    2.189,
+    4.11
+   ],
+   [
+    2.273,
+    4.13
+   ],
+   [
+    2.365,
+    4.133
+   ],
+   [
+    2.459,
+    4.112
+   ],
+   [
+    2.557,
+    4.072
+   ],
+   [
+    2.636,
+    4.03
+   ],
+   [
+    2.707,
+    3.984
+   ],
+   [
+    2.776,
+    3.933
+   ],
+   [
+    2.846,
+    3.877
+   ],
+   [
+    2.889,
+    3.817
+   ],
+   [
+    2.926,
+    3.739
+   ],
+   [
+    2.958,
+    3.633
+   ],
+   [
+    2.981,
+    3.533
+   ],
+   [
+    3.006,
+    3.424
+   ],
+   [
+    3.043,
+    3.314
+   ],
+   [
+    3.084,
+    3.195
+   ],
+   [
+    3.111,
+    3.077
+   ],
+   [
+    3.131,
+    2.963
+   ],
+   [
+    3.134,
+    2.841
+   ],
+   [
+    3.129,
+    2.701
+   ],
+   [
+    3.136,
+    2.595
+   ],
+   [
+    3.155,
+    2.477
+   ],
+   [
+    3.183,
+    2.349
+   ],
+   [
+    3.198,
+    2.242
+   ],
+   [
+    3.205,
+    2.14
+   ],
+   [
+    3.2,
+    2.007
+   ],
+   [
+    3.191,
+    1.877
+   ],
+   [
+    3.191,
+    1.761
+   ],
+   [
+    3.197,
+    1.647
+   ],
+   [
+    3.206,
+    1.543
+   ],
+   [
+    3.209,
+    1.469
+   ],
+   [
+    3.215,
+    1.37
+   ],
+   [
+    3.274,
+    1.229
+   ],
+   [
+    3.371,
+    1.162
+   ],
+   [
+    3.498,
+    1.124
+   ],
+   [
+    3.634,
+    1.089
+   ],
+   [
+    3.734,
+    1.055
+   ],
+   [
+    3.814,
+    1.037
+   ],
+   [
+    3.899,
+    1.004
+   ],
+   [
+    3.992,
+    0.965
+   ],
+   [
+    4.089,
+    0.937
+   ],
+   [
+    4.181,
+    0.93
+   ],
+   [
+    4.297,
+    0.94
+   ],
+   [
+    4.406,
+    0.948
+   ],
+   [
+    4.509,
+    0.975
+   ],
+   [
+    4.573,
+    1.015
+   ],
+   [
+    4.64,
+    1.039
+   ],
+   [
+    4.652,
+    1.085
+   ],
+   [
+    4.655,
+    1.156
+   ],
+   [
+    4.67,
+    1.246
+   ],
+   [
+    4.691,
+    1.333
+   ],
+   [
+    4.707,
+    1.414
+   ],
+   [
+    4.727,
+    1.502
+   ],
+   [
+    4.763,
+    1.594
+   ],
+   [
+    4.793,
+    1.678
+   ],
+   [
+    4.805,
+    1.772
+   ],
+   [
+    4.806,
+    1.912
+   ],
+   [
+    4.813,
+    2.046
+   ],
+   [
+    4.821,
+    2.175
+   ],
+   [
+    4.829,
+    2.296
+   ],
+   [
+    4.843,
+    2.43
+   ],
+   [
+    4.844,
+    2.537
+   ],
+   [
+    4.824,
+    2.643
+   ],
+   [
+    4.795,
+    2.775
+   ],
+   [
+    4.778,
+    2.901
+   ],
+   [
+    4.771,
+    3.019
+   ],
+   [
+    4.772,
+    3.163
+   ],
+   [
+    4.77,
+    3.288
+   ],
+   [
+    4.778,
+    3.403
+   ],
+   [
+    4.795,
+    3.527
+   ],
+   [
+    4.824,
+    3.638
+   ],
+   [
+    4.872,
+    3.731
+   ],
+   [
+    4.932,
+    3.801
+   ],
+   [
+    5.006,
+    3.881
+   ],
+   [
+    5.088,
+    3.952
+   ],
+   [
+    5.166,
+    4.001
+   ],
+   [
+    5.241,
+    4.035
+   ],
+   [
+    5.318,
+    4.057
+   ],
+   [
+    5.432,
+    4.057
+   ],
+   [
+    5.505,
+    4.036
+   ],
+   [
+    5.561,
+    3.994
+   ],
+   [
+    5.611,
+    3.93
+   ],
+   [
+    5.651,
+    3.868
+   ],
+   [
+    5.683,
+    3.821
+   ],
+   [
+    5.725,
+    3.768
+   ],
+   [
+    5.777,
+    3.709
+   ],
+   [
+    5.846,
+    3.628
+   ],
+   [
+    5.899,
+    3.558
+   ],
+   [
+    5.938,
+    3.476
+   ],
+   [
+    5.97,
+    3.377
+   ],
+   [
+    6.0,
+    3.255
+   ],
+   [
+    6.029,
+    3.157
+   ],
+   [
+    6.071,
+    3.053
+   ],
+   [
+    6.117,
+    2.937
+   ],
+   [
+    6.147,
+    2.826
+   ],
+   [
+    6.172,
+    2.707
+   ],
+   [
+    6.195,
+    2.586
+   ],
+   [
+    6.208,
+    2.456
+   ],
+   [
+    6.221,
+    2.338
+   ],
+   [
+    6.245,
+    2.207
+   ],
+   [
+    6.263,
+    2.06
+   ],
+   [
+    6.27,
+    1.938
+   ],
+   [
+    6.279,
+    1.809
+   ],
+   [
+    6.279,
+    1.672
+   ],
+   [
+    6.275,
+    1.553
+   ],
+   [
+    6.293,
+    1.446
+   ],
+   [
+    6.326,
+    1.338
+   ],
+   [
+    6.383,
+    1.227
+   ],
+   [
+    6.447,
+    1.117
+   ],
+   [
+    6.492,
+    0.999
+   ],
+   [
+    6.515,
+    0.858
+   ],
+   [
+    6.538,
+    0.739
+   ],
+   [
+    6.587,
+    0.63
+   ],
+   [
+    6.619,
+    0.538
+   ],
+   [
+    6.636,
+    0.471
+   ],
+   [
+    6.632,
+    0.407
+   ],
+   [
+    6.605,
+    0.335
+   ],
+   [
+    6.584,
+    0.277
+   ],
+   [
+    6.57,
+    0.241
+   ],
+   [
+    6.573,
+    0.223
+   ],
+   [
+    6.585,
+    0.205
+   ],
+   [
+    6.598,
+    0.196
+   ],
+   [
+    6.61,
+    0.194
+   ],
+   [
+    6.642,
+    0.2
+   ],
+   [
+    6.706,
+    0.221
+   ],
+   [
+    6.793,
+    0.268
+   ],
+   [
+    6.902,
+    0.345
+   ],
+   [
+    7.012,
+    0.437
+   ],
+   [
+    7.095,
+    0.52
+   ],
+   [
+    7.154,
+    0.564
+   ],
+   [
+    7.194,
+    0.587
+   ],
+   [
+    7.223,
+    0.61
+   ],
+   [
+    7.223,
+    0.688
+   ],
+   [
+    7.165,
+    0.784
+   ],
+   [
+    7.09,
+    0.866
+   ],
+   [
+    7.048,
+    0.94
+   ],
+   [
+    7.035,
+    1.013
+   ],
+   [
+    7.053,
+    1.086
+   ],
+   [
+    7.094,
+    1.16
+   ],
+   [
+    7.174,
+    1.233
+   ],
+   [
+    7.273,
+    1.312
+   ],
+   [
+    7.335,
+    1.395
+   ],
+   [
+    7.395,
+    1.506
+   ],
+   [
+    7.45,
+    1.643
+   ],
+   [
+    7.49,
+    1.767
+   ],
+   [
+    7.533,
+    1.869
+   ],
+   [
+    7.586,
+    1.979
+   ],
+   [
+    7.652,
+    2.105
+   ],
+   [
+    7.695,
+    2.212
+   ],
+   [
+    7.717,
+    2.317
+   ],
+   [
+    7.712,
+    2.428
+   ],
+   [
+    7.697,
+    2.512
+   ],
+   [
+    7.692,
+    2.577
+   ],
+   [
+    7.682,
+    2.629
+   ],
+   [
+    7.677,
+    2.67
+   ],
+   [
+    7.618,
+    2.723
+   ],
+   [
+    7.501,
+    2.757
+   ],
+   [
+    7.349,
+    2.727
+   ],
+   [
+    7.215,
+    2.654
+   ],
+   [
+    7.117,
+    2.597
+   ],
+   [
+    7.034,
+    2.563
+   ],
+   [
+    6.952,
+    2.555
+   ],
+   [
+    6.863,
+    2.58
+   ],
+   [
+    6.767,
+    2.612
+   ],
+   [
+    6.69,
+    2.641
+   ],
+   [
+    6.612,
+    2.657
+   ],
+   [
+    6.524,
+    2.667
+   ],
+   [
+    6.422,
+    2.693
+   ],
+   [
+    6.352,
+    2.723
+   ],
+   [
+    6.284,
+    2.773
+   ],
+   [
+    6.214,
+    2.844
+   ],
+   [
+    6.146,
+    2.923
+   ],
+   [
+    6.087,
+    2.998
+   ],
+   [
+    6.024,
+    3.08
+   ],
+   [
+    5.958,
+    3.171
+   ],
+   [
+    5.914,
+    3.265
+   ],
+   [
+    5.892,
+    3.367
+   ],
+   [
+    5.887,
+    3.477
+   ],
+   [
+    5.894,
+    3.548
+   ],
+   [
+    5.874,
+    3.614
+   ],
+   [
+    5.842,
+    3.715
+   ],
+   [
+    5.831,
+    3.815
+   ],
+   [
+    5.849,
+    3.887
+   ],
+   [
+    5.891,
+    3.949
+   ],
+   [
+    5.946,
+    4.016
+   ],
+   [
+    6.013,
+    4.082
+   ],
+   [
+    6.063,
+    4.134
+   ],
+   [
+    6.122,
+    4.197
+   ],
+   [
+    6.182,
+    4.261
+   ],
+   [
+    6.242,
+    4.318
+   ],
+   [
+    6.315,
+    4.358
+   ],
+   [
+    6.401,
+    4.38
+   ],
+   [
+    6.513,
+    4.392
+   ],
+   [
+    6.611,
+    4.403
+   ],
+   [
+    6.708,
+    4.422
+   ],
+   [
+    6.817,
+    4.454
+   ],
+   [
+    6.927,
+    4.47
+   ],
+   [
+    7.019,
+    4.491
+   ],
+   [
+    7.124,
+    4.52
+   ],
+   [
+    7.228,
+    4.544
+   ],
+   [
+    7.349,
+    4.575
+   ],
+   [
+    7.451,
+    4.622
+   ],
+   [
+    7.554,
+    4.674
+   ],
+   [
+    7.661,
+    4.699
+   ],
+   [
+    7.747,
+    4.705
+   ],
+   [
+    7.825,
+    4.706
+   ],
+   [
+    7.901,
+    4.696
+   ],
+   [
+    8.0,
+    4.664
+   ],
+   [
+    8.094,
+    4.62
+   ],
+   [
+    8.18,
+    4.591
+   ],
+   [
+    8.266,
+    4.568
+   ],
+   [
+    8.34,
+    4.546
+   ],
+   [
+    8.394,
+    4.528
+   ],
+   [
+    8.439,
+    4.51
+   ],
+   [
+    8.479,
+    4.491
+   ],
+   [
+    8.525,
+    4.494
+   ],
+   [
+    8.569,
+    4.552
+   ],
+   [
+    8.589,
+    4.647
+   ],
+   [
+    8.556,
+    4.758
+   ],
+   [
+    8.475,
+    4.837
+   ],
+   [
+    8.364,
+    4.895
+   ],
+   [
+    8.227,
+    4.944
+   ],
+   [
+    8.097,
+    4.984
+   ],
+   [
+    8.021,
+    5.015
+   ],
+   [
+    7.992,
+    5.048
+   ],
+   [
+    7.982,
+    5.076
+   ],
+   [
+    7.933,
+    5.082
+   ],
+   [
+    7.825,
+    5.035
+   ],
+   [
+    7.73,
+    4.972
+   ],
+   [
+    7.635,
+    4.914
+   ],
+   [
+    7.552,
+    4.868
+   ],
+   [
+    7.479,
+    4.839
+   ],
+   [
+    7.379,
+    4.835
+   ],
+   [
+    7.24,
+    4.83
+   ],
+   [
+    7.121,
+    4.767
+   ],
+   [
+    7.044,
+    4.651
+   ],
+   [
+    6.974,
+    4.533
+   ],
+   [
+    6.879,
+    4.456
+   ],
+   [
+    6.786,
+    4.419
+   ],
+   [
+    6.673,
+    4.386
+   ],
+   [
+    6.533,
+    4.353
+   ],
+   [
+    6.41,
+    4.328
+   ],
+   [
+    6.277,
+    4.294
+   ],
+   [
+    6.125,
+    4.268
+   ],
+   [
+    5.992,
+    4.252
+   ],
+   [
+    5.875,
+    4.246
+   ],
+   [
+    5.731,
+    4.249
+   ],
+   [
+    5.589,
+    4.24
+   ],
+   [
+    5.451,
+    4.218
+   ],
+   [
+    5.288,
+    4.189
+   ],
+   [
+    5.136,
+    4.183
+   ],
+   [
+    4.995,
+    4.189
+   ],
+   [
+    4.85,
+    4.211
+   ],
+   [
+    4.69,
+    4.223
+   ],
+   [
+    4.531,
+    4.223
+   ],
+   [
+    4.38,
+    4.206
+   ],
+   [
+    4.249,
+    4.19
+   ],
+   [
+    4.136,
+    4.181
+   ],
+   [
+    3.999,
+    4.192
+   ],
+   [
+    3.859,
+    4.216
+   ],
+   [
+    3.734,
+    4.232
+   ],
+   [
+    3.608,
+    4.236
+   ],
+   [
+    3.483,
+    4.253
+   ],
+   [
+    3.387,
+    4.28
+   ],
+   [
+    3.281,
+    4.324
+   ],
+   [
+    3.185,
+    4.385
+   ],
+   [
+    3.097,
+    4.454
+   ],
+   [
+    3.022,
+    4.513
+   ],
+   [
+    2.956,
+    4.575
+   ],
+   [
+    2.89,
+    4.656
+   ],
+   [
+    2.828,
+    4.738
+   ],
+   [
+    2.783,
+    4.818
+   ],
+   [
+    2.751,
+    4.921
+   ],
+   [
+    2.733,
+    5.035
+   ],
+   [
+    2.714,
+    5.136
+   ],
+   [
+    2.699,
+    5.241
+   ],
+   [
+    2.669,
+    5.364
+   ],
+   [
+    2.644,
+    5.487
+   ],
+   [
+    2.636,
+    5.597
+   ],
+   [
+    2.631,
+    5.718
+   ],
+   [
+    2.635,
+    5.848
+   ],
+   [
+    2.639,
+    5.986
+   ],
+   [
+    2.633,
+    6.108
+   ],
+   [
+    2.616,
+    6.236
+   ],
+   [
+    2.601,
+    6.367
+   ],
+   [
+    2.603,
+    6.485
+   ],
+   [
+    2.618,
+    6.605
+   ],
+   [
+    2.655,
+    6.739
+   ],
+   [
+    2.677,
+    6.855
+   ],
+   [
+    2.681,
+    6.986
+   ],
+   [
+    2.675,
+    7.127
+   ],
+   [
+    2.675,
+    7.278
+   ],
+   [
+    2.68,
+    7.412
+   ],
+   [
+    2.692,
+    7.561
+   ],
+   [
+    2.702,
+    7.71
+   ],
+   [
+    2.698,
+    7.843
+   ],
+   [
+    2.686,
+    7.989
+   ],
+   [
+    2.673,
+    8.12
+   ],
+   [
+    2.656,
+    8.243
+   ],
+   [
+    2.63,
+    8.368
+   ],
+   [
+    2.585,
+    8.454
+   ],
+   [
+    2.511,
+    8.477
+   ],
+   [
+    2.434,
+    8.458
+   ],
+   [
+    2.359,
+    8.43
+   ],
+   [
+    2.308,
+    8.407
+   ],
+   [
+    2.261,
+    8.366
+   ],
+   [
+    2.209,
+    8.335
+   ],
+   [
+    2.155,
+    8.314
+   ],
+   [
+    2.111,
+    8.288
+   ],
+   [
+    2.062,
+    8.25
+   ],
+   [
+    1.992,
+    8.197
+   ],
+   [
+    1.917,
+    8.139
+   ],
+   [
+    1.856,
+    8.074
+   ],
+   [
+    1.805,
+    8.005
+   ],
+   [
+    1.746,
+    7.922
+   ],
+   [
+    1.686,
+    7.847
+   ],
+   [
+    1.647,
+    7.779
+   ],
+   [
+    1.632,
+    7.71
+   ],
+   [
+    1.629,
+    7.62
+   ],
+   [
+    1.623,
+    7.524
+   ],
+   [
+    1.618,
+    7.449
+   ],
+   [
+    1.636,
+    7.366
+   ],
+   [
+    1.677,
+    7.284
+   ],
+   [
+    1.734,
+    7.231
+   ],
+   [
+    1.795,
+    7.21
+   ],
+   [
+    1.86,
+    7.209
+   ],
+   [
+    1.952,
+    7.203
+   ],
+   [
+    2.058,
+    7.166
+   ],
+   [
+    2.144,
+    7.109
+   ],
+   [
+    2.21,
+    7.036
+   ],
+   [
+    2.286,
+    6.923
+   ],
+   [
+    2.356,
+    6.809
+   ],
+   [
+    2.422,
+    6.706
+   ],
+   [
+    2.486,
+    6.604
+   ],
+   [
+    2.539,
+    6.491
+   ],
+   [
+    2.561,
+    6.376
+   ],
+   [
+    2.556,
+    6.264
+   ],
+   [
+    2.545,
+    6.151
+   ],
+   [
+    2.525,
+    6.021
+   ],
+   [
+    2.517,
+    5.92
+   ],
+   [
+    2.505,
+    5.813
+   ],
+   [
+    2.493,
+    5.676
+   ],
+   [
+    2.474,
+    5.54
+   ],
+   [
+    2.44,
+    5.416
+   ],
+   [
+    2.397,
+    5.302
+   ],
+   [
+    2.334,
+    5.181
+   ],
+   [
+    2.246,
+    5.087
+   ],
+   [
+    2.123,
+    5.029
+   ],
+   [
+    2.001,
+    4.994
+   ],
+   [
+    1.932,
+    4.95
+   ],
+   [
+    1.889,
+    4.886
+   ],
+   [
+    1.834,
+    4.765
+   ],
+   [
+    1.781,
+    4.593
+   ],
+   [
+    1.777,
+    4.45
+   ],
+   [
+    1.808,
+    4.335
+   ],
+   [
+    1.827,
+    4.23
+   ],
+   [
+    1.817,
+    4.122
+   ],
+   [
+    1.78,
+    4.035
+   ],
+   [
+    1.732,
+    3.95
+   ],
+   [
+    1.661,
+    3.843
+   ],
+   [
+    1.588,
+    3.739
+   ],
+   [
+    1.526,
+    3.644
+   ],
+   [
+    1.466,
+    3.554
+   ],
+   [
+    1.389,
+    3.455
+   ],
+   [
+    1.298,
+    3.393
+   ],
+   [
+    1.19,
+    3.367
+   ],
+   [
+    1.058,
+    3.376
+   ],
+   [
+    0.951,
+    3.416
+   ],
+   [
+    0.872,
+    3.461
+   ],
+   [
+    0.797,
+    3.512
+   ],
+   [
+    0.74,
+    3.577
+   ],
+   [
+    0.71,
+    3.629
+   ],
+   [
+    0.684,
+    3.684
+   ],
+   [
+    0.66,
+    3.765
+   ],
+   [
+    0.641,
+    3.858
+   ],
+   [
+    0.627,
+    3.926
+   ],
+   [
+    0.624,
+    4.016
+   ],
+   [
+    0.59,
+    4.122
+   ],
+   [
+    0.544,
+    4.219
+   ],
+   [
+    0.488,
+    4.314
+   ],
+   [
+    0.435,
+    4.387
+   ],
+   [
+    0.396,
+    4.413
+   ],
+   [
+    0.361,
+    4.396
+   ],
+   [
+    0.341,
+    4.349
+   ],
+   [
+    0.325,
+    4.288
+   ],
+   [
+    0.319,
+    4.231
+   ],
+   [
+    0.322,
+    4.17
+   ],
+   [
+    0.32,
+    4.093
+   ],
+   [
+    0.317,
+    4.008
+   ],
+   [
+    0.314,
+    3.906
+   ],
+   [
+    0.321,
+    3.823
+   ],
+   [
+    0.347,
+    3.738
+   ],
+   [
+    0.373,
+    3.672
+   ],
+   [
+    0.381,
+    3.622
+   ],
+   [
+    0.353,
+    3.57
+   ],
+   [
+    0.347,
+    3.516
+   ],
+   [
+    0.402,
+    3.48
+   ],
+   [
+    0.494,
+    3.467
+   ],
+   [
+    0.599,
+    3.475
+   ],
+   [
+    0.719,
+    3.476
+   ],
+   [
+    0.819,
+    3.454
+   ],
+   [
+    0.903,
+    3.415
+   ],
+   [
+    0.993,
+    3.344
+   ],
+   [
+    1.079,
+    3.272
+   ],
+   [
+    1.162,
+    3.203
+   ],
+   [
+    1.251,
+    3.127
+   ],
+   [
+    1.345,
+    3.025
+   ],
+   [
+    1.406,
+    2.929
+   ],
+   [
+    1.434,
+    2.853
+   ],
+   [
+    1.457,
+    2.757
+   ],
+   [
+    1.472,
+    2.653
+   ],
+   [
+    1.481,
+    2.562
+   ],
+   [
+    1.49,
+    2.46
+   ],
+   [
+    1.502,
+    2.353
+   ],
+   [
+    1.502,
+    2.251
+   ],
+   [
+    1.495,
+    2.171
+   ],
+   [
+    1.474,
+    2.11
+   ],
+   [
+    1.43,
+    2.042
+   ],
+   [
+    1.373,
+    1.978
+   ],
+   [
+    1.312,
+    1.917
+   ],
+   [
+    1.252,
+    1.856
+   ],
+   [
+    1.184,
+    1.8
+   ],
+   [
+    1.089,
+    1.742
+   ],
+   [
+    1.001,
+    1.698
+   ],
+   [
+    0.886,
+    1.67
+   ],
+   [
+    0.735,
+    1.651
+   ],
+   [
+    0.601,
+    1.594
+   ],
+   [
+    0.511,
+    1.51
+   ],
+   [
+    0.404,
+    1.385
+   ],
+   [
+    0.321,
+    1.274
+   ],
+   [
+    0.246,
+    1.166
+   ],
+   [
+    0.161,
+    1.052
+   ],
+   [
+    0.088,
+    0.947
+   ],
+   [
+    0.049,
+    0.848
+   ],
+   [
+    0.031,
+    0.763
+   ],
+   [
+    0.019,
+    0.661
+   ],
+   [
+    0.0,
+    0.541
+   ],
+   [
+    -0.015,
+    0.448
+   ],
+   [
+    -0.044,
+    0.346
+   ],
+   [
+    -0.081,
+    0.24
+   ],
+   [
+    -0.091,
+    0.163
+   ],
+   [
+    -0.084,
+    0.075
+   ],
+   [
+    -0.067,
+    -0.023
+   ],
+   [
+    -0.04,
+    -0.113
+   ],
+   [
+    -0.007,
+    -0.188
+   ],
+   [
+    0.012,
+    -0.217
+   ],
+   [
+    0.062,
+    -0.286
+   ],
+   [
+    0.114,
+    -0.315
+   ],
+   [
+    0.16,
+    -0.312
+   ],
+   [
+    0.197,
+    -0.276
+   ],
+   [
+    0.246,
+    -0.25
+   ],
+   [
+    0.268,
+    -0.241
+   ],
+   [
+    0.297,
+    -0.26
+   ],
+   [
+    0.319,
+    -0.272
+   ],
+   [
+    0.34,
+    -0.274
+   ],
+   [
+    0.348,
+    -0.269
+   ],
+   [
+    0.347,
+    -0.229
+   ],
+   [
+    0.333,
+    -0.148
+   ],
+   [
+    0.335,
+    -0.069
+   ],
+   [
+    0.359,
+    0.008
+   ],
+   [
+    0.399,
+    0.072
+   ],
+   [
+    0.459,
+    0.149
+   ],
+   [
+    0.505,
+    0.224
+   ],
+   [
+    0.536,
+    0.295
+   ],
+   [
+    0.555,
+    0.401
+   ],
+   [
+    0.566,
+    0.514
+   ],
+   [
+    0.572,
+    0.616
+   ],
+   [
+    0.587,
+    0.724
+   ],
+   [
+    0.618,
+    0.831
+   ],
+   [
+    0.672,
+    0.93
+   ],
+   [
+    0.728,
+    1.031
+   ],
+   [
+    0.764,
+    1.13
+   ],
+   [
+    0.79,
+    1.243
+   ],
+   [
+    0.814,
+    1.378
+   ],
+   [
+    0.847,
+    1.489
+   ],
+   [
+    0.896,
+    1.59
+   ],
+   [
+    0.965,
+    1.68
+   ],
+   [
+    1.038,
+    1.763
+   ],
+   [
+    1.123,
+    1.831
+   ],
+   [
+    1.173,
+    1.907
+   ],
+   [
+    1.199,
+    1.987
+   ],
+   [
+    1.227,
+    2.063
+   ],
+   [
+    1.266,
+    2.122
+   ],
+   [
+    1.306,
+    2.178
+   ],
+   [
+    1.357,
+    2.241
+   ],
+   [
+    1.393,
+    2.315
+   ],
+   [
+    1.404,
+    2.417
+   ],
+   [
+    1.408,
+    2.527
+   ],
+   [
+    1.415,
+    2.657
+   ],
+   [
+    1.43,
+    2.765
+   ],
+   [
+    1.467,
+    2.875
+   ],
+   [
+    1.512,
+    2.984
+   ],
+   [
+    1.543,
+    3.075
+   ],
+   [
+    1.559,
+    3.155
+   ],
+   [
+    1.568,
+    3.258
+   ],
+   [
+    1.58,
+    3.387
+   ],
+   [
+    1.598,
+    3.498
+   ],
+   [
+    1.66,
+    3.629
+   ],
+   [
+    1.734,
+    3.743
+   ],
+   [
+    1.82,
+    3.868
+   ],
+   [
+    1.926,
+    3.971
+   ],
+   [
+    2.001,
+    4.037
+   ],
+   [
+    2.057,
+    4.086
+   ],
+   [
+    2.134,
+    4.12
+   ],
+   [
+    2.232,
+    4.13
+   ],
+   [
+    2.331,
+    4.12
+   ],
+   [
+    2.425,
+    4.097
+   ],
+   [
+    2.514,
+    4.074
+   ],
+   [
+    2.604,
+    4.044
+   ],
+   [
+    2.684,
+    4.009
+   ],
+   [
+    2.747,
+    3.959
+   ],
+   [
+    2.788,
+    3.896
+   ],
+   [
+    2.829,
+    3.8
+   ],
+   [
+    2.877,
+    3.709
+   ],
+   [
+    2.939,
+    3.606
+   ],
+   [
+    3.009,
+    3.505
+   ],
+   [
+    3.059,
+    3.401
+   ],
+   [
+    3.083,
+    3.293
+   ],
+   [
+    3.092,
+    3.175
+   ],
+   [
+    3.094,
+    3.047
+   ],
+   [
+    3.097,
+    2.891
+   ],
+   [
+    3.115,
+    2.727
+   ],
+   [
+    3.156,
+    2.592
+   ],
+   [
+    3.198,
+    2.507
+   ],
+   [
+    3.217,
+    2.428
+   ],
+   [
+    3.219,
+    2.361
+   ],
+   [
+    3.233,
+    2.292
+   ],
+   [
+    3.265,
+    2.229
+   ],
+   [
+    3.303,
+    2.173
+   ],
+   [
+    3.346,
+    2.115
+   ],
+   [
+    3.373,
+    2.057
+   ],
+   [
+    3.394,
+    1.974
+   ],
+   [
+    3.4,
+    1.855
+   ],
+   [
+    3.408,
+    1.741
+   ],
+   [
+    3.442,
+    1.627
+   ],
+   [
+    3.518,
+    1.52
+   ],
+   [
+    3.613,
+    1.424
+   ],
+   [
+    3.677,
+    1.337
+   ],
+   [
+    3.738,
+    1.241
+   ],
+   [
+    3.816,
+    1.148
+   ],
+   [
+    3.886,
+    1.113
+   ],
+   [
+    3.944,
+    1.11
+   ],
+   [
+    3.999,
+    1.105
+   ],
+   [
+    4.059,
+    1.099
+   ],
+   [
+    4.15,
+    1.089
+   ],
+   [
+    4.237,
+    1.086
+   ],
+   [
+    4.3,
+    1.088
+   ],
+   [
+    4.361,
+    1.119
+   ],
+   [
+    4.407,
+    1.182
+   ],
+   [
+    4.454,
+    1.26
+   ],
+   [
+    4.507,
+    1.333
+   ],
+   [
+    4.561,
+    1.411
+   ],
+   [
+    4.635,
+    1.496
+   ],
+   [
+    4.701,
+    1.565
+   ],
+   [
+    4.74,
+    1.645
+   ],
+   [
+    4.754,
+    1.749
+   ],
+   [
+    4.752,
+    1.882
+   ],
+   [
+    4.751,
+    2.011
+   ],
+   [
+    4.764,
+    2.122
+   ],
+   [
+    4.788,
+    2.254
+   ],
+   [
+    4.81,
+    2.376
+   ],
+   [
+    4.824,
+    2.498
+   ],
+   [
+    4.818,
+    2.638
+   ],
+   [
+    4.793,
+    2.785
+   ],
+   [
+    4.765,
+    2.923
+   ],
+   [
+    4.746,
+    3.056
+   ],
+   [
+    4.746,
+    3.182
+   ],
+   [
+    4.765,
+    3.33
+   ],
+   [
+    4.777,
+    3.46
+   ],
+   [
+    4.776,
+    3.592
+   ],
+   [
+    4.789,
+    3.729
+   ],
+   [
+    4.823,
+    3.817
+   ],
+   [
+    4.885,
+    3.894
+   ],
+   [
+    4.967,
+    3.953
+   ],
+   [
+    5.057,
+    4.001
+   ],
+   [
+    5.151,
+    4.043
+   ],
+   [
+    5.254,
+    4.081
+   ],
+   [
+    5.362,
+    4.111
+   ],
+   [
+    5.445,
+    4.126
+   ],
+   [
+    5.522,
+    4.115
+   ],
+   [
+    5.589,
+    4.071
+   ],
+   [
+    5.65,
+    4.011
+   ],
+   [
+    5.717,
+    3.947
+   ],
+   [
+    5.794,
+    3.876
+   ],
+   [
+    5.88,
+    3.794
+   ],
+   [
+    5.963,
+    3.691
+   ],
+   [
+    6.014,
+    3.572
+   ],
+   [
+    6.043,
+    3.444
+   ],
+   [
+    6.07,
+    3.303
+   ],
+   [
+    6.11,
+    3.176
+   ],
+   [
+    6.164,
+    3.047
+   ],
+   [
+    6.21,
+    2.91
+   ],
+   [
+    6.238,
+    2.779
+   ],
+   [
+    6.244,
+    2.646
+   ],
+   [
+    6.26,
+    2.494
+   ],
+   [
+    6.289,
+    2.353
+   ],
+   [
+    6.334,
+    2.217
+   ],
+   [
+    6.368,
+    2.084
+   ],
+   [
+    6.382,
+    1.945
+   ],
+   [
+    6.376,
+    1.819
+   ],
+   [
+    6.359,
+    1.682
+   ],
+   [
+    6.357,
+    1.552
+   ],
+   [
+    6.37,
+    1.438
+   ],
+   [
+    6.382,
+    1.34
+   ],
+   [
+    6.394,
+    1.254
+   ],
+   [
+    6.42,
+    1.173
+   ],
+   [
+    6.449,
+    1.104
+   ],
+   [
+    6.488,
+    1.063
+   ],
+   [
+    6.525,
+    1.048
+   ],
+   [
+    6.573,
+    1.057
+   ],
+   [
+    6.623,
+    1.069
+   ],
+   [
+    6.686,
+    1.083
+   ],
+   [
+    6.758,
+    1.092
+   ],
+   [
+    6.812,
+    1.088
+   ],
+   [
+    6.855,
+    1.082
+   ],
+   [
+    6.932,
+    1.085
+   ],
+   [
+    6.992,
+    1.099
+   ],
+   [
+    7.041,
+    1.124
+   ],
+   [
+    7.075,
+    1.178
+   ],
+   [
+    7.07,
+    1.244
+   ],
+   [
+    7.068,
+    1.306
+   ],
+   [
+    7.076,
+    1.339
+   ],
+   [
+    7.097,
+    1.367
+   ],
+   [
+    7.146,
+    1.408
+   ],
+   [
+    7.23,
+    1.454
+   ],
+   [
+    7.333,
+    1.503
+   ],
+   [
+    7.42,
+    1.579
+   ],
+   [
+    7.475,
+    1.666
+   ],
+   [
+    7.508,
+    1.763
+   ],
+   [
+    7.517,
+    1.876
+   ],
+   [
+    7.499,
+    1.967
+   ],
+   [
+    7.487,
+    2.052
+   ],
+   [
+    7.488,
+    2.137
+   ],
+   [
+    7.489,
+    2.213
+   ],
+   [
+    7.484,
+    2.255
+   ],
+   [
+    7.476,
+    2.265
+   ],
+   [
+    7.455,
+    2.281
+   ],
+   [
+    7.413,
+    2.326
+   ],
+   [
+    7.362,
+    2.377
+   ],
+   [
+    7.298,
+    2.438
+   ],
+   [
+    7.22,
+    2.501
+   ],
+   [
+    7.131,
+    2.528
+   ],
+   [
+    7.004,
+    2.534
+   ],
+   [
+    6.897,
+    2.542
+   ],
+   [
+    6.79,
+    2.556
+   ],
+   [
+    6.668,
+    2.59
+   ],
+   [
+    6.552,
+    2.63
+   ],
+   [
+    6.45,
+    2.661
+   ],
+   [
+    6.339,
+    2.696
+   ],
+   [
+    6.24,
+    2.741
+   ],
+   [
+    6.144,
+    2.799
+   ],
+   [
+    6.086,
+    2.853
+   ],
+   [
+    6.039,
+    2.933
+   ],
+   [
+    6.007,
+    3.035
+   ],
+   [
+    5.982,
+    3.168
+   ],
+   [
+    5.962,
+    3.286
+   ],
+   [
+    5.953,
+    3.419
+   ],
+   [
+    5.941,
+    3.545
+   ],
+   [
+    5.94,
+    3.673
+   ],
+   [
+    5.962,
+    3.803
+   ],
+   [
+    6.002,
+    3.925
+   ],
+   [
+    6.043,
+    4.03
+   ],
+   [
+    6.088,
+    4.134
+   ],
+   [
+    6.128,
+    4.232
+   ],
+   [
+    6.178,
+    4.327
+   ],
+   [
+    6.24,
+    4.391
+   ],
+   [
+    6.313,
+    4.431
+   ],
+   [
+    6.412,
+    4.445
+   ],
+   [
+    6.509,
+    4.438
+   ],
+   [
+    6.612,
+    4.434
+   ],
+   [
+    6.711,
+    4.437
+   ],
+   [
+    6.797,
+    4.461
+   ],
+   [
+    6.893,
+    4.488
+   ],
+   [
+    6.985,
+    4.505
+   ],
+   [
+    7.092,
+    4.512
+   ],
+   [
+    7.2,
+    4.506
+   ],
+   [
+    7.304,
+    4.501
+   ],
+   [
+    7.389,
+    4.509
+   ],
+   [
+    7.48,
+    4.537
+   ],
+   [
+    7.577,
+    4.585
+   ],
+   [
+    7.676,
+    4.617
+   ],
+   [
+    7.78,
+    4.626
+   ],
+   [
+    7.885,
+    4.615
+   ],
+   [
+    8.003,
+    4.61
+   ],
+   [
+    8.079,
+    4.648
+   ],
+   [
+    8.119,
+    4.706
+   ],
+   [
+    8.135,
+    4.75
+   ],
+   [
+    8.121,
+    4.792
+   ],
+   [
+    8.082,
+    4.832
+   ],
+   [
+    8.052,
+    4.843
+   ],
+   [
+    8.029,
+    4.847
+   ],
+   [
+    7.991,
+    4.845
+   ],
+   [
+    7.937,
+    4.825
+   ],
+   [
+    7.861,
+    4.802
+   ],
+   [
+    7.774,
+    4.784
+   ],
+   [
+    7.691,
+    4.781
+   ],
+   [
+    7.624,
+    4.803
+   ],
+   [
+    7.566,
+    4.853
+   ],
+   [
+    7.509,
+    4.903
+   ],
+   [
+    7.444,
+    4.923
+   ],
+   [
+    7.373,
+    4.89
+   ],
+   [
+    7.317,
+    4.83
+   ],
+   [
+    7.253,
+    4.749
+   ],
+   [
+    7.193,
+    4.684
+   ],
+   [
+    7.117,
+    4.609
+   ],
+   [
+    7.013,
+    4.556
+   ],
+   [
+    6.898,
+    4.52
+   ],
+   [
+    6.781,
+    4.479
+   ],
+   [
+    6.658,
+    4.438
+   ],
+   [
+    6.533,
+    4.381
+   ],
+   [
+    6.411,
+    4.334
+   ],
+   [
+    6.294,
+    4.313
+   ],
+   [
+    6.169,
+    4.306
+   ],
+   [
+    6.035,
+    4.315
+   ],
+   [
+    5.909,
+    4.33
+   ],
+   [
+    5.803,
+    4.338
+   ],
+   [
+    5.679,
+    4.343
+   ],
+   [
+    5.546,
+    4.346
+   ],
+   [
+    5.415,
+    4.348
+   ],
+   [
+    5.271,
+    4.353
+   ],
+   [
+    5.111,
+    4.367
+   ],
+   [
+    4.969,
+    4.378
+   ],
+   [
+    4.819,
+    4.367
+   ],
+   [
+    4.657,
+    4.34
+   ],
+   [
+    4.514,
+    4.319
+   ],
+   [
+    4.372,
+    4.31
+   ],
+   [
+    4.222,
+    4.317
+   ],
+   [
+    4.085,
+    4.33
+   ],
+   [
+    3.937,
+    4.335
+   ],
+   [
+    3.811,
+    4.329
+   ],
+   [
+    3.684,
+    4.319
+   ],
+   [
+    3.564,
+    4.319
+   ],
+   [
+    3.437,
+    4.336
+   ],
+   [
+    3.328,
+    4.365
+   ],
+   [
+    3.227,
+    4.408
+   ],
+   [
+    3.131,
+    4.457
+   ],
+   [
+    3.036,
+    4.506
+   ],
+   [
+    2.935,
+    4.561
+   ],
+   [
+    2.833,
+    4.625
+   ],
+   [
+    2.749,
+    4.694
+   ],
+   [
+    2.693,
+    4.775
+   ],
+   [
+    2.671,
+    4.875
+   ],
+   [
+    2.66,
+    5.005
+   ],
+   [
+    2.638,
+    5.124
+   ],
+   [
+    2.615,
+    5.23
+   ],
+   [
+    2.58,
+    5.358
+   ],
+   [
+    2.548,
+    5.492
+   ],
+   [
+    2.54,
+    5.626
+   ],
+   [
+    2.549,
+    5.75
+   ],
+   [
+    2.568,
+    5.882
+   ],
+   [
+    2.571,
+    6.015
+   ],
+   [
+    2.563,
+    6.145
+   ],
+   [
+    2.547,
+    6.278
+   ],
+   [
+    2.535,
+    6.404
+   ],
+   [
+    2.532,
+    6.537
+   ],
+   [
+    2.546,
+    6.684
+   ],
+   [
+    2.566,
+    6.835
+   ],
+   [
+    2.574,
+    6.967
+   ],
+   [
+    2.571,
+    7.109
+   ],
+   [
+    2.563,
+    7.25
+   ],
+   [
+    2.566,
+    7.393
+   ],
+   [
+    2.584,
+    7.529
+   ],
+   [
+    2.622,
+    7.673
+   ],
+   [
+    2.65,
+    7.807
+   ],
+   [
+    2.654,
+    7.938
+   ],
+   [
+    2.645,
+    8.056
+   ],
+   [
+    2.636,
+    8.173
+   ],
+   [
+    2.63,
+    8.278
+   ],
+   [
+    2.643,
+    8.388
+   ],
+   [
+    2.66,
+    8.484
+   ],
+   [
+    2.64,
+    8.573
+   ],
+   [
+    2.599,
+    8.615
+   ],
+   [
+    2.539,
+    8.644
+   ],
+   [
+    2.469,
+    8.643
+   ],
+   [
+    2.412,
+    8.631
+   ],
+   [
+    2.356,
+    8.625
+   ],
+   [
+    2.293,
+    8.626
+   ],
+   [
+    2.23,
+    8.643
+   ],
+   [
+    2.173,
+    8.629
+   ],
+   [
+    2.126,
+    8.588
+   ],
+   [
+    2.079,
+    8.504
+   ],
+   [
+    2.057,
+    8.43
+   ],
+   [
+    2.052,
+    8.348
+   ],
+   [
+    2.043,
+    8.28
+   ],
+   [
+    2.035,
+    8.212
+   ],
+   [
+    2.027,
+    8.141
+   ],
+   [
+    2.037,
+    8.07
+   ],
+   [
+    2.08,
+    7.99
+   ],
+   [
+    2.143,
+    7.914
+   ],
+   [
+    2.202,
+    7.846
+   ],
+   [
+    2.252,
+    7.773
+   ],
+   [
+    2.289,
+    7.689
+   ],
+   [
+    2.321,
+    7.604
+   ],
+   [
+    2.347,
+    7.492
+   ],
+   [
+    2.378,
+    7.389
+   ],
+   [
+    2.423,
+    7.285
+   ],
+   [
+    2.483,
+    7.173
+   ],
+   [
+    2.547,
+    7.039
+   ],
+   [
+    2.585,
+    6.916
+   ],
+   [
+    2.591,
+    6.775
+   ],
+   [
+    2.578,
+    6.628
+   ],
+   [
+    2.584,
+    6.484
+   ],
+   [
+    2.614,
+    6.345
+   ],
+   [
+    2.649,
+    6.206
+   ],
+   [
+    2.668,
+    6.081
+   ],
+   [
+    2.671,
+    5.963
+   ],
+   [
+    2.647,
+    5.833
+   ],
+   [
+    2.596,
+    5.701
+   ],
+   [
+    2.557,
+    5.586
+   ],
+   [
+    2.521,
+    5.469
+   ],
+   [
+    2.48,
+    5.335
+   ],
+   [
+    2.428,
+    5.211
+   ],
+   [
+    2.357,
+    5.084
+   ],
+   [
+    2.27,
+    4.963
+   ],
+   [
+    2.199,
+    4.84
+   ],
+   [
+    2.144,
+    4.707
+   ],
+   [
+    2.109,
+    4.575
+   ],
+   [
+    2.073,
+    4.441
+   ],
+   [
+    2.034,
+    4.304
+   ],
+   [
+    1.98,
+    4.178
+   ],
+   [
+    1.907,
+    4.043
+   ],
+   [
+    1.842,
+    3.921
+   ],
+   [
+    1.769,
+    3.795
+   ],
+   [
+    1.695,
+    3.675
+   ],
+   [
+    1.614,
+    3.574
+   ],
+   [
+    1.528,
+    3.503
+   ],
+   [
+    1.43,
+    3.456
+   ],
+   [
+    1.327,
+    3.423
+   ],
+   [
+    1.228,
+    3.402
+   ],
+   [
+    1.107,
+    3.388
+   ],
+   [
+    1.006,
+    3.379
+   ],
+   [
+    0.906,
+    3.381
+   ],
+   [
+    0.833,
+    3.391
+   ],
+   [
+    0.781,
+    3.42
+   ],
+   [
+    0.724,
+    3.465
+   ],
+   [
+    0.673,
+    3.519
+   ],
+   [
+    0.619,
+    3.588
+   ],
+   [
+    0.562,
+    3.664
+   ],
+   [
+    0.528,
+    3.764
+   ],
+   [
+    0.523,
+    3.857
+   ],
+   [
+    0.543,
+    3.971
+   ],
+   [
+    0.546,
+    4.074
+   ],
+   [
+    0.522,
+    4.141
+   ],
+   [
+    0.488,
+    4.178
+   ],
+   [
+    0.465,
+    4.189
+   ],
+   [
+    0.445,
+    4.176
+   ],
+   [
+    0.443,
+    4.139
+   ],
+   [
+    0.459,
+    4.101
+   ],
+   [
+    0.479,
+    4.06
+   ],
+   [
+    0.51,
+    3.999
+   ],
+   [
+    0.54,
+    3.931
+   ],
+   [
+    0.553,
+    3.865
+   ],
+   [
+    0.573,
+    3.81
+   ],
+   [
+    0.602,
+    3.747
+   ],
+   [
+    0.63,
+    3.709
+   ],
+   [
+    0.652,
+    3.665
+   ],
+   [
+    0.679,
+    3.628
+   ],
+   [
+    0.729,
+    3.589
+   ],
+   [
+    0.805,
+    3.55
+   ],
+   [
+    0.916,
+    3.498
+   ],
+   [
+    1.005,
+    3.435
+   ],
+   [
+    1.096,
+    3.362
+   ],
+   [
+    1.177,
+    3.278
+   ],
+   [
+    1.243,
+    3.197
+   ],
+   [
+    1.31,
+    3.131
+   ],
+   [
+    1.379,
+    3.055
+   ],
+   [
+    1.449,
+    3.009
+   ],
+   [
+    1.514,
+    2.952
+   ],
+   [
+    1.56,
+    2.865
+   ],
+   [
+    1.579,
+    2.756
+   ],
+   [
+    1.586,
+    2.634
+   ],
+   [
+    1.595,
+    2.516
+   ],
+   [
+    1.6,
+    2.392
+   ],
+   [
+    1.601,
+    2.257
+   ],
+   [
+    1.577,
+    2.122
+   ],
+   [
+    1.527,
+    2.025
+   ],
+   [
+    1.443,
+    1.954
+   ],
+   [
+    1.336,
+    1.894
+   ],
+   [
+    1.235,
+    1.833
+   ],
+   [
+    1.139,
+    1.764
+   ],
+   [
+    1.056,
+    1.698
+   ],
+   [
+    0.938,
+    1.648
+   ],
+   [
+    0.8,
+    1.604
+   ],
+   [
+    0.669,
+    1.543
+   ],
+   [
+    0.566,
+    1.45
+   ],
+   [
+    0.489,
+    1.329
+   ],
+   [
+    0.423,
+    1.199
+   ],
+   [
+    0.355,
+    1.066
+   ],
+   [
+    0.281,
+    0.949
+   ],
+   [
+    0.213,
+    0.847
+   ],
+   [
+    0.173,
+    0.75
+   ],
+   [
+    0.158,
+    0.632
+   ],
+   [
+    0.163,
+    0.517
+   ],
+   [
+    0.162,
+    0.407
+   ],
+   [
+    0.167,
+    0.31
+   ],
+   [
+    0.174,
+    0.226
+   ],
+   [
+    0.189,
+    0.166
+   ],
+   [
+    0.215,
+    0.127
+   ],
+   [
+    0.251,
+    0.098
+   ],
+   [
+    0.292,
+    0.085
+   ],
+   [
+    0.326,
+    0.07
+   ],
+   [
+    0.345,
+    0.047
+   ],
+   [
+    0.368,
+    0.031
+   ],
+   [
+    0.374,
+    0.019
+   ]
+  ],
+  "camera_uv": null,
+  "camera_time_s": null,
+  "camera_label": null,
+  "rgb_alignment": null
+ },
+ "damage": {
+  "inspected": {
+   "cells_classified": 854,
+   "tile_m": 0.4,
+   "surface_area_inspected_m2": 136.6
+  },
+  "regions": [
+   {
+    "class": "water_stain",
+    "confidence": 0.884,
+    "views": 2,
+    "cells": 1,
+    "area_m2": {
+     "value": 0.16,
+     "ci95": 0.096
+    },
+    "extent_m": [
+     0.4,
+     0.4
+    ],
+    "surface": {
+     "kind": "wall",
+     "face": 22,
+     "axis": "v",
+     "coord": 2.4047,
+     "normal_sign": 1,
+     "room": "R5"
+    },
+    "span_along_m": [
+     0.8,
+     1.2
+    ],
+    "height_m": [
+     1.2,
+     1.6
+    ],
+    "height_above_floor_m": 1.2,
+    "id": "D1",
+    "evidence": {
+     "frame": 5934,
+     "boxes_px": [
+      [
+       1072,
+       937,
+       1500,
+       1185
+      ]
+     ],
+     "range_m": 1.65
+    }
+   }
+  ]
+ },
+ "concealed_damage_flags": [
+  {
+   "damage_id": "D1",
+   "rule": "R3-wet-room-wall",
+   "finding": "Moisture on a wall of / next to a wet room (Room, R6): concealed supply or waste leak likely behind the finish.",
+   "surface": {
+    "kind": "wall",
+    "face": 22,
+    "axis": "v",
+    "coord": 2.4047,
+    "normal_sign": 1,
+    "room": "R5"
+   }
+  }
+ ],
+ "scope": [
+  {
+   "damage_id": "D1",
+   "target": "R5 wall",
+   "action": "Stain-block primer and repaint",
+   "qty": 1.0,
+   "unit": "m2",
+   "id": "S1"
+  },
+  {
+   "damage_id": "D1",
+   "target": "R5 wall",
+   "action": "Investigate (R3-wet-room-wall)",
+   "qty": 1,
+   "unit": "ea",
+   "id": "S2"
+  }
+ ]
+}

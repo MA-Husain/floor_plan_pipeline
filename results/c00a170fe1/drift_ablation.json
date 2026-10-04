@@ -1,0 +1,38 @@
+{
+ "off": {
+  "revisit_ghosting_mm": 63.29,
+  "wall_crispness_mm": 5.77,
+  "footprint_m2": 23.369,
+  "spaces": 3,
+  "wall_faces": 18,
+  "room_areas_m2": [
+   5.28,
+   6.66,
+   11.43
+  ]
+ },
+ "on": {
+  "revisit_ghosting_mm": 54.15,
+  "wall_crispness_mm": 7.84,
+  "footprint_m2": 23.916,
+  "spaces": 3,
+  "wall_faces": 18,
+  "room_areas_m2": [
+   5.81,
+   6.68,
+   11.43
+  ]
+ },
+ "correction": {
+  "anchors": 2,
+  "segments": 29,
+  "revisit_error_raw_mm": 63.29,
+  "revisit_error_corrected_mm": 54.15,
+  "max_correction_m": 0.1058,
+  "max_yaw_correction_deg": 0.548,
+  "mode": "on",
+  "applied": true,
+  "crispness_raw_mm": 5.77,
+  "crispness_corrected_mm": 7.84
+ }
+}
